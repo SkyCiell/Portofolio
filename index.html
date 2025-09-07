@@ -1,30 +1,61 @@
-  <!DOCTYPE html>
-  <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portofolio Rapi</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
-    <style>
-      html { scroll-behavior: smooth; }
-      @keyframes gradient-x {
-        0%, 100% {background-position: 0% 50%;}
-        50% {background-position: 100% 50%;}
-      }
-      .animate-gradient-x {
-        background-size: 200% 200%;
-        animation: gradient-x 8s ease infinite;
-      }
-    </style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portofolio Rapi</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+  <style>
+    html { scroll-behavior: smooth; }
+    @keyframes gradient-x {
+      0%, 100% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+    }
+    .animate-gradient-x {
+      background-size: 200% 200%;
+      animation: gradient-x 8s ease infinite;
+    }
+  </style>
+</head>
+<body class="bg-[#1e1e1e] text-gray-100 font-sans">
 
-  </head>
-  <body class="bg-[#1e1e1e] text-gray-100 font-sans">
+  <!-- Navbar -->
+  <header class="fixed top-0 left-0 w-full bg-[#1e1e1e]/80 backdrop-blur-md shadow-md z-50">
+    <div class="max-w-6xl mx-auto flex justify-between items-center px-4 py-3 md:py-4">
+      <!-- Logo -->
+      <a href="#hero" class="text-lg sm:text-xl font-bold text-[#FDC7BB]">Porto<span class="text-white">Raffi</span></a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex gap-6 text-gray-200 font-medium">
+        <a href="#about" class="hover:text-[#FDC7BB] transition">Tentang</a>
+        <a href="#projects" class="hover:text-[#FDC7BB] transition">Project</a>
+        <a href="#skills" class="hover:text-[#FDC7BB] transition">Skill</a>
+        <a href="#certificates" class="hover:text-[#FDC7BB] transition">Sertifikat</a>
+        <a href="#contact" class="hover:text-[#FDC7BB] transition">Kontak</a>
+      </nav>
+
+      <!-- Mobile Button -->
+      <button id="menu-btn" class="md:hidden text-2xl text-gray-200">
+        <i class="ri-menu-line"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Nav -->
+    <div id="mobile-menu" class="hidden flex-col bg-[#2a2a2a] text-center py-4 md:hidden">
+      <a href="#about" class="py-2 block hover:text-[#FDC7BB]">Tentang</a>
+      <a href="#projects" class="py-2 block hover:text-[#FDC7BB]">Project</a>
+      <a href="#skills" class="py-2 block hover:text-[#FDC7BB]">Skill</a>
+      <a href="#certificates" class="py-2 block hover:text-[#FDC7BB]">Sertifikat</a>
+      <a href="#contact" class="py-2 block hover:text-[#FDC7BB]">Kontak</a>
+      <a href="cv.pdf" target="_blank" class="mt-4 inline-block bg-gradient-to-r from-[#FDC7BB] to-[#CAE7E3] text-black font-semibold px-4 py-2 rounded-lg">📄 Download CV</a>
+    </div>
+  </header>
 
   <!-- Hero -->
   <section id="hero" class="relative h-screen flex flex-col justify-center items-center text-center overflow-hidden 
-                bg-gradient-to-r from-[#2b2b2b] via-[#1e1e1e] to-[#2b2b2b] animate-gradient-x px-4 md:px-0">
+                bg-gradient-to-r from-[#2b2b2b] via-[#1e1e1e] to-[#2b2b2b] animate-gradient-x px-4 md:px-0 pt-20">
     <div class="absolute inset-0 bg-black/30 backdrop-blur-sm"></div>
     <div class="relative z-10" data-aos="zoom-in">
       <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4 text-white">
@@ -33,12 +64,20 @@
       <p class="text-lg sm:text-xl md:text-2xl text-gray-300 mb-6">
         <span id="typing"></span>
       </p>
-      <a href="#projects" 
-        class="px-6 py-3 sm:px-8 sm:py-3 rounded-xl font-semibold text-black
-                bg-gradient-to-r from-[#FDC7BB] to-[#CAE7E3] 
-                shadow-lg transition-all duration-300 hover:scale-105">
-        🚀 Lihat Project
-      </a>
+      <div class="flex flex-wrap justify-center gap-3">
+        <a href="#projects" 
+          class="px-6 py-3 sm:px-8 sm:py-3 rounded-xl font-semibold text-black
+                  bg-gradient-to-r from-[#FDC7BB] to-[#CAE7E3] 
+                  shadow-lg transition-all duration-300 hover:scale-105">
+          🚀 Lihat Project
+        </a>
+        <a href="cv.pdf" target="_blank"
+          class="px-6 py-3 sm:px-8 sm:py-3 rounded-xl font-semibold text-black
+                 bg-gradient-to-r from-[#CAE7E3] to-[#FDC7BB] 
+                 shadow-lg transition-all duration-300 hover:scale-105">
+          📄 Download CV
+        </a>
+      </div>
     </div>
   </section>
 
@@ -142,34 +181,184 @@
     </div>
   </section>
 
-  <!-- Pendidikan -->
-  <section id="education" class="py-16 px-4 sm:px-6 md:px-12 bg-[#1e1e1e]">
-    <h2 class="text-3xl font-bold text-center mb-12 text-white" data-aos="fade-up">Pendidikan</h2>
-    <div class="max-w-3xl mx-auto relative border-l border-gray-600 px-4 sm:px-6">
-      <div class="mb-10 ml-6 pl-10 relative" data-aos="fade-right">
-        <span class="absolute left-0 top-1 w-6 h-6 bg-[#FDC7BB] rounded-full"></span>
-        <h3 class="text-xl font-semibold text-white">SD Mekarjaya 1</h3>
-        <p class="text-gray-400">2014 - 2020</p>
+  <!-- Education -->
+<section id="education" class="py-16 px-4 sm:px-6 md:px-12 bg-[#1e1e1e]">
+  <h2 class="text-3xl font-bold text-center mb-12 text-white" data-aos="fade-up">Pendidikan</h2>
+  <div class="max-w-3xl mx-auto relative">
+
+    <!-- Item 1 -->
+    <div class="relative flex items-start mb-12" data-aos="fade-right">
+      <!-- Icon -->
+      <div class="w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-r from-[#FDC7BB] to-[#CAE7E3] shadow-lg relative z-10">
+        <i class="ri-building-4-line text-black text-xl"></i>
       </div>
-      <div class="mb-10 ml-6 pl-10 relative" data-aos="fade-left">
-        <span class="absolute left-0 top-1 w-6 h-6 bg-[#CAE7E3] rounded-full"></span>
-        <h3 class="text-xl font-semibold text-white">SMP PGRI 2</h3>
-        <p class="text-gray-400">2021 - 2023</p>
-      </div>
-      <div class="mb-10 ml-6 pl-10 relative" data-aos="fade-right">
-        <span class="absolute left-0 top-1 w-6 h-6 bg-[#FFE2E4] rounded-full"></span>
+      <!-- Card -->
+      <div class="ml-6 bg-[#2a2a2a] p-6 rounded-2xl shadow-lg w-full">
         <h3 class="text-xl font-semibold text-white">SMK Taruna Bhakti</h3>
-        <p class="text-gray-400">Jurusan: RPL</p>
+        <p class="text-gray-400">Jurusan: <span class="text-[#FDC7BB]">RPL</span></p>
         <p class="text-gray-400">2024 - Sekarang</p>
       </div>
-      <div class="ml-6 pl-10 relative opacity-70" data-aos="fade-left">
-        <span class="absolute left-0 top-1 w-6 h-6 bg-[#DCDBD9] rounded-full animate-pulse"></span>
+    </div>
+
+    <!-- Item 2 -->
+    <div class="relative flex items-start" data-aos="fade-left">
+      <!-- Icon -->
+      <div class="w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-r from-[#CAE7E3] to-[#FDC7BB] shadow-lg relative z-10">
+        <i class="ri-graduation-cap-line text-black text-xl"></i>
+      </div>
+      <!-- Card -->
+      <div class="ml-6 bg-[#2a2a2a] p-6 rounded-2xl shadow-lg w-full">
         <h3 class="text-xl font-semibold text-white">Universitas Indonesia</h3>
-        <p class="text-gray-400">Prodi: Teknik Informatika</p>
-        <p class="text-gray-400">Belum dimulai</p>
+        <p class="text-gray-400">Prodi: <span class="text-[#CAE7E3]">Teknik Informatika</span></p>
+        <p class="text-gray-500 italic">Belum dimulai</p>
       </div>
     </div>
-  </section>
+
+  </div>
+</section>
+
+  <!-- Skills -->
+<section id="skills" class="py-16 px-4 sm:px-6 md:px-12 bg-[#1e1e1e]">
+  <h2 class="text-3xl font-bold text-center mb-12 text-white" data-aos="fade-up">Skill</h2>
+  <div class="max-w-3xl mx-auto space-y-6">
+
+    <!-- HTML -->
+    <div data-aos="fade-right">
+      <div class="flex justify-between mb-2">
+        <span class="text-gray-200 font-medium">HTML</span>
+        <span class="text-[#FDC7BB] font-semibold">80%</span>
+      </div>
+      <div class="w-full bg-gray-700 rounded-full h-3">
+        <div class="bg-gradient-to-r from-[#FDC7BB] to-[#CAE7E3] h-3 rounded-full" style="width: 80%"></div>
+      </div>
+    </div>
+
+    <!-- CSS -->
+    <div data-aos="fade-right" data-aos-delay="100">
+      <div class="flex justify-between mb-2">
+        <span class="text-gray-200 font-medium">CSS</span>
+        <span class="text-[#FDC7BB] font-semibold">75%</span>
+      </div>
+      <div class="w-full bg-gray-700 rounded-full h-3">
+        <div class="bg-gradient-to-r from-[#FDC7BB] to-[#CAE7E3] h-3 rounded-full" style="width: 75%"></div>
+      </div>
+    </div>
+
+    <!-- JavaScript -->
+    <div data-aos="fade-right" data-aos-delay="200">
+      <div class="flex justify-between mb-2">
+        <span class="text-gray-200 font-medium">JavaScript</span>
+        <span class="text-[#FDC7BB] font-semibold">65%</span>
+      </div>
+      <div class="w-full bg-gray-700 rounded-full h-3">
+        <div class="bg-gradient-to-r from-[#FDC7BB] to-[#CAE7E3] h-3 rounded-full" style="width: 65%"></div>
+      </div>
+    </div>
+
+    <!-- Tailwind -->
+    <div data-aos="fade-right" data-aos-delay="300">
+      <div class="flex justify-between mb-2">
+        <span class="text-gray-200 font-medium">Tailwind CSS</span>
+        <span class="text-[#FDC7BB] font-semibold">70%</span>
+      </div>
+      <div class="w-full bg-gray-700 rounded-full h-3">
+        <div class="bg-gradient-to-r from-[#FDC7BB] to-[#CAE7E3] h-3 rounded-full" style="width: 70%"></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Sertifikat -->
+<section id="certificates" class="py-16 px-4 sm:px-6 md:px-12 bg-[#2a2a2a]">
+  <h2 class="text-3xl font-bold text-center mb-12 text-white" data-aos="fade-up">Sertifikat</h2>
+  <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+
+    <div class="bg-[#1e1e1e] p-6 rounded-2xl shadow-lg hover:scale-105 transition" data-aos="zoom-in">
+      <i class="ri-award-line text-4xl text-[#FDC7BB] mb-4"></i>
+      <h3 class="text-xl font-semibold mb-2 text-white">Dicoding - Belajar Dasar Pemrograman Web</h3>
+      <p class="text-gray-400">Mendapatkan pemahaman dasar tentang HTML, CSS, dan JavaScript.</p>
+    </div>
+
+    <div class="bg-[#1e1e1e] p-6 rounded-2xl shadow-lg hover:scale-105 transition" data-aos="zoom-in" data-aos-delay="100">
+      <i class="ri-award-line text-4xl text-[#CAE7E3] mb-4"></i>
+      <h3 class="text-xl font-semibold mb-2 text-white">FreeCodeCamp - Responsive Web Design</h3>
+      <p class="text-gray-400">Belajar membuat web responsive dengan HTML & CSS modern.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Tools -->
+<section id="tools" class="py-16 px-4 sm:px-6 md:px-12 bg-[#1e1e1e]">
+  <h2 class="text-3xl font-bold text-center mb-12 text-white" data-aos="fade-up">Tools yang Sering Dipakai</h2>
+  <div class="max-w-5xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 text-center">
+
+    <div class="bg-[#2a2a2a] p-6 rounded-2xl shadow-lg hover:scale-105 transition" data-aos="zoom-in">
+      <i class="ri-github-fill text-4xl text-[#FDC7BB] mb-3"></i>
+      <p class="text-gray-300 font-medium">GitHub</p>
+    </div>
+
+    <div class="bg-[#2a2a2a] p-6 rounded-2xl shadow-lg hover:scale-105 transition" data-aos="zoom-in" data-aos-delay="100">
+      <i class="ri-code-s-slash-line text-4xl text-[#CAE7E3] mb-3"></i>
+      <p class="text-gray-300 font-medium">VS Code</p>
+    </div>
+
+    <div class="bg-[#2a2a2a] p-6 rounded-2xl shadow-lg hover:scale-105 transition" data-aos="zoom-in" data-aos-delay="200">
+      <i class="ri-brush-line text-4xl text-[#FFE2E4] mb-3"></i>
+      <p class="text-gray-300 font-medium">Figma</p>
+    </div>
+
+    <div class="bg-[#2a2a2a] p-6 rounded-2xl shadow-lg hover:scale-105 transition" data-aos="zoom-in" data-aos-delay="300">
+      <i class="ri-terminal-box-line text-4xl text-[#FDC7BB] mb-3"></i>
+      <p class="text-gray-300 font-medium">Command Line</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- Hobi -->
+<section id="hobbies" class="py-16 px-4 sm:px-6 md:px-12 text-center bg-[#1e1e1e]">
+  <h2 class="text-3xl font-bold mb-12 text-white" data-aos="fade-up">Hobi</h2>
+  <div class="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+
+    <div class="bg-[#2a2a2a] p-6 rounded-2xl shadow-lg hover:scale-105 transition" data-aos="zoom-in" data-aos-delay="100">
+      <i class="ri-code-s-slash-line text-4xl text-[#FDC7BB] mb-4"></i>
+      <h3 class="text-xl font-semibold mb-2 text-white">Coding</h3>
+      <p class="text-gray-400">Belajar & eksperimen bikin web modern.</p>
+    </div>
+
+    <div class="bg-[#2a2a2a] p-6 rounded-2xl shadow-lg hover:scale-105 transition" data-aos="zoom-in" data-aos-delay="200">
+      <i class="ri-gamepad-line text-4xl text-[#CAE7E3] mb-4"></i>
+      <h3 class="text-xl font-semibold mb-2 text-white">Gaming</h3>
+      <p class="text-gray-400">Main game seru sambil refreshing otak.</p>
+    </div>
+
+    <div class="bg-[#2a2a2a] p-6 rounded-2xl shadow-lg hover:scale-105 transition" data-aos="zoom-in" data-aos-delay="300">
+      <i class="ri-music-2-line text-4xl text-[#FFE2E4] mb-4"></i>
+      <h3 class="text-xl font-semibold mb-2 text-white">Musik</h3>
+      <p class="text-gray-400">Dengerin lagu buat dapet inspirasi & mood.</p>
+    </div>
+
+    <div class="bg-[#2a2a2a] p-6 rounded-2xl shadow-lg hover:scale-105 transition" data-aos="zoom-in" data-aos-delay="400">
+      <i class="ri-movie-2-line text-4xl text-[#FDC7BB] mb-4"></i>
+      <h3 class="text-xl font-semibold mb-2 text-white">Film</h3>
+      <p class="text-gray-400">Menikmati film untuk hiburan & belajar storytelling.</p>
+    </div>
+
+    <div class="bg-[#2a2a2a] p-6 rounded-2xl shadow-lg hover:scale-105 transition" data-aos="zoom-in" data-aos-delay="500">
+      <i class="ri-camera-line text-4xl text-[#CAE7E3] mb-4"></i>
+      <h3 class="text-xl font-semibold mb-2 text-white">Fotografi</h3>
+      <p class="text-gray-400">Mengabadikan momen & eksplorasi visual.</p>
+    </div>
+
+    <div class="bg-[#2a2a2a] p-6 rounded-2xl shadow-lg hover:scale-105 transition" data-aos="zoom-in" data-aos-delay="600">
+      <i class="ri-quill-pen-line text-4xl text-[#FFE2E4] mb-4"></i>
+      <h3 class="text-xl font-semibold mb-2 text-white">Menulis</h3>
+      <p class="text-gray-400">Menuangkan ide lewat tulisan & blog.</p>
+    </div>
+
+  </div>
+</section>
 
   <!-- Contact -->
   <section id="contact" class="py-20 px-6 text-center bg-[#2a2a2a]">
