@@ -1,385 +1,623 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portofolio Rapi</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
-  <style>
-    html { scroll-behavior: smooth; }
-    section { scroll-margin-top: 80px; } /* biar ga ketutupan navbar */
-    @keyframes gradient-x {
-      0%, 100% {background-position: 0% 50%;}
-      50% {background-position: 100% 50%;}
-    }
-    .animate-gradient-x {
-      background-size: 200% 200%;
-      animation: gradient-x 8s ease infinite;
-    }
-  </style>
-</head>
-<body class="bg-[#1e1e1e] text-gray-100 font-sans">
-
-<!-- Navbar -->
-<nav class="fixed top-0 left-0 w-full bg-[#1e1e1e]/90 backdrop-blur-md shadow-md z-50">
-  <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-    <a href="#" class="text-2xl font-bold text-[#FDC7BB]">Rapi Portofolio</a>
-
-    <!-- Desktop Menu -->
-    <div class="hidden md:flex gap-6">
-      <a href="#about" class="hover:text-[#FDC7BB]">Tentang</a>
-      <a href="#hobbies" class="hover:text-[#FDC7BB]">Hobi</a>
-      <a href="#projects" class="hover:text-[#FDC7BB]">Project</a>
-      <a href="#education" class="hover:text-[#FDC7BB]">Pendidikan</a>
-      <a href="#skills" class="hover:text-[#FDC7BB]">Skill</a>
-      <a href="#certificates" class="hover:text-[#FDC7BB]">Sertifikat</a>
-      <a href="#tools" class="hover:text-[#FDC7BB]">Tools</a>
-      <a href="#contact" class="hover:text-[#FDC7BB]">Kontak</a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portofolio Rapi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              base: '#0b0b0b',
+              surface: '#111111',
+              elevated: '#151515',
+              primary: '#EF4444',
+              primaryDark: '#B91C1C',
+              accent: '#9CA3AF',
+              accent2: '#111827',
+            },
+            fontFamily: {
+              sans: ['system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Ubuntu', 'Cantarell', 'Noto Sans', 'Arial', 'Apple Color Emoji', 'Segoe UI Emoji'],
+              raven: ['Raven', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Ubuntu', 'Cantarell', 'Noto Sans', 'Arial', 'Apple Color Emoji', 'Segoe UI Emoji'],
+            },
+          },
+        },
+      };
+    </script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <style>
+      @font-face {
+        font-family: "Raven";
+        src: url("font/Raven Italic.ttf") format("truetype");
+        font-weight: normal;
+        font-style: italic;
+        font-display: swap;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      section {
+        scroll-margin-top: 80px;
+      } /* biar ga ketutupan navbar */
+      @keyframes gradient-x {
+        0%,
+        100% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+      }
+      .animate-gradient-x {
+        background-size: 200% 200%;
+        animation: gradient-x 8s ease infinite;
+      }
+      /* tetap: utilitas animasi kustom */
+    </style>
+  </head>
+  <body class="bg-base text-gray-100 font-sans">
+    <!-- Global Background: radial spotlight + subtle grid -->
+    <div class="pointer-events-none fixed inset-0 -z-10">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_0%,rgba(239,68,68,0.18),transparent_40%),radial-gradient(circle_at_80%_20%,rgba(239,68,68,0.12),transparent_35%),radial-gradient(ellipse_at_center,rgba(255,255,255,0.04),transparent_50%)]"></div>
+      <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:24px_24px]"></div>
     </div>
+    <!-- Navbar -->
+    <nav
+      class="font-raven fixed top-0 left-0 w-full bg-black/80 backdrop-blur-md shadow-md z-50"
+    >
+      <div
+        class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <a href="#" class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-primaryDark drop-shadow"
+          >Rapi Portofolio</a
+        >
 
-    <!-- Burger Button -->
-    <button id="burger" class="md:hidden text-3xl text-white">
-      <i class="ri-menu-line"></i>
-    </button>
-  </div>
-</nav>
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex gap-6">
+          <a href="#about" class="hover:text-primary">Tentang</a>
+          <a href="#hobbies" class="hover:text-primary">Hobi</a>
+          <a href="#projects" class="hover:text-primary">Project</a>
+          <a href="#education" class="hover:text-primary">Pendidikan</a>
+          <a href="#skills" class="hover:text-primary">Skill</a>
+          <a href="#certificates" class="hover:text-primary">Sertifikat</a>
+          <a href="#tools" class="hover:text-primary">Tools</a>
+          <a href="#contact" class="hover:text-primary">Kontak</a>
+        </div>
 
-<!-- Mobile Menu -->
-<div id="mobileMenu" class="hidden flex-col fixed top-[64px] left-0 w-full bg-[#2a2a2a] md:hidden px-6 py-4 space-y-4 z-40 shadow-md">
-  <a href="#about" class="block text-gray-200 hover:text-[#FDC7BB]">Tentang</a>
-  <a href="#hobbies" class="block text-gray-200 hover:text-[#FDC7BB]">Hobi</a>
-  <a href="#projects" class="block text-gray-200 hover:text-[#FDC7BB]">Project</a>
-  <a href="#education" class="block text-gray-200 hover:text-[#FDC7BB]">Pendidikan</a>
-  <a href="#skills" class="block text-gray-200 hover:text-[#FDC7BB]">Skill</a>
-  <a href="#certificates" class="block text-gray-200 hover:text-[#FDC7BB]">Sertifikat</a>
-  <a href="#tools" class="block text-gray-200 hover:text-[#FDC7BB]">Tools</a>
-  <a href="#contact" class="block text-gray-200 hover:text-[#FDC7BB]">Kontak</a>
-</div>
-
-<!-- Script Mobile Menu -->
-<script>
-  const burger = document.getElementById("burger");
-  const mobileMenu = document.getElementById("mobileMenu");
-
-  // toggle menu
-  burger.addEventListener("click", () => {
-    mobileMenu.classList.toggle("hidden");
-  });
-
-  // close menu setelah klik link
-  document.querySelectorAll("#mobileMenu a").forEach(link => {
-    link.addEventListener("click", () => {
-      mobileMenu.classList.add("hidden");
-    });
-  });
-</script>
-
-  <!-- Hero -->
-  <section id="hero" class="relative h-screen flex flex-col justify-center items-center text-center overflow-hidden 
-                bg-gradient-to-r from-[#2b2b2b] via-[#1e1e1e] to-[#2b2b2b] animate-gradient-x px-4 md:px-0 pt-20">
-    <div class="absolute inset-0 bg-black/30 backdrop-blur-sm"></div>
-    <div class="relative z-10" data-aos="zoom-in">
-      <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4 text-white">
-        Halo, saya <span class="text-[#FDC7BB]">M. Raffi Barzally</span>
-      </h1>
-      <p class="text-lg sm:text-xl md:text-2xl text-gray-300 mb-6">
-        <span id="typing"></span>
-      </p>
-      <div class="flex flex-wrap justify-center gap-3">
-        <a href="#projects" 
-          class="px-6 py-3 sm:px-8 sm:py-3 rounded-xl font-semibold text-black
-                  bg-gradient-to-r from-[#FDC7BB] to-[#CAE7E3] 
-                  shadow-lg transition-all duration-300 hover:scale-105">
-          🚀 Lihat Project
-        </a>
-        <a href="cv.pdf" target="_blank"
-          class="px-6 py-3 sm:px-8 sm:py-3 rounded-xl font-semibold text-black
-                 bg-gradient-to-r from-[#CAE7E3] to-[#FDC7BB] 
-                 shadow-lg transition-all duration-300 hover:scale-105">
-          📄 Download CV
-        </a>
+        <!-- Burger Button -->
+        <button id="burger" class="md:hidden text-3xl text-white">
+          <i class="ri-menu-line"></i>
+        </button>
       </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div
+      id="mobileMenu"
+      class="hidden flex-col fixed top-[64px] left-0 w-full bg-surface md:hidden px-6 py-4 space-y-4 z-40 shadow-md"
+    >
+      <a href="#about" class="block text-gray-200 hover:text-primary"
+        >Tentang</a
+      >
+      <a href="#hobbies" class="block text-gray-200 hover:text-primary"
+        >Hobi</a
+      >
+      <a href="#projects" class="block text-gray-200 hover:text-primary"
+        >Project</a
+      >
+      <a href="#education" class="block text-gray-200 hover:text-primary"
+        >Pendidikan</a
+      >
+      <a href="#skills" class="block text-gray-200 hover:text-primary"
+        >Skill</a
+      >
+      <a href="#certificates" class="block text-gray-200 hover:text-primary"
+        >Sertifikat</a
+      >
+      <a href="#tools" class="block text-gray-200 hover:text-primary"
+        >Tools</a
+      >
+      <a href="#contact" class="block text-gray-200 hover:text-primary"
+        >Kontak</a
+      >
     </div>
-  </section>
 
-  <!-- Typing Effect -->
-  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-  <script>
-    var typed = new Typed("#typing", {
-      strings: ["Frontend Developer", "IT Enthusiast", "Future Software Engineer"],
-      typeSpeed: 70,
-      backSpeed: 50,
-      loop: true
-    });
-  </script>
+    <!-- Script Mobile Menu -->
+    <script>
+      const burger = document.getElementById("burger");
+      const mobileMenu = document.getElementById("mobileMenu");
 
-  <!-- About -->
-  <section id="about" class="py-16 px-4 sm:px-6 md:px-12 bg-[#2a2a2a]">
-    <h2 class="text-3xl font-bold text-center mb-12 text-white" data-aos="fade-up">Tentang Saya</h2>
-    <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-      <div data-aos="fade-right">
-        <img src="img/WhatsApp Image 2025-09-06 at 11.52.13_a6040bc5.jpg" 
+      // toggle menu
+      burger.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+
+      // close menu setelah klik link
+      document.querySelectorAll("#mobileMenu a").forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.add("hidden");
+        });
+      });
+    </script>
+
+    <!-- Hero -->
+    <section
+      id="hero"
+      class="font-raven relative h-screen flex flex-col justify-center items-center text-center overflow-hidden bg-gradient-to-r from-accent2 via-base to-accent2 animate-gradient-x px-4 md:px-0 pt-20"
+    >
+      <div class="absolute inset-0 bg-black/30 backdrop-blur-sm"></div>
+      <div class="relative z-10" data-aos="zoom-in">
+        <h1
+          class="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4 text-white"
+        >
+          Halo, saya <span class="text-primary">M. Raffi Barzally</span>
+        </h1>
+        <p class="text-lg sm:text-xl md:text-2xl text-gray-300 mb-6">
+          <span id="typing"></span>
+        </p>
+        <div class="flex flex-wrap justify-center gap-3">
+          <a
+            href="#projects"
+            class="px-6 py-3 sm:px-8 sm:py-3 rounded-xl font-semibold text-white bg-gradient-to-r from-primary to-primaryDark shadow-lg transition-all duration-300 hover:scale-105"
+          >
+            🚀 Lihat Project
+          </a>
+    </section>
+
+    <!-- Typing Effect -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script>
+      var typed = new Typed("#typing", {
+        strings: [
+          "Frontend Developer",
+          "IT Enthusiast",
+          "Future Software Engineer",
+        ],
+        typeSpeed: 70,
+        backSpeed: 50,
+        loop: true,
+      });
+    </script>
+
+    <!-- About -->
+    <section id="about" class="py-16 px-4 sm:px-6 md:px-12 bg-surface">
+      <h2
+        class="text-3xl font-bold text-center mb-4 text-white"
+        data-aos="fade-up"
+      >
+        Tentang Saya
+      </h2>
+      <div class="h-px bg-white/10 max-w-24 mx-auto mb-8"></div>
+      <div
+        class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center"
+      >
+        <div data-aos="fade-right">
+          <img
+            src="img/WhatsApp Image 2025-09-06 at 11.52.13_a6040bc5.jpg"
             alt="Foto Profil"
-            class="w-32 sm:w-48 md:w-64 h-32 sm:h-48 md:h-64 mx-auto rounded-2xl shadow-lg border-4 border-[#FDC7BB]" />
-      </div>
-      <div class="bg-[#1e1e1e] p-6 sm:p-8 rounded-2xl shadow-xl" data-aos="fade-left">
-        <p class="mb-4 text-gray-300">
-          Halo 👋, saya <span class="font-bold text-[#FDC7BB]">M. Raffi Barzally</span>, panggil aja Rapi.  
-          Sekarang saya masih sekolah di <span class="font-semibold">SMK Taruna Bhakti</span> jurusan <span class="text-[#CAE7E3]">RPL</span>.  
-          Saya minat banget di dunia IT & Web Development.
-        </p>
-        <p class="text-gray-400">
-          Saya percaya coding itu bukan cuma logika, tapi juga seni buat bikin sesuatu yang <span class="italic">berguna & indah</span>.
-        </p>
-        <div class="flex flex-wrap gap-3 mt-6">
-          <span class="px-4 py-2 rounded-full bg-[#333] text-gray-100 text-sm">HTML</span>
-          <span class="px-4 py-2 rounded-full bg-[#333] text-gray-100 text-sm">CSS</span>
-          <span class="px-4 py-2 rounded-full bg-[#333] text-gray-100 text-sm">JavaScript</span>
-          <span class="px-4 py-2 rounded-full bg-[#333] text-gray-100 text-sm">Tailwind CSS</span>
-          <span class="px-4 py-2 rounded-full bg-[#333] text-gray-100 text-sm">GitHub</span>
+            class="w-32 sm:w-48 md:w-64 h-32 sm:h-48 md:h-64 mx-auto rounded-2xl shadow-lg border-4 border-primary"
+          />
+        </div>
+        <div
+          class="bg-white/5 backdrop-blur-xl p-6 sm:p-8 rounded-2xl border border-white/10 shadow-[0_0_24px_rgba(0,0,0,0.35)] hover:shadow-[0_0_28px_rgba(239,68,68,0.35)] transition"
+          data-aos="fade-left"
+        >
+          <p class="mb-4 text-gray-300">
+            Halo 👋, saya
+            <span class="font-bold text-primary">M. Raffi Barzally</span>,
+            panggil aja Rapi. Sekarang saya masih sekolah di
+            <span class="font-semibold">SMK Taruna Bhakti</span> jurusan
+            <span class="text-accent">RPL</span>. Saya minat banget di dunia
+            IT & Web Development.
+          </p>
+          <p class="text-gray-400">
+            Saya percaya coding itu bukan cuma logika, tapi juga seni buat bikin
+            sesuatu yang <span class="italic">berguna & indah</span>.
+          </p>
+          <div class="flex flex-wrap gap-3 mt-6">
+            <span class="px-4 py-2 rounded-full bg-[#333] text-gray-100 text-sm"
+              >HTML</span
+            >
+            <span class="px-4 py-2 rounded-full bg-[#333] text-gray-100 text-sm"
+              >CSS</span
+            >
+            <span class="px-4 py-2 rounded-full bg-[#333] text-gray-100 text-sm"
+              >JavaScript</span
+            >
+            <span class="px-4 py-2 rounded-full bg-[#333] text-gray-100 text-sm"
+              >Tailwind CSS</span
+            >
+            <span class="px-4 py-2 rounded-full bg-[#333] text-gray-100 text-sm"
+              >GitHub</span
+            >
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Hobi -->
-  <section id="hobbies" class="py-16 px-4 sm:px-6 md:px-12 text-center bg-[#1e1e1e]">
-    <h2 class="text-3xl font-bold mb-12 text-white" data-aos="fade-up">Hobi</h2>
-    <div class="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-      <div class="bg-[#2a2a2a] p-6 rounded-2xl shadow-lg hover:scale-105 transition" data-aos="zoom-in" data-aos-delay="100">
-        <i class="ri-code-s-slash-line text-4xl text-[#FDC7BB] mb-4"></i>
-        <h3 class="text-xl font-semibold mb-2 text-white">Coding</h3>
-        <p class="text-gray-400">Belajar & eksperimen bikin web modern.</p>
-      </div>
-      <div class="bg-[#2a2a2a] p-6 rounded-2xl shadow-lg hover:scale-105 transition" data-aos="zoom-in" data-aos-delay="200">
-        <i class="ri-gamepad-line text-4xl text-[#CAE7E3] mb-4"></i>
-        <h3 class="text-xl font-semibold mb-2 text-white">Gaming</h3>
-        <p class="text-gray-400">Main game seru sambil refreshing otak.</p>
-      </div>
-      <div class="bg-[#2a2a2a] p-6 rounded-2xl shadow-lg hover:scale-105 transition" data-aos="zoom-in" data-aos-delay="300">
-        <i class="ri-music-2-line text-4xl text-[#FFE2E4] mb-4"></i>
-        <h3 class="text-xl font-semibold mb-2 text-white">Musik</h3>
-        <p class="text-gray-400">Dengerin lagu buat dapet inspirasi & mood.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Project -->
-  <section id="projects" class="py-16 px-4 sm:px-6 md:px-12 bg-[#2a2a2a]">
-    <h2 class="text-3xl font-bold text-center mb-10 text-white" data-aos="fade-up">Project</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 justify-items-center">
-
-      <!-- Figma Aplikasi Pinlab -->
-      <div class="w-full md:w-[480px] rounded-lg shadow-lg overflow-hidden" data-aos="zoom-in" data-aos-delay="100">
-        <iframe
-          class="w-full h-64 sm:h-80 md:h-96"
-          src="https://www.figma.com/embed?embed_host=astra&url=https://www.figma.com/proto/UYvCobYJFcTkvIDV1dt38x/Aplikasi-Pinlab?node-id=138-367&starting-point-node-id=11%3A2"
-          allowfullscreen
-          allow="fullscreen"
-          style="border: none;"
-        ></iframe>
-        <div class="p-4 bg-[#1e1e1e]">
-          <h3 class="text-xl font-semibold mb-2 text-white">Aplikasi Pinlab</h3>
-          <p class="text-gray-400">Prototipe interaktif aplikasi perpustakaan.</p>
+    <!-- Hobi -->
+    <section
+      id="hobbies"
+      class="py-16 px-4 sm:px-6 md:px-12 text-center bg-base"
+    >
+      <h2 class="text-3xl font-bold mb-4 text-white" data-aos="fade-up">
+        Hobi
+      </h2>
+      <div class="h-px bg-white/10 max-w-24 mx-auto mb-8"></div>
+      <div
+        class="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8"
+      >
+        <div
+          class="bg-white/5 backdrop-blur-xl p-6 rounded-2xl border border-white/10 shadow-[0_0_20px_rgba(0,0,0,0.3)] hover:shadow-[0_0_28px_rgba(239,68,68,0.35)] hover:scale-105 transition group"
+          data-aos="zoom-in"
+          data-aos-delay="100"
+        >
+          <i class="ri-code-s-slash-line text-4xl text-primary mb-4 transition group-hover:drop-shadow-[0_0_8px_rgba(239,68,68,0.6)]"></i>
+          <h3 class="text-xl font-semibold mb-2 text-white">Coding</h3>
+          <p class="text-gray-400">Belajar & eksperimen bikin web modern.</p>
+        </div>
+        <div
+          class="bg-white/5 backdrop-blur-xl p-6 rounded-2xl border border-white/10 shadow-[0_0_20px_rgba(0,0,0,0.3)] hover:shadow-[0_0_28px_rgba(239,68,68,0.35)] hover:scale-105 transition group"
+          data-aos="zoom-in"
+          data-aos-delay="200"
+        >
+          <i class="ri-gamepad-line text-4xl text-accent mb-4 transition group-hover:text-primary group-hover:drop-shadow-[0_0_8px_rgba(239,68,68,0.6)]"></i>
+          <h3 class="text-xl font-semibold mb-2 text-white">Gaming</h3>
+          <p class="text-gray-400">Main game seru sambil refreshing otak.</p>
+        </div>
+        <div
+          class="bg-white/5 backdrop-blur-xl p-6 rounded-2xl border border-white/10 shadow-[0_0_20px_rgba(0,0,0,0.3)] hover:shadow-[0_0_28px_rgba(239,68,68,0.35)] hover:scale-105 transition group"
+          data-aos="zoom-in"
+          data-aos-delay="300"
+        >
+          <i class="ri-music-2-line text-4xl text-primary mb-4 transition group-hover:drop-shadow-[0_0_8px_rgba(239,68,68,0.6)]"></i>
+          <h3 class="text-xl font-semibold mb-2 text-white">Musik</h3>
+          <p class="text-gray-400">
+            Dengerin lagu buat dapet inspirasi & mood.
+          </p>
         </div>
       </div>
+    </section>
 
-      <!-- Figma CV Design -->
-      <div class="w-full md:w-[480px] rounded-lg shadow-lg overflow-hidden" data-aos="zoom-in" data-aos-delay="200">
-        <iframe
-          class="w-full h-64 sm:h-80 md:h-96"
-          src="https://www.figma.com/embed?embed_host=astra&url=https://www.figma.com/proto/PxovvrUeQftGLneEw3imuD/Untitled?node-id=1-36&t=2ISgACCExrdfDIvb-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1"
-          allowfullscreen
-          allow="fullscreen"
-          style="border: none;"
-        ></iframe>
-        <div class="p-4 bg-[#1e1e1e]">
-          <h3 class="text-xl font-semibold mb-2 text-white">Desain CV</h3>
-          <p class="text-gray-400">Prototipe desain CV interaktif untuk personal branding.</p>
+    <!-- Project -->
+    <section id="projects" class="py-16 px-4 sm:px-6 md:px-12 bg-surface">
+      <h2
+        class="text-3xl font-bold text-center mb-4 text-white"
+        data-aos="fade-up"
+      >
+        Project
+      </h2>
+      <div class="h-px bg-white/10 max-w-24 mx-auto mb-8"></div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 justify-items-center">
+        <!-- Figma Aplikasi Pinlab -->
+        <div
+          class="w-full md:w-[480px] rounded-2xl overflow-hidden bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_0_22px_rgba(0,0,0,0.35)] hover:shadow-[0_0_28px_rgba(239,68,68,0.35)] transition"
+          data-aos="zoom-in"
+          data-aos-delay="100"
+        >
+          <iframe
+            class="w-full h-64 sm:h-80 md:h-96"
+            src="https://www.figma.com/embed?embed_host=astra&url=https://www.figma.com/proto/UYvCobYJFcTkvIDV1dt38x/Aplikasi-Pinlab?node-id=138-367&starting-point-node-id=11%3A2"
+            allowfullscreen
+            allow="fullscreen"
+            style="border: none"
+          ></iframe>
+          <div class="p-4">
+            <h3 class="text-xl font-semibold mb-2 text-white">
+              Aplikasi Pinlab
+            </h3>
+            <p class="text-gray-400">
+              Prototipe interaktif aplikasi perpustakaan.
+            </p>
+          </div>
+        </div>
+
+        <!-- Figma CV Design -->
+        <div
+          class="w-full md:w-[480px] rounded-2xl overflow-hidden bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_0_22px_rgba(0,0,0,0.35)] hover:shadow-[0_0_28px_rgba(239,68,68,0.35)] transition"
+          data-aos="zoom-in"
+          data-aos-delay="200"
+        >
+          <iframe
+            class="w-full h-64 sm:h-80 md:h-96"
+            src="https://www.figma.com/embed?embed_host=astra&url=https://www.figma.com/proto/PxovvrUeQftGLneEw3imuD/Untitled?node-id=1-36&t=2ISgACCExrdfDIvb-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1"
+            allowfullscreen
+            allow="fullscreen"
+            style="border: none"
+          ></iframe>
+          <div class="p-4">
+            <h3 class="text-xl font-semibold mb-2 text-white">Desain CV</h3>
+            <p class="text-gray-400">
+              Prototipe desain CV interaktif untuk personal branding.
+            </p>
+          </div>
         </div>
       </div>
+    </section>
 
-    </div>
-  </section>
-
-  <!-- Education -->
-<section id="education" class="py-16 px-4 sm:px-6 md:px-12 bg-[#1e1e1e]">
-  <h2 class="text-3xl font-bold text-center mb-12 text-white" data-aos="fade-up">Pendidikan</h2>
-  <div class="max-w-3xl mx-auto relative">
-
-    <!-- Item 1 -->
-    <div class="relative flex items-start mb-12" data-aos="fade-right">
-      <!-- Icon -->
-      <div class="w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-r from-[#FDC7BB] to-[#CAE7E3] shadow-lg relative z-10">
-        <i class="ri-building-4-line text-black text-xl"></i>
-      </div>
-      <!-- Card -->
-      <div class="ml-6 bg-[#2a2a2a] p-6 rounded-2xl shadow-lg w-full">
-        <h3 class="text-xl font-semibold text-white">SMK Taruna Bhakti</h3>
-        <p class="text-gray-400">Jurusan: <span class="text-[#FDC7BB]">RPL</span></p>
-        <p class="text-gray-400">2024 - Sekarang</p>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- Skills -->
-<section id="skills" class="py-16 px-4 sm:px-6 md:px-12 bg-[#1e1e1e]">
-  <h2 class="text-3xl font-bold text-center mb-12 text-white" data-aos="fade-up">Skill</h2>
-  <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-
-    <!-- HTML -->
-    <div class="bg-white/5 backdrop-blur-lg p-6 rounded-2xl shadow-lg hover:shadow-xl transition" data-aos="fade-up">
-      <div class="flex items-center justify-between mb-4">
-        <div class="flex items-center space-x-3">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" class="w-8 h-8" />
-          <span class="text-gray-200 font-semibold">HTML</span>
+    <!-- Education -->
+    <section id="education" class="py-16 px-4 sm:px-6 md:px-12 bg-base">
+      <h2
+        class="text-3xl font-bold text-center mb-4 text-white"
+        data-aos="fade-up"
+      >
+        Pendidikan
+      </h2>
+      <div class="h-px bg-white/10 max-w-24 mx-auto mb-8"></div>
+      <div class="max-w-3xl mx-auto relative">
+        <!-- Item 1 -->
+        <div class="relative flex items-start mb-12" data-aos="fade-right">
+          <!-- Icon -->
+          <div
+            class="w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-r from-primary to-accent shadow-lg relative z-10"
+          >
+            <i class="ri-building-4-line text-black text-xl"></i>
+          </div>
+          <!-- Card -->
+          <div class="ml-6 bg-elevated p-6 rounded-2xl shadow-lg w-full">
+            <h3 class="text-xl font-semibold text-white">SMK Taruna Bhakti</h3>
+            <p class="text-gray-400">
+              Jurusan: <span class="text-primary">RPL</span>
+            </p>
+            <p class="text-gray-400">2024 - Sekarang</p>
+          </div>
         </div>
-        <span class="text-sm text-[#FDC7BB] font-medium">Advanced</span>
       </div>
-      <div class="flex space-x-1 text-xl">
-        <i class="ri-star-fill text-[#FDC7BB] drop-shadow-md"></i>
-        <i class="ri-star-fill text-[#FDC7BB] drop-shadow-md"></i>
-        <i class="ri-star-fill text-[#FDC7BB] drop-shadow-md"></i>
-        <i class="ri-star-fill text-[#FDC7BB] drop-shadow-md animate-pulse"></i>
-        <i class="ri-star-line text-gray-500"></i>
-      </div>
-    </div>
+    </section>
 
-    <!-- CSS -->
-    <div class="bg-white/5 backdrop-blur-lg p-6 rounded-2xl shadow-lg hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="100">
-      <div class="flex items-center justify-between mb-4">
-        <div class="flex items-center space-x-3">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" class="w-8 h-8" />
-          <span class="text-gray-200 font-semibold">CSS</span>
+    <!-- Skills -->
+    <section id="skills" class="py-16 px-4 sm:px-6 md:px-12 bg-base">
+      <h2
+        class="text-3xl font-bold text-center mb-4 text-white"
+        data-aos="fade-up"
+      >
+        Skill
+      </h2>
+      <div class="h-px bg-white/10 max-w-24 mx-auto mb-8"></div>
+      <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <!-- HTML -->
+        <div
+          class="bg-white/5 backdrop-blur-lg p-6 rounded-2xl shadow-lg hover:shadow-xl transition"
+          data-aos="fade-up"
+        >
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center space-x-3">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+                class="w-8 h-8"
+              />
+              <span class="text-gray-200 font-semibold">HTML</span>
+            </div>
+            <span class="text-sm text-primary font-medium">Advanced</span>
+          </div>
+          <div class="flex space-x-1 text-xl">
+            <i class="ri-star-fill text-primary drop-shadow-md"></i>
+            <i class="ri-star-fill text-primary drop-shadow-md"></i>
+            <i class="ri-star-fill text-primary drop-shadow-md"></i>
+            <i
+              class="ri-star-fill text-primary drop-shadow-md animate-pulse"
+            ></i>
+            <i class="ri-star-line text-gray-500"></i>
+          </div>
         </div>
-        <span class="text-sm text-[#FDC7BB] font-medium">Intermediate</span>
-      </div>
-      <div class="flex space-x-1 text-xl">
-        <i class="ri-star-fill text-[#FDC7BB]"></i>
-        <i class="ri-star-fill text-[#FDC7BB]"></i>
-        <i class="ri-star-fill text-[#FDC7BB]"></i>
-        <i class="ri-star-half-fill text-[#FDC7BB]"></i>
-        <i class="ri-star-line text-gray-500"></i>
-      </div>
-    </div>
 
-    <!-- JavaScript -->
-    <div class="bg-white/5 backdrop-blur-lg p-6 rounded-2xl shadow-lg hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="200">
-      <div class="flex items-center justify-between mb-4">
-        <div class="flex items-center space-x-3">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" class="w-8 h-8" />
-          <span class="text-gray-200 font-semibold">JavaScript</span>
+        <!-- CSS -->
+        <div
+          class="bg-white/5 backdrop-blur-lg p-6 rounded-2xl shadow-lg hover:shadow-xl transition"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center space-x-3">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
+                class="w-8 h-8"
+              />
+              <span class="text-gray-200 font-semibold">CSS</span>
+            </div>
+            <span class="text-sm text-primary font-medium">Intermediate</span>
+          </div>
+          <div class="flex space-x-1 text-xl">
+            <i class="ri-star-fill text-primary"></i>
+            <i class="ri-star-fill text-primary"></i>
+            <i class="ri-star-fill text-primary"></i>
+            <i class="ri-star-half-fill text-primary"></i>
+            <i class="ri-star-line text-gray-500"></i>
+          </div>
         </div>
-        <span class="text-sm text-[#FDC7BB] font-medium">Intermediate</span>
-      </div>
-      <div class="flex space-x-1 text-xl">
-        <i class="ri-star-fill text-[#FDC7BB]"></i>
-        <i class="ri-star-fill text-[#FDC7BB]"></i>
-        <i class="ri-star-fill text-[#FDC7BB]"></i>
-        <i class="ri-star-line text-gray-500"></i>
-        <i class="ri-star-line text-gray-500"></i>
-      </div>
-    </div>
 
-    <!-- Tailwind -->
-    <div class="bg-white/5 backdrop-blur-lg p-6 rounded-2xl shadow-lg hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="300">
-      <div class="flex items-center justify-between mb-4">
-        <div class="flex items-center space-x-3">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Tailwind_CSS_Logo.svg/2560px-Tailwind_CSS_Logo.svg.png" class="w-8 h-8" />
-          <span class="text-gray-200 font-semibold">Tailwind CSS</span>
+        <!-- JavaScript -->
+        <div
+          class="bg-white/5 backdrop-blur-lg p-6 rounded-2xl shadow-lg hover:shadow-xl transition"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center space-x-3">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+                class="w-8 h-8"
+              />
+              <span class="text-gray-200 font-semibold">JavaScript</span>
+            </div>
+            <span class="text-sm text-primary font-medium">Intermediate</span>
+          </div>
+          <div class="flex space-x-1 text-xl">
+            <i class="ri-star-fill text-primary"></i>
+            <i class="ri-star-fill text-primary"></i>
+            <i class="ri-star-fill text-primary"></i>
+            <i class="ri-star-line text-gray-500"></i>
+            <i class="ri-star-line text-gray-500"></i>
+          </div>
         </div>
-        <span class="text-sm text-[#FDC7BB] font-medium">Intermediate</span>
+
+        <!-- Tailwind -->
+        <div
+          class="bg-white/5 backdrop-blur-lg p-6 rounded-2xl shadow-lg hover:shadow-xl transition"
+          data-aos="fade-up"
+          data-aos-delay="300"
+        >
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center space-x-3">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Tailwind_CSS_Logo.svg/2560px-Tailwind_CSS_Logo.svg.png"
+                class="w-8 h-8"
+              />
+              <span class="text-gray-200 font-semibold">Tailwind CSS</span>
+            </div>
+            <span class="text-sm text-primary font-medium">Intermediate</span>
+          </div>
+          <div class="flex space-x-1 text-xl">
+            <i class="ri-star-fill text-primary"></i>
+            <i class="ri-star-fill text-primary"></i>
+            <i class="ri-star-fill text-primary"></i>
+            <i class="ri-star-half-fill text-primary"></i>
+            <i class="ri-star-line text-gray-500"></i>
+          </div>
+        </div>
       </div>
-      <div class="flex space-x-1 text-xl">
-        <i class="ri-star-fill text-[#FDC7BB]"></i>
-        <i class="ri-star-fill text-[#FDC7BB]"></i>
-        <i class="ri-star-fill text-[#FDC7BB]"></i>
-        <i class="ri-star-half-fill text-[#FDC7BB]"></i>
-        <i class="ri-star-line text-gray-500"></i>
+    </section>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+
+    <!-- Sertifikat -->
+    <section id="certificates" class="py-16 px-4 sm:px-6 md:px-12 bg-surface">
+      <h2
+        class="text-3xl font-bold text-center mb-4 text-white"
+        data-aos="fade-up"
+      >
+        Sertifikat
+      </h2>
+      <div class="h-px bg-white/10 max-w-24 mx-auto mb-8"></div>
+      <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div
+          class="bg-white/5 backdrop-blur-xl p-6 rounded-2xl border border-white/10 shadow-[0_0_22px_rgba(0,0,0,0.35)] hover:shadow-[0_0_28px_rgba(239,68,68,0.35)] transition group"
+          data-aos="zoom-in"
+        >
+          <i class="ri-award-line text-4xl text-primary mb-4 transition group-hover:drop-shadow-[0_0_8px_rgba(239,68,68,0.6)]"></i>
+          <h3 class="text-xl font-semibold mb-2 text-white">
+            Dicoding - Belajar Dasar Pemrograman Web
+          </h3>
+          <p class="text-gray-400">
+            Mendapatkan pemahaman dasar tentang HTML, CSS, dan JavaScript.
+          </p>
+        </div>
+
+        <div
+          class="bg-white/5 backdrop-blur-xl p-6 rounded-2xl border border-white/10 shadow-[0_0_22px_rgba(0,0,0,0.35)] hover:shadow-[0_0_28px_rgba(239,68,68,0.35)] transition group"
+          data-aos="zoom-in"
+          data-aos-delay="100"
+        >
+          <i class="ri-award-line text-4xl text-accent mb-4 transition group-hover:text-primary group-hover:drop-shadow-[0_0_8px_rgba(239,68,68,0.6)]"></i>
+          <h3 class="text-xl font-semibold mb-2 text-white">
+            FreeCodeCamp - Responsive Web Design
+          </h3>
+          <p class="text-gray-400">
+            Belajar membuat web responsive dengan HTML & CSS modern.
+          </p>
+        </div>
       </div>
-    </div>
+    </section>
 
-  </div>
-</section>
+    <!-- Tools -->
+    <section id="tools" class="py-16 px-4 sm:px-6 md:px-12 bg-base">
+      <h2
+        class="text-3xl font-bold text-center mb-4 text-white"
+        data-aos="fade-up"
+      >
+        Tools yang Sering Dipakai
+      </h2>
+      <div class="h-px bg-white/10 max-w-24 mx-auto mb-8"></div>
+      <div
+        class="max-w-5xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 text-center"
+      >
+        <div
+          class="bg-white/5 backdrop-blur-xl p-6 rounded-2xl border border-white/10 shadow-[0_0_20px_rgba(0,0,0,0.3)] hover:shadow-[0_0_28px_rgba(239,68,68,0.35)] hover:scale-105 transition group"
+          data-aos="zoom-in"
+        >
+          <i class="ri-github-fill text-4xl text-primary mb-3 transition group-hover:drop-shadow-[0_0_8px_rgba(239,68,68,0.6)]"></i>
+          <p class="text-gray-300 font-medium">GitHub</p>
+        </div>
 
-<link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
+        <div
+          class="bg-white/5 backdrop-blur-xl p-6 rounded-2xl border border-white/10 shadow-[0_0_20px_rgba(0,0,0,0.3)] hover:shadow-[0_0_28px_rgba(239,68,68,0.35)] hover:scale-105 transition group"
+          data-aos="zoom-in"
+          data-aos-delay="100"
+        >
+          <i class="ri-code-s-slash-line text-4xl text-accent mb-3 transition group-hover:text-primary group-hover:drop-shadow-[0_0_8px_rgba(239,68,68,0.6)]"></i>
+          <p class="text-gray-300 font-medium">VS Code</p>
+        </div>
 
+        <div
+          class="bg-white/5 backdrop-blur-xl p-6 rounded-2xl border border-white/10 shadow-[0_0_20px_rgba(0,0,0,0.3)] hover:shadow-[0_0_28px_rgba(239,68,68,0.35)] hover:scale-105 transition group"
+          data-aos="zoom-in"
+          data-aos-delay="200"
+        >
+          <i class="ri-brush-line text-4xl text-primary mb-3 transition group-hover:drop-shadow-[0_0_8px_rgba(239,68,68,0.6)]"></i>
+          <p class="text-gray-300 font-medium">Figma</p>
+        </div>
 
-<!-- Sertifikat -->
-<section id="certificates" class="py-16 px-4 sm:px-6 md:px-12 bg-[#2a2a2a]">
-  <h2 class="text-3xl font-bold text-center mb-12 text-white" data-aos="fade-up">Sertifikat</h2>
-  <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div
+          class="bg-white/5 backdrop-blur-xl p-6 rounded-2xl border border-white/10 shadow-[0_0_20px_rgba(0,0,0,0.3)] hover:shadow-[0_0_28px_rgba(239,68,68,0.35)] hover:scale-105 transition group"
+          data-aos="zoom-in"
+          data-aos-delay="300"
+        >
+          <i class="ri-terminal-box-line text-4xl text-primary mb-3 transition group-hover:drop-shadow-[0_0_8px_rgba(239,68,68,0.6)]"></i>
+          <p class="text-gray-300 font-medium">Command Line</p>
+        </div>
+      </div>
+    </section>
 
-    <div class="bg-[#1e1e1e] p-6 rounded-2xl shadow-lg hover:scale-105 transition" data-aos="zoom-in">
-      <i class="ri-award-line text-4xl text-[#FDC7BB] mb-4"></i>
-      <h3 class="text-xl font-semibold mb-2 text-white">Dicoding - Belajar Dasar Pemrograman Web</h3>
-      <p class="text-gray-400">Mendapatkan pemahaman dasar tentang HTML, CSS, dan JavaScript.</p>
-    </div>
+    <!-- Contact -->
+    <section id="contact" class="py-20 px-6 text-center bg-surface">
+      <h2 class="text-3xl font-bold mb-6 text-primary" data-aos="fade-up">
+        Hubungi Saya
+      </h2>
+      <p class="text-gray-300 mb-6">
+        Email:
+        <a
+          href="mailto:raffi.barzally@gmail.com"
+          class="text-accent hover:underline"
+          >raffi.barzally@gmail.com</a
+        >
+      </p>
+      <div class="flex justify-center gap-6 text-3xl">
+        <a
+          href="https://github.com/SkyCiell"
+          target="_blank"
+          class="text-accent hover:text-primary transition"
+        >
+          <i class="ri-github-fill"></i>
+        </a>
+        <a
+          href="https://www.instagram.com/piraapiiii"
+          target="_blank"
+          class="text-accent hover:text-primary transition"
+        >
+          <i class="ri-instagram-line"></i>
+        </a>
+        <a
+          href="https://www.linkedin.com/in/raffi-barzally-a18979382"
+          target="_blank"
+          class="text-accent hover:text-primary transition"
+        >
+          <i class="ri-linkedin-box-fill"></i>
+        </a>
+      </div>
+    </section>
 
-    <div class="bg-[#1e1e1e] p-6 rounded-2xl shadow-lg hover:scale-105 transition" data-aos="zoom-in" data-aos-delay="100">
-      <i class="ri-award-line text-4xl text-[#CAE7E3] mb-4"></i>
-      <h3 class="text-xl font-semibold mb-2 text-white">FreeCodeCamp - Responsive Web Design</h3>
-      <p class="text-gray-400">Belajar membuat web responsive dengan HTML & CSS modern.</p>
-    </div>
-  </div>
-</section>
-
-<!-- Tools -->
-<section id="tools" class="py-16 px-4 sm:px-6 md:px-12 bg-[#1e1e1e]">
-  <h2 class="text-3xl font-bold text-center mb-12 text-white" data-aos="fade-up">Tools yang Sering Dipakai</h2>
-  <div class="max-w-5xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 text-center">
-
-    <div class="bg-[#2a2a2a] p-6 rounded-2xl shadow-lg hover:scale-105 transition" data-aos="zoom-in">
-      <i class="ri-github-fill text-4xl text-[#FDC7BB] mb-3"></i>
-      <p class="text-gray-300 font-medium">GitHub</p>
-    </div>
-
-    <div class="bg-[#2a2a2a] p-6 rounded-2xl shadow-lg hover:scale-105 transition" data-aos="zoom-in" data-aos-delay="100">
-      <i class="ri-code-s-slash-line text-4xl text-[#CAE7E3] mb-3"></i>
-      <p class="text-gray-300 font-medium">VS Code</p>
-    </div>
-
-    <div class="bg-[#2a2a2a] p-6 rounded-2xl shadow-lg hover:scale-105 transition" data-aos="zoom-in" data-aos-delay="200">
-      <i class="ri-brush-line text-4xl text-[#FFE2E4] mb-3"></i>
-      <p class="text-gray-300 font-medium">Figma</p>
-    </div>
-
-    <div class="bg-[#2a2a2a] p-6 rounded-2xl shadow-lg hover:scale-105 transition" data-aos="zoom-in" data-aos-delay="300">
-      <i class="ri-terminal-box-line text-4xl text-[#FDC7BB] mb-3"></i>
-      <p class="text-gray-300 font-medium">Command Line</p>
-    </div>
-
-  </div>
-</section>
-
-  <!-- Contact -->
-  <section id="contact" class="py-20 px-6 text-center bg-[#2a2a2a]">
-    <h2 class="text-3xl font-bold mb-6 text-[#FDC7BB]" data-aos="fade-up">Hubungi Saya</h2>
-    <p class="text-gray-300 mb-6">
-      Email: 
-      <a href="mailto:raffi.barzally@gmail.com" class="text-[#CAE7E3] hover:underline">raffi.barzally@gmail.com</a>
-    </p>
-    <div class="flex justify-center gap-6 text-3xl">
-      <a href="https://github.com/SkyCiell" target="_blank" class="text-[#CAE7E3] hover:text-[#FDC7BB] transition">
-        <i class="ri-github-fill"></i>
-      </a>
-      <a href="https://www.instagram.com/piraapiiii" target="_blank" class="text-[#CAE7E3] hover:text-[#FDC7BB] transition">
-        <i class="ri-instagram-line"></i>
-      </a>
-      <a href="https://www.linkedin.com/in/raffi-barzally-a18979382" target="_blank" class="text-[#CAE7E3] hover:text-[#FDC7BB] transition">
-        <i class="ri-linkedin-box-fill"></i>
-      </a>
-    </div>
-  </section>
-
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init({ duration: 1000, once: true });
-  </script>
-
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({ duration: 1000, once: true });
+    </script>
   </body>
-  </html>
+</html>
