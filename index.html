@@ -10,12 +10,12 @@
         theme: {
           extend: {
             colors: {
-              base: '#05070B',        /* Ultra deep dark black */
-              surface: '#0B0F19',     /* Modern dark blue-black surface */
-              elevated: '#111726',    /* Slightly lighter surface for cards */
-              primary: '#256FFF',     /* Premium, non-generic electric blue */
-              primaryDark: '#124DC2', /* Darker premium blue */
-              accent: '#8E9BB0',      /* Muted gray-blue for secondary text */
+              base: '#07050F',        /* Ultra deep dark near-black */
+              surface: '#0F0B1E',     /* Deep dark violet-black surface */
+              elevated: '#16102B',    /* Slightly lighter surface for cards */
+              primary: '#7C3AED',     /* Premium rich violet */
+              primaryDark: '#5B21B6', /* Deep violet on hover */
+              accent: '#9B8BB5',      /* Muted lavender-gray for secondary text */
             },
             fontFamily: {
               sans: ['Plus Jakarta Sans', 'system-ui', '-apple-system', 'sans-serif'],
@@ -48,14 +48,14 @@
         width: 8px;
       }
       ::-webkit-scrollbar-track {
-        background: #05070B;
+        background: #07050F;
       }
       ::-webkit-scrollbar-thumb {
-        background: #111726;
+        background: #2D1B5E;
         border-radius: 4px;
       }
       ::-webkit-scrollbar-thumb:hover {
-        background: #256FFF;
+        background: #7C3AED;
       }
 
       /* Glow effect helper */
@@ -63,8 +63,8 @@
         transition: all 0.3s ease;
       }
       .glow-shadow:hover {
-        box-shadow: 0 0 20px rgba(37, 111, 255, 0.25);
-        border-color: rgba(37, 111, 255, 0.4);
+        box-shadow: 0 0 24px rgba(124, 58, 237, 0.3);
+        border-color: rgba(124, 58, 237, 0.45);
       }
     </style>
   </head>
@@ -73,8 +73,8 @@
     <!-- Modern background grid & subtle glow -->
     <div class="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
       <!-- Ambient light top left and bottom right -->
-      <div class="absolute -top-[40%] -left-[20%] h-[80%] w-[80%] rounded-full bg-[radial-gradient(circle,rgba(37,111,255,0.08)_0%,transparent_70%)]"></div>
-      <div class="absolute -bottom-[40%] -right-[20%] h-[80%] w-[80%] rounded-full bg-[radial-gradient(circle,rgba(37,111,255,0.05)_0%,transparent_70%)]"></div>
+      <div class="absolute -top-[40%] -left-[20%] h-[80%] w-[80%] rounded-full bg-[radial-gradient(circle,rgba(124,58,237,0.09)_0%,transparent_70%)]"></div>
+      <div class="absolute -bottom-[40%] -right-[20%] h-[80%] w-[80%] rounded-full bg-[radial-gradient(circle,rgba(167,139,250,0.05)_0%,transparent_70%)]"></div>
       <!-- Subtle dot grid -->
       <div class="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:32px_32px]"></div>
     </div>
@@ -367,6 +367,43 @@
                 <span class="px-2.5 py-1 rounded bg-white/5 text-xs text-accent">Full Stack</span>
               </div>
               <a href="https://github.com/SkyCiell/Project-ass" target="_blank" class="text-sm font-semibold text-primary hover:text-white transition-colors flex items-center gap-1">
+                Selengkapnya <i class="ri-arrow-right-line"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Project: BuildForge -->
+          <div class="bg-base border border-white/5 rounded-2xl overflow-hidden glow-shadow flex flex-col justify-between" data-aos="fade-up" data-aos-delay="300">
+            <div>
+              <div class="relative bg-elevated/40 border-b border-white/5 h-48 flex items-center justify-center">
+                <!-- Visual banner for BuildForge -->
+                <div class="absolute inset-0 bg-gradient-to-tr from-primary/15 via-purple-900/10 to-transparent"></div>
+                <div class="relative flex flex-col items-center">
+                  <div class="w-16 h-16 rounded-full bg-primary/20 border border-primary/40 flex items-center justify-center mb-3">
+                    <i class="ri-cpu-line text-3xl text-primary"></i>
+                  </div>
+                  <span class="text-xs text-accent font-medium tracking-widest uppercase">Full Stack Application</span>
+                </div>
+              </div>
+              <div class="p-6">
+                <div class="flex justify-between items-start mb-3">
+                  <h3 class="text-xl font-semibold text-white">BuildForge</h3>
+                  <a href="https://github.com/SkyCiell/BuildForge" target="_blank" class="text-accent hover:text-primary transition-colors">
+                    <i class="ri-github-line text-xl"></i>
+                  </a>
+                </div>
+                <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                  Platform PC builder interaktif premium untuk para PC enthusiast &amp; gamer. Dilengkapi auto-compatibility engine, TDP calculator, PSU recommender, dan user dashboard.
+                </p>
+              </div>
+            </div>
+            <div class="px-6 pb-6 pt-2 flex items-center justify-between">
+              <div class="flex gap-2 flex-wrap">
+                <span class="px-2.5 py-1 rounded bg-white/5 text-xs text-accent">React 19</span>
+                <span class="px-2.5 py-1 rounded bg-white/5 text-xs text-accent">Express</span>
+                <span class="px-2.5 py-1 rounded bg-white/5 text-xs text-accent">MySQL</span>
+              </div>
+              <a href="https://github.com/SkyCiell/BuildForge" target="_blank" class="text-sm font-semibold text-primary hover:text-white transition-colors flex items-center gap-1">
                 Selengkapnya <i class="ri-arrow-right-line"></i>
               </a>
             </div>
