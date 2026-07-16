@@ -12,7 +12,7 @@ Website portofolio personal **M. Raffi Barzally**, seorang siswa RPL di SMK Taru
 - **Bento Grid About** — Section about dengan layout bento grid asimetris dan stat cards
 - **Horizontal Scroll Projects** — Project showcase dengan horizontal carousel yang smooth
 - **Side Navigation** — Navigasi vertikal di sisi kanan (desktop) / pill bottom (mobile)
-- **Soft Warm Palette** — Warna cream, soft lavender-violet, dan muted sage
+- **Soft Warm & Dark Theme** — Mendukung toggle tema gelap dengan warna cream, soft lavender-violet, dan Jade Blue
 - **Micro-animations** — Scroll-reveal stagger, hover morphing, floating elements
 - **Grain Texture** — Overlay tekstur halus untuk kesan premium
 

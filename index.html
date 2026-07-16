@@ -23,13 +23,44 @@
         --accent-glow: rgba(30, 62, 125, 0.15);
         --warm: #E8C5A0;           /* Warm peach-gold */
         --warm-light: rgba(232, 197, 160, 0.12);
-        --sage: #8FAE8B;           /* Muted sage green */
-        --sage-light: rgba(143, 174, 139, 0.10);
+        --jade-blue: #2E8A99;      /* Beautiful Jade Blue */
+        --jade-blue-light: rgba(46, 138, 153, 0.10);
         --border: rgba(0,0,0,0.04);
         --radius: 20px;
         --radius-sm: 12px;
         --font-display: 'Sora', sans-serif;
         --font-body: 'Space Grotesk', sans-serif;
+
+        /* Nav, Topbar, Tooltip variables for Dark Mode compatibility */
+        --nav-bg: rgba(255, 255, 255, 0.85);
+        --topbar-bg: rgba(246, 244, 240, 0.7);
+        --btn-outline-border: rgba(0, 0, 0, 0.08);
+        --tag-bg: rgba(255, 255, 255, 0.92);
+        --tooltip-bg: var(--heading);
+        --tooltip-text: var(--bg);
+      }
+
+      [data-theme="dark"] {
+        --bg: #0F0F11;
+        --bg-alt: #16161A;
+        --surface: #1B1B1F;
+        --text: #C5C5C9;
+        --text-muted: #7E7E86;
+        --heading: #FFFFFF;
+        --accent: #4F73C3;         /* Bright blue for dark mode */
+        --accent-hover: #698CD9;
+        --accent-light: rgba(79, 115, 195, 0.12);
+        --accent-glow: rgba(79, 115, 195, 0.25);
+        --warm: #E2BC92;           /* Softened peach-gold */
+        --warm-light: rgba(226, 188, 146, 0.12);
+        --jade-blue: #3E92A3;      /* Lighter Jade Blue for dark mode */
+        --jade-blue-light: rgba(62, 146, 163, 0.12);
+        --border: rgba(255, 255, 255, 0.06);
+        
+        --nav-bg: rgba(27, 27, 31, 0.85);
+        --topbar-bg: rgba(15, 15, 17, 0.7);
+        --btn-outline-border: rgba(255, 255, 255, 0.15);
+        --tag-bg: rgba(27, 27, 31, 0.92);
       }
 
       * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -41,6 +72,7 @@
         color: var(--text);
         -webkit-font-smoothing: antialiased;
         overflow-x: hidden;
+        transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
       }
 
       /* === Custom Scrollbar === */
@@ -72,7 +104,7 @@
       .ambient { position: fixed; border-radius: 50%; filter: blur(80px); pointer-events: none; z-index: -1; }
       .ambient-1 { width: 500px; height: 500px; top: -10%; left: -5%; background: var(--accent-glow); }
       .ambient-2 { width: 400px; height: 400px; bottom: 10%; right: -8%; background: var(--warm-light); opacity: 0.6; }
-      .ambient-3 { width: 300px; height: 300px; top: 50%; left: 40%; background: var(--sage-light); opacity: 0.4; }
+      .ambient-3 { width: 300px; height: 300px; top: 50%; left: 40%; background: var(--jade-blue-light); opacity: 0.4; }
 
       /* === Side Navigation (Vertical) — Unique layout === */
       .side-nav {
@@ -95,7 +127,7 @@
       }
       .side-nav a .tooltip {
         position: absolute; right: 52px; top: 50%; transform: translateY(-50%);
-        background: var(--heading); color: white; padding: 4px 10px; border-radius: 6px;
+        background: var(--tooltip-bg); color: var(--tooltip-text); padding: 4px 10px; border-radius: 6px;
         font-size: 11px; font-weight: 500; white-space: nowrap;
         opacity: 0; pointer-events: none; transition: opacity 0.2s, transform 0.2s;
         transform: translateY(-50%) translateX(8px);
@@ -106,7 +138,7 @@
         .side-nav {
           position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%);
           top: auto; right: auto; flex-direction: row; gap: 10px;
-          background: rgba(255,255,255,0.85); backdrop-filter: blur(16px);
+          background: var(--nav-bg); backdrop-filter: blur(16px);
           padding: 10px 16px; border-radius: 100px;
           border: 1px solid var(--border); box-shadow: 0 8px 32px rgba(0,0,0,0.06);
         }
@@ -118,8 +150,8 @@
       .topbar {
         position: fixed; top: 0; left: 0; right: 0; z-index: 50;
         padding: 20px 32px; display: flex; justify-content: space-between; align-items: center;
-        background: rgba(246,244,240,0.7); backdrop-filter: blur(12px);
-        border-bottom: 1px solid transparent; transition: border-color 0.3s;
+        background: var(--topbar-bg); backdrop-filter: blur(12px);
+        border-bottom: 1px solid transparent; transition: border-color 0.3s, background-color 0.3s;
       }
       .topbar.scrolled { border-color: var(--border); }
       .topbar .brand { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--heading); text-decoration: none; display: flex; align-items: center; gap: 8px; }
@@ -180,7 +212,7 @@
         display: inline-flex; align-items: center; gap: 8px;
         padding: 14px 28px; border-radius: 100px;
         background: transparent; color: var(--heading); font-weight: 600; font-size: 14px;
-        text-decoration: none; border: 1.5px solid rgba(0,0,0,0.08);
+        text-decoration: none; border: 1.5px solid var(--btn-outline-border);
         transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       }
       .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
@@ -307,7 +339,7 @@
         position: absolute; top: 14px; left: 14px;
         font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
         padding: 5px 12px; border-radius: 100px;
-        background: rgba(255,255,255,0.92); backdrop-filter: blur(8px);
+        background: var(--tag-bg); backdrop-filter: blur(8px);
         color: var(--accent); border: 1px solid rgba(30, 62, 125, 0.1);
       }
       .project-body { padding: 24px; flex: 1; display: flex; flex-direction: column; }
@@ -454,9 +486,49 @@
         body { padding-bottom: 80px; }
         .contact-box { padding: 40px 24px; }
       }
+
+      /* === Theme Toggle Button === */
+      .theme-toggle-btn {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        color: var(--text);
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        font-size: 18px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+      }
+      .theme-toggle-btn:hover {
+        transform: scale(1.1);
+        border-color: var(--accent);
+        color: var(--accent);
+        box-shadow: 0 4px 15px var(--accent-glow);
+      }
+      .theme-toggle-btn .sun-icon { display: none; }
+      .theme-toggle-btn .moon-icon { display: block; }
+      
+      [data-theme="dark"] .theme-toggle-btn .sun-icon { display: block; }
+      [data-theme="dark"] .theme-toggle-btn .moon-icon { display: none; }
     </style>
   </head>
   <body>
+    <script>
+      // Set theme immediately on load to prevent light flash
+      (function() {
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      })();
+    </script>
 
     <!-- Ambient floating shapes -->
     <div class="ambient ambient-1"></div>
@@ -469,10 +541,16 @@
         <span class="dot"></span>
         Rapi<span style="color: var(--accent)">.dev</span>
       </a>
-      <a href="#contact" class="cta-pill">
-        <span class="live-dot"></span>
-        Available for Project
-      </a>
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle Theme">
+          <i class="ri-sun-line sun-icon"></i>
+          <i class="ri-moon-line moon-icon"></i>
+        </button>
+        <a href="#contact" class="cta-pill">
+          <span class="live-dot"></span>
+          Available for Project
+        </a>
+      </div>
     </header>
 
     <!-- Side Navigation (Desktop = vertical right side, Mobile = horizontal bottom) -->
@@ -900,6 +978,15 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }
         });
+      });
+
+      // Theme Toggle Logic
+      const themeToggleBtn = document.getElementById('themeToggle');
+      themeToggleBtn.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
       });
     </script>
   </body>
