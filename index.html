@@ -3,584 +3,884 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portofolio | M. Raffi Barzally</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              base: '#07050F',        /* Ultra deep dark near-black */
-              surface: '#0F0B1E',     /* Deep dark violet-black surface */
-              elevated: '#16102B',    /* Slightly lighter surface for cards */
-              primary: '#7C3AED',     /* Premium rich violet */
-              primaryDark: '#5B21B6', /* Deep violet on hover */
-              accent: '#9B8BB5',      /* Muted lavender-gray for secondary text */
-            },
-            fontFamily: {
-              sans: ['Plus Jakarta Sans', 'system-ui', '-apple-system', 'sans-serif'],
-              raven: ['Raven', 'system-ui', '-apple-system', 'sans-serif'],
-            },
-          },
-        },
-      };
-    </script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <title>Portofolio | M. Raffi Barzally — Frontend Developer</title>
+    <meta name="description" content="Portfolio M. Raffi Barzally — Siswa RPL, Frontend Developer specializing in React, React Native, Node.js & Vite." />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
     <style>
-      @font-face {
-        font-family: "Raven";
-        src: url("font/Raven Italic.ttf") format("truetype");
-        font-weight: normal;
-        font-style: italic;
-        font-display: swap;
-      }
-      html {
-        scroll-behavior: smooth;
-      }
-      section {
-        scroll-margin-top: 80px;
-      }
-      
-      /* Smooth custom scrollbar */
-      ::-webkit-scrollbar {
-        width: 8px;
-      }
-      ::-webkit-scrollbar-track {
-        background: #07050F;
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #2D1B5E;
-        border-radius: 4px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #7C3AED;
+      :root {
+        /* Soft warm palette — unique, not generic */
+        --bg: #F6F4F0;
+        --bg-alt: #EFECE6;
+        --surface: #FFFFFF;
+        --text: #3D3D3D;
+        --text-muted: #8A8A8A;
+        --heading: #1A1A1A;
+        --accent: #8B6CC1;         /* Soft lavender-violet */
+        --accent-hover: #7455A8;
+        --accent-light: rgba(139, 108, 193, 0.08);
+        --accent-glow: rgba(139, 108, 193, 0.15);
+        --warm: #E8C5A0;           /* Warm peach-gold */
+        --warm-light: rgba(232, 197, 160, 0.12);
+        --sage: #8FAE8B;           /* Muted sage green */
+        --sage-light: rgba(143, 174, 139, 0.10);
+        --border: rgba(0,0,0,0.04);
+        --radius: 20px;
+        --radius-sm: 12px;
+        --font-display: 'Sora', sans-serif;
+        --font-body: 'Space Grotesk', sans-serif;
       }
 
-      /* Glow effect helper */
-      .glow-shadow {
-        transition: all 0.3s ease;
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      
+      body {
+        font-family: var(--font-body);
+        background: var(--bg);
+        color: var(--text);
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
       }
-      .glow-shadow:hover {
-        box-shadow: 0 0 24px rgba(124, 58, 237, 0.3);
-        border-color: rgba(124, 58, 237, 0.45);
+
+      /* === Custom Scrollbar === */
+      ::-webkit-scrollbar { width: 6px; }
+      ::-webkit-scrollbar-track { background: transparent; }
+      ::-webkit-scrollbar-thumb { background: var(--accent-glow); border-radius: 100px; }
+      ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+      /* === Utility === */
+      .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+      .section-gap { padding: 120px 0; }
+      .badge {
+        display: inline-flex; align-items: center; gap: 6px;
+        font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+        padding: 6px 14px; border-radius: 100px;
+        background: var(--accent-light); color: var(--accent);
+        border: 1px solid rgba(139,108,193,0.1);
+      }
+      h1, h2, h3, h4 { font-family: var(--font-display); color: var(--heading); }
+
+      /* === Grain texture overlay === */
+      body::before {
+        content: ''; position: fixed; inset: 0; z-index: 9999;
+        pointer-events: none; opacity: 0.025;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      }
+
+      /* === Floating ambient shapes === */
+      .ambient { position: fixed; border-radius: 50%; filter: blur(80px); pointer-events: none; z-index: -1; }
+      .ambient-1 { width: 500px; height: 500px; top: -10%; left: -5%; background: var(--accent-glow); }
+      .ambient-2 { width: 400px; height: 400px; bottom: 10%; right: -8%; background: var(--warm-light); opacity: 0.6; }
+      .ambient-3 { width: 300px; height: 300px; top: 50%; left: 40%; background: var(--sage-light); opacity: 0.4; }
+
+      /* === Side Navigation (Vertical) — Unique layout === */
+      .side-nav {
+        position: fixed; right: 24px; top: 50%; transform: translateY(-50%);
+        display: flex; flex-direction: column; gap: 16px; z-index: 100;
+      }
+      .side-nav a {
+        width: 40px; height: 40px; border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        background: var(--surface); border: 1px solid var(--border);
+        color: var(--text-muted); font-size: 16px;
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        box-shadow: 0 2px 12px rgba(0,0,0,0.03);
+        text-decoration: none;
+        position: relative;
+      }
+      .side-nav a:hover, .side-nav a.active {
+        background: var(--accent); color: white; border-color: var(--accent);
+        transform: scale(1.15); box-shadow: 0 4px 20px var(--accent-glow);
+      }
+      .side-nav a .tooltip {
+        position: absolute; right: 52px; top: 50%; transform: translateY(-50%);
+        background: var(--heading); color: white; padding: 4px 10px; border-radius: 6px;
+        font-size: 11px; font-weight: 500; white-space: nowrap;
+        opacity: 0; pointer-events: none; transition: opacity 0.2s, transform 0.2s;
+        transform: translateY(-50%) translateX(8px);
+      }
+      .side-nav a:hover .tooltip { opacity: 1; transform: translateY(-50%) translateX(0); }
+
+      @media (max-width: 768px) {
+        .side-nav {
+          position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%);
+          top: auto; right: auto; flex-direction: row; gap: 10px;
+          background: rgba(255,255,255,0.85); backdrop-filter: blur(16px);
+          padding: 10px 16px; border-radius: 100px;
+          border: 1px solid var(--border); box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+        }
+        .side-nav a { width: 36px; height: 36px; font-size: 14px; }
+        .side-nav a .tooltip { display: none; }
+      }
+
+      /* === Top Bar === */
+      .topbar {
+        position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+        padding: 20px 32px; display: flex; justify-content: space-between; align-items: center;
+        background: rgba(246,244,240,0.7); backdrop-filter: blur(12px);
+        border-bottom: 1px solid transparent; transition: border-color 0.3s;
+      }
+      .topbar.scrolled { border-color: var(--border); }
+      .topbar .brand { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--heading); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+      .topbar .brand .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); animation: pulse 2s infinite; }
+      @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+      .topbar .cta-pill {
+        display: inline-flex; align-items: center; gap: 6px;
+        font-size: 12px; font-weight: 600; color: var(--accent);
+        background: var(--accent-light); border: 1px solid rgba(139,108,193,0.1);
+        padding: 8px 18px; border-radius: 100px; text-decoration: none;
+        transition: all 0.3s;
+      }
+      .topbar .cta-pill:hover { background: var(--accent); color: white; }
+      .topbar .cta-pill .live-dot { width: 6px; height: 6px; border-radius: 50%; background: #6ECC7E; }
+
+      /* === HERO — Asymmetric split layout === */
+      .hero {
+        min-height: 100vh; display: grid;
+        grid-template-columns: 1fr 1fr; gap: 0;
+        align-items: center; padding-top: 80px;
+      }
+      .hero-left { padding: 80px 60px 80px 0; }
+      .hero-right {
+        position: relative; display: flex; align-items: center; justify-content: center;
+        padding: 60px;
+      }
+      .hero-greeting {
+        font-size: 14px; font-weight: 600; color: var(--accent);
+        letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 20px;
+        display: flex; align-items: center; gap: 10px;
+      }
+      .hero-greeting::before {
+        content: ''; width: 40px; height: 2px; background: var(--accent); border-radius: 2px;
+      }
+      .hero h1 {
+        font-size: clamp(40px, 5vw, 64px); font-weight: 800; line-height: 1.08;
+        letter-spacing: -0.03em; margin-bottom: 20px;
+      }
+      .hero h1 .gradient-name {
+        background: linear-gradient(135deg, var(--accent), var(--warm));
+        -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .hero .role-type {
+        font-size: clamp(20px, 2.5vw, 28px); font-weight: 600; color: var(--text);
+        margin-bottom: 16px; min-height: 40px;
+      }
+      .hero .role-type .typed-cursor { color: var(--accent); }
+      .hero .desc { font-size: 16px; color: var(--text-muted); line-height: 1.7; max-width: 460px; margin-bottom: 32px; }
+      .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+      .btn-primary {
+        display: inline-flex; align-items: center; gap: 8px;
+        padding: 14px 28px; border-radius: 100px;
+        background: var(--accent); color: white; font-weight: 600; font-size: 14px;
+        text-decoration: none; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        box-shadow: 0 4px 16px var(--accent-glow);
+      }
+      .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 8px 24px var(--accent-glow); }
+      .btn-outline {
+        display: inline-flex; align-items: center; gap: 8px;
+        padding: 14px 28px; border-radius: 100px;
+        background: transparent; color: var(--heading); font-weight: 600; font-size: 14px;
+        text-decoration: none; border: 1.5px solid rgba(0,0,0,0.08);
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+      /* Hero photo with organic shape */
+      .hero-photo-wrapper {
+        position: relative; width: 340px; height: 400px;
+      }
+      .hero-photo-wrapper img {
+        width: 100%; height: 100%; object-fit: cover;
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+        box-shadow: 0 20px 60px rgba(139,108,193,0.1);
+        transition: border-radius 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .hero-photo-wrapper:hover img {
+        border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%;
+      }
+      /* Floating orbit badges around photo */
+      .orbit-badge {
+        position: absolute; background: var(--surface); border: 1px solid var(--border);
+        padding: 8px 14px; border-radius: var(--radius-sm);
+        display: flex; align-items: center; gap: 8px;
+        font-size: 12px; font-weight: 600; color: var(--heading);
+        box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+        animation: float 6s ease-in-out infinite;
+      }
+      .orbit-badge img { width: 20px; height: 20px; }
+      .orbit-badge:nth-child(2) { top: 10%; right: -20px; animation-delay: 0s; }
+      .orbit-badge:nth-child(3) { bottom: 20%; left: -30px; animation-delay: 2s; }
+      .orbit-badge:nth-child(4) { bottom: -5%; right: 15%; animation-delay: 4s; }
+      @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-12px); }
+      }
+
+      @media (max-width: 900px) {
+        .hero { grid-template-columns: 1fr; text-align: center; }
+        .hero-left { padding: 40px 0 20px; order: 2; }
+        .hero-right { padding: 20px; order: 1; justify-content: center; }
+        .hero .desc { margin: 0 auto 32px; }
+        .hero-actions { justify-content: center; }
+        .hero-greeting { justify-content: center; }
+        .hero-photo-wrapper { width: 240px; height: 280px; }
+        .orbit-badge { display: none; }
+      }
+
+      /* === ABOUT — Bento grid layout === */
+      .about-bento {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        grid-template-rows: auto;
+        gap: 16px;
+      }
+      .bento-card {
+        background: var(--surface); border: 1px solid var(--border);
+        border-radius: var(--radius); padding: 32px;
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        position: relative; overflow: hidden;
+      }
+      .bento-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 16px 40px rgba(0,0,0,0.04);
+        border-color: rgba(139,108,193,0.15);
+      }
+      .bento-main { grid-column: 1 / 8; }
+      .bento-stats { grid-column: 8 / 13; display: grid; grid-template-rows: 1fr 1fr; gap: 16px; }
+      .stat-card {
+        background: var(--surface); border: 1px solid var(--border);
+        border-radius: var(--radius); padding: 28px;
+        display: flex; flex-direction: column; justify-content: center;
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .stat-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.04); }
+      .stat-number { font-family: var(--font-display); font-size: 36px; font-weight: 800; color: var(--accent); line-height: 1; }
+      .stat-label { font-size: 13px; color: var(--text-muted); margin-top: 6px; font-weight: 500; }
+      .bento-tech { grid-column: 1 / 13; }
+
+      @media (max-width: 768px) {
+        .bento-main, .bento-stats, .bento-tech { grid-column: 1 / -1; }
+        .bento-stats { grid-template-rows: auto; grid-template-columns: 1fr 1fr; }
+      }
+
+      /* === Tech pill tags === */
+      .tech-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+      .tech-pill {
+        display: inline-flex; align-items: center; gap: 6px;
+        padding: 8px 16px; border-radius: 100px;
+        background: var(--bg); border: 1px solid var(--border);
+        font-size: 12px; font-weight: 600; color: var(--heading);
+        transition: all 0.3s;
+      }
+      .tech-pill:hover {
+        border-color: var(--accent); color: var(--accent);
+        background: var(--accent-light); transform: translateY(-2px);
+      }
+      .tech-pill img { width: 16px; height: 16px; }
+
+      /* === PROJECTS — Horizontal scroll carousel === */
+      .projects-scroll-wrapper {
+        overflow-x: auto; overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        padding: 20px 0 40px;
+        scrollbar-width: none;
+      }
+      .projects-scroll-wrapper::-webkit-scrollbar { display: none; }
+      .projects-track {
+        display: flex; gap: 24px;
+        padding: 0 max(24px, calc((100vw - 1200px) / 2));
+        width: max-content;
+      }
+      .project-card {
+        flex: 0 0 400px; scroll-snap-align: start;
+        background: var(--surface); border: 1px solid var(--border);
+        border-radius: var(--radius); overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        display: flex; flex-direction: column;
+      }
+      .project-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 50px rgba(0,0,0,0.06);
+        border-color: rgba(139,108,193,0.15);
+      }
+      .project-thumb {
+        position: relative; overflow: hidden; aspect-ratio: 16/10;
+        background: var(--bg-alt);
+      }
+      .project-thumb img {
+        width: 100%; height: 100%; object-fit: cover;
+        transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .project-card:hover .project-thumb img { transform: scale(1.06); }
+      .project-thumb .tag {
+        position: absolute; top: 14px; left: 14px;
+        font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+        padding: 5px 12px; border-radius: 100px;
+        background: rgba(255,255,255,0.92); backdrop-filter: blur(8px);
+        color: var(--accent); border: 1px solid rgba(139,108,193,0.1);
+      }
+      .project-body { padding: 24px; flex: 1; display: flex; flex-direction: column; }
+      .project-body h3 {
+        font-size: 18px; font-weight: 700; margin-bottom: 8px;
+        transition: color 0.3s;
+      }
+      .project-card:hover .project-body h3 { color: var(--accent); }
+      .project-body p { font-size: 13px; color: var(--text-muted); line-height: 1.6; flex: 1; margin-bottom: 16px; }
+      .project-footer {
+        padding: 16px 24px; border-top: 1px solid var(--border);
+        display: flex; justify-content: space-between; align-items: center;
+      }
+      .project-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+      .project-tags span {
+        font-size: 10px; font-weight: 600; padding: 4px 10px;
+        border-radius: 6px; background: var(--bg-alt); color: var(--text-muted);
+      }
+      .project-link {
+        font-size: 12px; font-weight: 600; color: var(--accent);
+        text-decoration: none; display: flex; align-items: center; gap: 4px;
+        transition: gap 0.2s;
+      }
+      .project-link:hover { gap: 8px; }
+
+      /* Scroll indicator */
+      .scroll-hint {
+        display: flex; align-items: center; gap: 8px;
+        font-size: 12px; color: var(--text-muted); font-weight: 500;
+        margin-top: 16px;
+      }
+      .scroll-hint i { font-size: 16px; animation: scrollHint 2s ease-in-out infinite; }
+      @keyframes scrollHint { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(8px); } }
+
+      @media (max-width: 600px) {
+        .project-card { flex: 0 0 320px; }
+      }
+
+      /* === RESUME — Timeline + Skills side-by-side with unique layout === */
+      .resume-grid {
+        display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
+      }
+      @media (max-width: 768px) { .resume-grid { grid-template-columns: 1fr; } }
+
+      .timeline { position: relative; padding-left: 28px; }
+      .timeline::before {
+        content: ''; position: absolute; left: 0; top: 8px; bottom: 8px;
+        width: 2px; background: linear-gradient(to bottom, var(--accent), var(--warm));
+        border-radius: 2px;
+      }
+      .timeline-item { position: relative; margin-bottom: 28px; }
+      .timeline-item::before {
+        content: ''; position: absolute; left: -32px; top: 6px;
+        width: 12px; height: 12px; border-radius: 50%;
+        background: var(--surface); border: 2.5px solid var(--accent);
+      }
+      .timeline-item .year { font-size: 12px; font-weight: 700; color: var(--accent); margin-bottom: 4px; }
+      .timeline-item h3 { font-size: 16px; font-weight: 700; margin-bottom: 2px; }
+      .timeline-item .subtitle { font-size: 13px; color: var(--text-muted); margin-bottom: 8px; }
+      .timeline-item p { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+
+      /* Certificate cards */
+      .cert-card {
+        background: var(--surface); border: 1px solid var(--border);
+        border-radius: var(--radius-sm); padding: 20px;
+        display: flex; align-items: start; gap: 14px;
+        transition: all 0.3s;
+      }
+      .cert-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.04); }
+      .cert-icon {
+        width: 40px; height: 40px; border-radius: 10px;
+        background: var(--accent-light); border: 1px solid rgba(139,108,193,0.1);
+        display: flex; align-items: center; justify-content: center;
+        color: var(--accent); font-size: 18px; flex-shrink: 0;
+      }
+      .cert-info h4 { font-size: 14px; font-weight: 700; margin-bottom: 2px; }
+      .cert-info .cert-org { font-size: 11px; color: var(--text-muted); margin-bottom: 6px; }
+      .cert-info p { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+      .cert-score {
+        font-size: 10px; font-weight: 700; color: var(--accent);
+        background: var(--accent-light); padding: 3px 8px; border-radius: 6px;
+        display: inline-block; margin-top: 6px;
+      }
+
+      /* Skills masonry-style cards */
+      .skills-mosaic { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+      .skill-tile {
+        background: var(--surface); border: 1px solid var(--border);
+        border-radius: var(--radius-sm); padding: 20px;
+        display: flex; align-items: center; gap: 12px;
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .skill-tile:hover {
+        transform: translateY(-3px); border-color: rgba(139,108,193,0.15);
+        box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+      }
+      .skill-tile img { width: 28px; height: 28px; flex-shrink: 0; }
+      .skill-tile .skill-name { font-size: 13px; font-weight: 700; color: var(--heading); }
+      .skill-tile .skill-level { font-size: 10px; font-weight: 600; color: var(--accent); margin-top: 2px; }
+      .skill-tile-wide { grid-column: 1 / -1; }
+
+      /* === CONTACT — Clean centered with accent box === */
+      .contact-box {
+        background: var(--surface); border: 1px solid var(--border);
+        border-radius: 28px; padding: 60px 48px; text-align: center;
+        position: relative; overflow: hidden;
+      }
+      .contact-box::before {
+        content: ''; position: absolute; top: -60px; right: -60px;
+        width: 180px; height: 180px; border-radius: 50%;
+        background: var(--accent-light); pointer-events: none;
+      }
+      .contact-box::after {
+        content: ''; position: absolute; bottom: -40px; left: -40px;
+        width: 120px; height: 120px; border-radius: 50%;
+        background: var(--warm-light); pointer-events: none;
+      }
+      .contact-box > * { position: relative; z-index: 1; }
+      .contact-socials { display: flex; justify-content: center; gap: 12px; }
+      .social-icon {
+        width: 44px; height: 44px; border-radius: 50%;
+        background: var(--bg); border: 1px solid var(--border);
+        display: flex; align-items: center; justify-content: center;
+        color: var(--text-muted); font-size: 18px; text-decoration: none;
+        transition: all 0.3s;
+      }
+      .social-icon:hover {
+        background: var(--accent); color: white; border-color: var(--accent);
+        transform: translateY(-3px); box-shadow: 0 6px 16px var(--accent-glow);
+      }
+
+      /* === Footer === */
+      .footer { padding: 40px 0; text-align: center; font-size: 12px; color: var(--text-muted); }
+
+      /* === Section Headers === */
+      .section-header { margin-bottom: 48px; }
+      .section-header h2 { font-size: clamp(28px, 3vw, 40px); font-weight: 800; letter-spacing: -0.02em; margin-top: 12px; }
+      .section-header .underline-bar { width: 48px; height: 3px; background: var(--accent); border-radius: 100px; margin-top: 12px; }
+
+      /* === Reveal animations === */
+      .reveal {
+        opacity: 0; transform: translateY(30px);
+        transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .reveal.visible { opacity: 1; transform: translateY(0); }
+      .reveal-delay-1 { transition-delay: 0.1s; }
+      .reveal-delay-2 { transition-delay: 0.2s; }
+      .reveal-delay-3 { transition-delay: 0.3s; }
+      .reveal-delay-4 { transition-delay: 0.4s; }
+
+      /* Spacing for bottom nav on mobile */
+      @media (max-width: 768px) {
+        body { padding-bottom: 80px; }
+        .contact-box { padding: 40px 24px; }
       }
     </style>
   </head>
-  <body class="bg-base text-gray-200 font-sans">
-    
-    <!-- Modern background grid & subtle glow -->
-    <div class="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-      <!-- Ambient light top left and bottom right -->
-      <div class="absolute -top-[40%] -left-[20%] h-[80%] w-[80%] rounded-full bg-[radial-gradient(circle,rgba(124,58,237,0.09)_0%,transparent_70%)]"></div>
-      <div class="absolute -bottom-[40%] -right-[20%] h-[80%] w-[80%] rounded-full bg-[radial-gradient(circle,rgba(167,139,250,0.05)_0%,transparent_70%)]"></div>
-      <!-- Subtle dot grid -->
-      <div class="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:32px_32px]"></div>
-    </div>
+  <body>
 
-    <!-- Navbar -->
-    <nav class="fixed top-0 left-0 w-full bg-base/80 backdrop-blur-lg border-b border-white/5 z-50">
-      <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-        <a href="#" class="text-xl font-bold tracking-tight text-white flex items-center gap-2">
-          <span class="h-2.5 w-2.5 rounded-full bg-primary animate-pulse"></span>
-          <span>Rapi<span class="text-primary">.dev</span></span>
-        </a>
+    <!-- Ambient floating shapes -->
+    <div class="ambient ambient-1"></div>
+    <div class="ambient ambient-2"></div>
+    <div class="ambient ambient-3"></div>
 
-        <!-- Desktop Menu -->
-        <div class="hidden md:flex items-center gap-8 text-sm font-medium">
-          <a href="#about" class="text-accent hover:text-white transition-colors">Tentang</a>
-          <a href="#projects" class="text-accent hover:text-white transition-colors">Project</a>
-          <a href="#education" class="text-accent hover:text-white transition-colors">Pendidikan</a>
-          <a href="#skills" class="text-accent hover:text-white transition-colors">Skill</a>
-          <a href="#certificates" class="text-accent hover:text-white transition-colors">Sertifikat</a>
-          <a href="#contact" class="px-4 py-2 rounded-lg bg-primary hover:bg-primaryDark text-white font-semibold transition-all">Kontak</a>
-        </div>
+    <!-- Top Bar -->
+    <header class="topbar" id="topbar">
+      <a href="#" class="brand">
+        <span class="dot"></span>
+        Rapi<span style="color: var(--accent)">.dev</span>
+      </a>
+      <a href="#contact" class="cta-pill">
+        <span class="live-dot"></span>
+        Available for Project
+      </a>
+    </header>
 
-        <!-- Burger Button -->
-        <button id="burger" class="md:hidden text-2xl text-white">
-          <i class="ri-menu-line"></i>
-        </button>
-      </div>
+    <!-- Side Navigation (Desktop = vertical right side, Mobile = horizontal bottom) -->
+    <nav class="side-nav" id="sideNav">
+      <a href="#" class="active">
+        <i class="ri-home-5-line"></i>
+        <span class="tooltip">Home</span>
+      </a>
+      <a href="#about">
+        <i class="ri-user-line"></i>
+        <span class="tooltip">Tentang</span>
+      </a>
+      <a href="#projects">
+        <i class="ri-code-box-line"></i>
+        <span class="tooltip">Project</span>
+      </a>
+      <a href="#resume">
+        <i class="ri-file-text-line"></i>
+        <span class="tooltip">Resume</span>
+      </a>
+      <a href="#contact">
+        <i class="ri-chat-3-line"></i>
+        <span class="tooltip">Kontak</span>
+      </a>
     </nav>
 
-    <!-- Mobile Menu -->
-    <div id="mobileMenu" class="hidden flex flex-col fixed top-[65px] left-0 w-full bg-surface border-b border-white/5 px-6 py-4 space-y-4 z-40 shadow-xl">
-      <a href="#about" class="block text-accent hover:text-white">Tentang</a>
-      <a href="#projects" class="block text-accent hover:text-white">Project</a>
-      <a href="#education" class="block text-accent hover:text-white">Pendidikan</a>
-      <a href="#skills" class="block text-accent hover:text-white">Skill</a>
-      <a href="#certificates" class="block text-accent hover:text-white">Sertifikat</a>
-      <a href="#contact" class="block text-primary font-semibold">Kontak</a>
-    </div>
-
-    <!-- Hero -->
-    <section id="hero" class="relative min-h-screen flex flex-col justify-center items-center text-center px-6">
-      <div class="relative z-10 max-w-3xl" data-aos="zoom-out" data-aos-duration="1000">
-        <span class="text-xs font-semibold uppercase tracking-widest text-primary bg-primary/10 px-3.5 py-1.5 rounded-full border border-primary/20">Available for Project</span>
-        
-        <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold mt-6 mb-4 text-white leading-tight">
-          Halo, saya <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-[#60A5FA]">M. Raffi Barzally</span>
-        </h1>
-        
-        <p class="text-lg sm:text-xl md:text-2xl text-accent mb-8 font-medium">
-          <span id="typing"></span>
-        </p>
-        
-        <div class="flex flex-wrap justify-center gap-4">
-          <a href="#projects" class="px-6 py-3 rounded-xl font-semibold text-white bg-primary hover:bg-primaryDark shadow-lg shadow-primary/20 transition-all duration-300 hover:scale-105">
-            🚀 Lihat Project
-          </a>
-          <a href="#contact" class="px-6 py-3 rounded-xl font-semibold text-accent hover:text-white border border-white/10 hover:border-white/20 transition-all duration-300">
-            Hubungi Saya
-          </a>
+    <!-- ===================== HERO ===================== -->
+    <section id="hero" class="container">
+      <div class="hero">
+        <div class="hero-left reveal">
+          <div class="hero-greeting">Hallo Dunia!</div>
+          <h1>
+            Saya<br/>
+            <span class="gradient-name">M. Raffi<br/>Barzally</span>
+          </h1>
+          <div class="role-type">
+            Seorang <span id="typing"></span>
+          </div>
+          <p class="desc">
+            Siswa RPL di SMK Taruna Bhakti yang antusias menciptakan antarmuka digital yang interaktif, bersih, dan berkinerja tinggi.
+          </p>
+          <div class="hero-actions">
+            <a href="#projects" class="btn-primary">
+              <i class="ri-rocket-line"></i> Jelajahi Project
+            </a>
+            <a href="#contact" class="btn-outline">Hubungi Saya</a>
+          </div>
+        </div>
+        <div class="hero-right reveal reveal-delay-2">
+          <div class="hero-photo-wrapper">
+            <img src="img/WhatsApp Image 2025-09-06 at 11.52.13_a6040bc5.jpg" alt="M. Raffi Barzally" />
+            <!-- Floating orbit badges -->
+            <div class="orbit-badge">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" /> React
+            </div>
+            <div class="orbit-badge">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node" /> Node.js
+            </div>
+            <div class="orbit-badge">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg" alt="Vite" /> Vite
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Typing Effect -->
+    <!-- Typed.js -->
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script>
-      var typed = new Typed("#typing", {
-        strings: [
-          "Frontend Developer",
-          "IT Enthusiast",
-          "Future Software Engineer",
-        ],
-        typeSpeed: 70,
-        backSpeed: 50,
-        loop: true,
-      });
-
-      // Mobile menu toggle
-      const burger = document.getElementById("burger");
-      const mobileMenu = document.getElementById("mobileMenu");
-
-      burger.addEventListener("click", () => {
-        mobileMenu.classList.toggle("hidden");
-      });
-
-      document.querySelectorAll("#mobileMenu a").forEach((link) => {
-        link.addEventListener("click", () => {
-          mobileMenu.classList.add("hidden");
-        });
+      new Typed("#typing", {
+        strings: ["Frontend Developer", "IT Enthusiast", "React & React Native Developer"],
+        typeSpeed: 55, backSpeed: 35, loop: true,
       });
     </script>
 
-    <!-- About -->
-    <section id="about" class="py-20 px-6 bg-surface border-y border-white/5">
-      <div class="max-w-5xl mx-auto">
-        <div class="text-center mb-12" data-aos="fade-up">
-          <span class="text-xs font-bold text-primary uppercase tracking-wider">Profil</span>
-          <h2 class="text-3xl font-bold text-white mt-1">Tentang Saya</h2>
-          <div class="h-1 w-12 bg-primary mx-auto mt-3 rounded-full"></div>
-        </div>
+    <!-- ===================== ABOUT — Bento Grid ===================== -->
+    <section id="about" class="container section-gap">
+      <div class="section-header reveal">
+        <span class="badge">Tentang Saya</span>
+        <h2>Membangun Solusi dengan<br/>Seni Pemrograman</h2>
+        <div class="underline-bar"></div>
+      </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div data-aos="fade-right" class="flex justify-center">
-            <div class="relative group">
-              <div class="absolute -inset-1 rounded-2xl bg-gradient-to-r from-primary to-blue-500 opacity-25 blur transition duration-1000 group-hover:opacity-40"></div>
-              <img
-                src="img/WhatsApp Image 2025-09-06 at 11.52.13_a6040bc5.jpg"
-                alt="Foto Profil"
-                class="relative w-64 h-64 object-cover rounded-2xl border border-white/10 shadow-2xl"
-              />
-            </div>
-          </div>
-          <div class="space-y-6" data-aos="fade-left">
-            <p class="text-lg text-gray-300 leading-relaxed">
-              Halo 👋, saya
-              <span class="font-bold text-white">M. Raffi Barzally</span>,
-              panggil saja <span class="text-primary font-semibold">Rapi</span>. Saat ini saya menempuh pendidikan di
-              <span class="font-semibold text-white">SMK Taruna Bhakti</span> jurusan
-              <span class="font-semibold text-white">RPL (Rekayasa Perangkat Lunak)</span>. Saya sangat tertarik dengan teknologi dan Web Development.
+      <div class="about-bento">
+        <!-- Main About Card -->
+        <div class="bento-main bento-card reveal reveal-delay-1">
+          <div style="display: flex; flex-direction: column; gap: 20px;">
+            <p style="font-size: 15px; line-height: 1.8; color: var(--text);">
+              Halo! Saya siswa jurusan <strong style="color: var(--heading);">Rekayasa Perangkat Lunak (RPL)</strong> di <strong style="color: var(--heading);">SMK Taruna Bhakti</strong>. Saya sangat tertarik dengan ekosistem Web Development modern dan Mobile Applications.
             </p>
-            <p class="text-gray-400 leading-relaxed">
-              Bagi saya, pemrograman bukan hanya tentang mengetik baris kode dan menyusun logika, melainkan seni menciptakan solusi digital yang bermanfaat, intuitif, dan memiliki estetika visual yang menawan.
+            <p style="font-size: 15px; line-height: 1.8; color: var(--text);">
+              Bagi saya, menulis kode bukan sekadar merangkai logika komputer, melainkan cara menuangkan kreativitas untuk melahirkan aplikasi yang berguna, efisien, sekaligus memiliki visual yang elegan dan dinamis.
             </p>
-            <div class="flex flex-wrap gap-2 pt-2">
-              <span class="px-3.5 py-1.5 rounded-lg bg-base border border-white/5 text-xs text-accent">React</span>
-              <span class="px-3.5 py-1.5 rounded-lg bg-base border border-white/5 text-xs text-accent">React Native</span>
-              <span class="px-3.5 py-1.5 rounded-lg bg-base border border-white/5 text-xs text-accent">Vite</span>
-              <span class="px-3.5 py-1.5 rounded-lg bg-base border border-white/5 text-xs text-accent">Node.js</span>
-              <span class="px-3.5 py-1.5 rounded-lg bg-base border border-white/5 text-xs text-accent">JavaScript</span>
-              <span class="px-3.5 py-1.5 rounded-lg bg-base border border-white/5 text-xs text-accent">Tailwind CSS</span>
-              <span class="px-3.5 py-1.5 rounded-lg bg-base border border-white/5 text-xs text-accent">HTML & CSS</span>
-              <span class="px-3.5 py-1.5 rounded-lg bg-base border border-white/5 text-xs text-accent">GitHub</span>
-            </div>
+          </div>
+        </div>
+
+        <!-- Stats Side -->
+        <div class="bento-stats">
+          <div class="stat-card reveal reveal-delay-2">
+            <div class="stat-number">4+</div>
+            <div class="stat-label">Project Selesai</div>
+          </div>
+          <div class="stat-card reveal reveal-delay-3">
+            <div class="stat-number">2</div>
+            <div class="stat-label">Sertifikasi</div>
+          </div>
+        </div>
+
+        <!-- Tech Stack Row -->
+        <div class="bento-tech bento-card reveal reveal-delay-4" style="padding: 24px 32px;">
+          <h3 style="font-size: 13px; font-weight: 700; color: var(--text-muted); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 16px;">Teknologi & Framework Favorit</h3>
+          <div class="tech-pills">
+            <span class="tech-pill">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" /> React
+            </span>
+            <span class="tech-pill">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="RN" style="filter: hue-rotate(40deg);" /> React Native
+            </span>
+            <span class="tech-pill">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node" /> Node.js
+            </span>
+            <span class="tech-pill">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg" alt="Vite" /> Vite
+            </span>
+            <span class="tech-pill">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS" /> JavaScript
+            </span>
+            <span class="tech-pill">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Tailwind_CSS_Logo.svg/2560px-Tailwind_CSS_Logo.svg.png" alt="Tailwind" style="width: 18px; height: auto;" /> Tailwind CSS
+            </span>
+            <span class="tech-pill">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML" /> HTML & CSS
+            </span>
+            <span class="tech-pill">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" /> GitHub
+            </span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Project -->
-    <section id="projects" class="py-20 px-6 bg-surface border-y border-white/5">
-      <div class="max-w-6xl mx-auto">
-        <div class="text-center mb-12" data-aos="fade-up">
-          <span class="text-xs font-bold text-primary uppercase tracking-wider">Portofolio</span>
-          <h2 class="text-3xl font-bold text-white mt-1">Project Terpilih</h2>
-          <div class="h-1 w-12 bg-primary mx-auto mt-3 rounded-full"></div>
+    <!-- ===================== PROJECTS — Horizontal Scroll ===================== -->
+    <section id="projects" class="section-gap" style="overflow: hidden;">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="badge">Portofolio</span>
+          <h2>Karya & Project Terpilih</h2>
+          <div class="underline-bar"></div>
         </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Project: Music Player -->
-          <div class="group bg-base border border-white/5 rounded-2xl overflow-hidden glow-shadow flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
-            <div>
-              <div class="relative overflow-hidden h-48 bg-elevated">
-                <div class="absolute inset-0 bg-gradient-to-t from-base via-transparent to-transparent opacity-85 z-10"></div>
-                <img src="img/MusicPlayer.png" alt="Music Player screenshot" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                <div class="absolute top-4 left-4 z-20">
-                  <span class="text-[10px] font-bold text-primary bg-primary/20 border border-primary/30 backdrop-blur-md px-2.5 py-1 rounded-full uppercase tracking-wider">Web App</span>
-                </div>
-              </div>
-              <div class="p-6">
-                <div class="flex justify-between items-start mb-3">
-                  <h3 class="text-xl font-bold text-white group-hover:text-primary transition-colors">Music Player</h3>
-                  <a href="https://github.com/SkyCiell/MusicPlayer" target="_blank" class="text-accent hover:text-primary transition-colors">
-                    <i class="ri-github-line text-xl"></i>
-                  </a>
-                </div>
-                <p class="text-accent text-sm leading-relaxed mb-4">
-                  Aplikasi pemutar musik berbasis web yang interaktif. Dikembangkan dengan fokus pada kemudahan navigasi dan pemutaran lagu yang mulus secara online.
-                </p>
-              </div>
+        <div class="scroll-hint reveal">
+          <span>Geser untuk melihat lebih →</span>
+          <i class="ri-arrow-right-line"></i>
+        </div>
+      </div>
+      
+      <div class="projects-scroll-wrapper">
+        <div class="projects-track">
+          
+          <!-- Project 1: BuildForge -->
+          <div class="project-card reveal">
+            <div class="project-thumb">
+              <img src="img/BuildForge.png" alt="BuildForge" />
+              <span class="tag">React 19 & Express</span>
             </div>
-            <div class="px-6 pb-6 pt-2 flex items-center justify-between">
-              <div class="flex gap-2">
-                <span class="px-2.5 py-1 rounded bg-white/5 text-xs text-accent">JavaScript</span>
-                <span class="px-2.5 py-1 rounded bg-white/5 text-xs text-accent">HTML & CSS</span>
+            <div class="project-body">
+              <div style="display: flex; justify-content: space-between; align-items: start;">
+                <h3>BuildForge</h3>
+                <a href="https://github.com/SkyCiell/BuildForge" target="_blank" style="color: var(--text-muted); font-size: 18px; transition: color 0.2s;">
+                  <i class="ri-github-line"></i>
+                </a>
               </div>
-              <a href="https://github.com/SkyCiell/MusicPlayer" target="_blank" class="text-sm font-semibold text-primary hover:text-white transition-colors flex items-center gap-1">
-                Selengkapnya <i class="ri-arrow-right-line"></i>
+              <p>Platform konfigurator PC interaktif premium untuk gamer. Dilengkapi auto-compatibility engine, TDP calculator, dan PSU recommender.</p>
+            </div>
+            <div class="project-footer">
+              <div class="project-tags">
+                <span>React</span>
+                <span>MySQL</span>
+                <span>Express</span>
+              </div>
+              <a href="https://github.com/SkyCiell/BuildForge" target="_blank" class="project-link">
+                Detail <i class="ri-arrow-right-up-line"></i>
               </a>
             </div>
           </div>
 
-          <!-- Project: DDG -->
-          <div class="group bg-base border border-white/5 rounded-2xl overflow-hidden glow-shadow flex flex-col justify-between" data-aos="fade-up" data-aos-delay="200">
-            <div>
-              <div class="relative overflow-hidden h-48 bg-elevated">
-                <div class="absolute inset-0 bg-gradient-to-t from-base via-transparent to-transparent opacity-85 z-10"></div>
-                <img src="img/DDG.png" alt="DDG Project screenshot" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                <div class="absolute top-4 left-4 z-20">
-                  <span class="text-[10px] font-bold text-primary bg-primary/20 border border-primary/30 backdrop-blur-md px-2.5 py-1 rounded-full uppercase tracking-wider">Repository</span>
-                </div>
-              </div>
-              <div class="p-6">
-                <div class="flex justify-between items-start mb-3">
-                  <h3 class="text-xl font-bold text-white group-hover:text-primary transition-colors">DDG Project</h3>
-                  <a href="https://github.com/SkyCiell/DDG" target="_blank" class="text-accent hover:text-primary transition-colors">
-                    <i class="ri-github-line text-xl"></i>
-                  </a>
-                </div>
-                <p class="text-accent text-sm leading-relaxed mb-4">
-                  Repositori dan project open source interaktif yang didesain secara clean dan modular untuk mendukung skalabilitas kode.
-                </p>
-              </div>
+          <!-- Project 2: Project-ass -->
+          <div class="project-card reveal reveal-delay-1">
+            <div class="project-thumb">
+              <img src="img/Project-ass.png" alt="Project-ass" />
+              <span class="tag">Fullstack App</span>
             </div>
-            <div class="px-6 pb-6 pt-2 flex items-center justify-between">
-              <div class="flex gap-2">
-                <span class="px-2.5 py-1 rounded bg-white/5 text-xs text-accent">Open Source</span>
-                <span class="px-2.5 py-1 rounded bg-white/5 text-xs text-accent">GitHub</span>
+            <div class="project-body">
+              <div style="display: flex; justify-content: space-between; align-items: start;">
+                <h3>Project-ass</h3>
+                <a href="https://github.com/SkyCiell/Project-ass" target="_blank" style="color: var(--text-muted); font-size: 18px; transition: color 0.2s;">
+                  <i class="ri-github-line"></i>
+                </a>
               </div>
-              <a href="https://github.com/SkyCiell/DDG" target="_blank" class="text-sm font-semibold text-primary hover:text-white transition-colors flex items-center gap-1">
-                Selengkapnya <i class="ri-arrow-right-line"></i>
+              <p>Sistem pengaduan masyarakat berbasis fullstack (web & mobile). Menggunakan Next.js untuk admin panel dan React Native Expo untuk user.</p>
+            </div>
+            <div class="project-footer">
+              <div class="project-tags">
+                <span>Next.js</span>
+                <span>React Native</span>
+                <span>Expo</span>
+              </div>
+              <a href="https://github.com/SkyCiell/Project-ass" target="_blank" class="project-link">
+                Detail <i class="ri-arrow-right-up-line"></i>
               </a>
             </div>
           </div>
 
-          <!-- Project: Project-ass -->
-          <div class="group bg-base border border-white/5 rounded-2xl overflow-hidden glow-shadow flex flex-col justify-between" data-aos="fade-up" data-aos-delay="300">
-            <div>
-              <div class="relative overflow-hidden h-48 bg-elevated">
-                <div class="absolute inset-0 bg-gradient-to-t from-base via-transparent to-transparent opacity-85 z-10"></div>
-                <img src="img/Project-ass.png" alt="Project-ass screenshot" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                <div class="absolute top-4 left-4 z-20">
-                  <span class="text-[10px] font-bold text-primary bg-primary/20 border border-primary/30 backdrop-blur-md px-2.5 py-1 rounded-full uppercase tracking-wider">Full Stack</span>
-                </div>
-              </div>
-              <div class="p-6">
-                <div class="flex justify-between items-start mb-3">
-                  <h3 class="text-xl font-bold text-white group-hover:text-primary transition-colors">Project-ass</h3>
-                  <a href="https://github.com/SkyCiell/Project-ass" target="_blank" class="text-accent hover:text-primary transition-colors">
-                    <i class="ri-github-line text-xl"></i>
-                  </a>
-                </div>
-                <p class="text-accent text-sm leading-relaxed mb-4">
-                  Sistem aplikasi pengaduan masyarakat berbasis fullstack (web & mobile). Menggunakan Next.js, Express, MySQL, dan React Native / Expo.
-                </p>
-              </div>
+          <!-- Project 3: Music Player -->
+          <div class="project-card reveal reveal-delay-2">
+            <div class="project-thumb">
+              <img src="img/MusicPlayer.png" alt="Music Player" />
+              <span class="tag">Front-End</span>
             </div>
-            <div class="px-6 pb-6 pt-2 flex items-center justify-between">
-              <div class="flex gap-2">
-                <span class="px-2.5 py-1 rounded bg-white/5 text-xs text-accent">TypeScript</span>
-                <span class="px-2.5 py-1 rounded bg-white/5 text-xs text-accent">Full Stack</span>
+            <div class="project-body">
+              <div style="display: flex; justify-content: space-between; align-items: start;">
+                <h3>Music Player</h3>
+                <a href="https://github.com/SkyCiell/MusicPlayer" target="_blank" style="color: var(--text-muted); font-size: 18px; transition: color 0.2s;">
+                  <i class="ri-github-line"></i>
+                </a>
               </div>
-              <a href="https://github.com/SkyCiell/Project-ass" target="_blank" class="text-sm font-semibold text-primary hover:text-white transition-colors flex items-center gap-1">
-                Selengkapnya <i class="ri-arrow-right-line"></i>
+              <p>Aplikasi pemutar musik berbasis web yang interaktif dengan kontrol pemutaran lagu responsif dan animasi yang mulus.</p>
+            </div>
+            <div class="project-footer">
+              <div class="project-tags">
+                <span>JavaScript</span>
+                <span>CSS</span>
+              </div>
+              <a href="https://github.com/SkyCiell/MusicPlayer" target="_blank" class="project-link">
+                Detail <i class="ri-arrow-right-up-line"></i>
               </a>
             </div>
           </div>
 
-          <!-- Project: BuildForge -->
-          <div class="group bg-base border border-white/5 rounded-2xl overflow-hidden glow-shadow flex flex-col justify-between" data-aos="fade-up" data-aos-delay="400">
-            <div>
-              <div class="relative overflow-hidden h-48 bg-elevated">
-                <div class="absolute inset-0 bg-gradient-to-t from-base via-transparent to-transparent opacity-85 z-10"></div>
-                <img src="img/BuildForge.png" alt="BuildForge screenshot" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                <div class="absolute top-4 left-4 z-20">
-                  <span class="text-[10px] font-bold text-primary bg-primary/20 border border-primary/30 backdrop-blur-md px-2.5 py-1 rounded-full uppercase tracking-wider">Full Stack</span>
-                </div>
-              </div>
-              <div class="p-6">
-                <div class="flex justify-between items-start mb-3">
-                  <h3 class="text-xl font-bold text-white group-hover:text-primary transition-colors">BuildForge</h3>
-                  <a href="https://github.com/SkyCiell/BuildForge" target="_blank" class="text-accent hover:text-primary transition-colors">
-                    <i class="ri-github-line text-xl"></i>
-                  </a>
-                </div>
-                <p class="text-accent text-sm leading-relaxed mb-4">
-                  Platform PC builder interaktif premium untuk PC enthusiast &amp; gamer. Dilengkapi auto-compatibility engine, TDP calculator, dan PSU recommender.
-                </p>
-              </div>
+          <!-- Project 4: DDG Project -->
+          <div class="project-card reveal reveal-delay-3">
+            <div class="project-thumb">
+              <img src="img/DDG.png" alt="DDG Project" />
+              <span class="tag">Open Source</span>
             </div>
-            <div class="px-6 pb-6 pt-2 flex items-center justify-between">
-              <div class="flex gap-2 flex-wrap">
-                <span class="px-2.5 py-1 rounded bg-white/5 text-xs text-accent">React 19</span>
-                <span class="px-2.5 py-1 rounded bg-white/5 text-xs text-accent">Express</span>
-                <span class="px-2.5 py-1 rounded bg-white/5 text-xs text-accent">MySQL</span>
+            <div class="project-body">
+              <div style="display: flex; justify-content: space-between; align-items: start;">
+                <h3>DDG Project</h3>
+                <a href="https://github.com/SkyCiell/DDG" target="_blank" style="color: var(--text-muted); font-size: 18px; transition: color 0.2s;">
+                  <i class="ri-github-line"></i>
+                </a>
               </div>
-              <a href="https://github.com/SkyCiell/BuildForge" target="_blank" class="text-sm font-semibold text-primary hover:text-white transition-colors flex items-center gap-1">
-                Selengkapnya <i class="ri-arrow-right-line"></i>
+              <p>Repositori dan project modular open source interaktif yang didesain secara clean dan rapi untuk kebutuhan skalabilitas.</p>
+            </div>
+            <div class="project-footer">
+              <div class="project-tags">
+                <span>GitHub</span>
+                <span>Clean Code</span>
+              </div>
+              <a href="https://github.com/SkyCiell/DDG" target="_blank" class="project-link">
+                Detail <i class="ri-arrow-right-up-line"></i>
               </a>
             </div>
           </div>
 
-          <!-- Project: Figma Aplikasi Pinlab -->
-          <div class="group bg-base border border-white/5 rounded-2xl overflow-hidden glow-shadow flex flex-col justify-between" data-aos="fade-up" data-aos-delay="500">
-            <div>
-              <div class="relative overflow-hidden h-48 bg-elevated">
-                <iframe
-                  class="w-full h-full border-none"
-                  src="https://www.figma.com/embed?embed_host=astra&url=https://www.figma.com/proto/UYvCobYJFcTkvIDV1dt38x/Aplikasi-Pinlab?node-id=138-367&starting-point-node-id=11%3A2"
-                  allowfullscreen
-                  allow="fullscreen"
-                ></iframe>
-                <div class="absolute top-4 left-4 z-20">
-                  <span class="text-[10px] font-bold text-primary bg-primary/20 border border-primary/30 backdrop-blur-md px-2.5 py-1 rounded-full uppercase tracking-wider">Prototype Design</span>
-                </div>
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold text-white group-hover:text-primary transition-colors mb-3">Aplikasi Pinlab</h3>
-                <p class="text-accent text-sm leading-relaxed mb-4">
-                  Prototipe desain antarmuka aplikasi perpustakaan berbasis mobile yang interaktif untuk manajemen peminjaman buku.
-                </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== RESUME — Education + Skills ===================== -->
+    <section id="resume" class="container section-gap">
+      <div class="section-header reveal">
+        <span class="badge">Resume</span>
+        <h2>Pendidikan & Keahlian</h2>
+        <div class="underline-bar"></div>
+      </div>
+
+      <div class="resume-grid">
+        <!-- Left: Timeline + Certs -->
+        <div>
+          <h3 style="font-size: 14px; font-weight: 700; color: var(--text-muted); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 24px;" class="reveal">Riwayat Akademis</h3>
+          
+          <div class="timeline reveal reveal-delay-1">
+            <div class="timeline-item">
+              <div class="year">2024 — Sekarang</div>
+              <h3>SMK Taruna Bhakti</h3>
+              <div class="subtitle">Jurusan Rekayasa Perangkat Lunak (RPL)</div>
+              <p>Mendalami pemrograman dasar, perancangan database relasional, algoritma, serta implementasi Web & Mobile App Development.</p>
+            </div>
+          </div>
+
+          <h3 style="font-size: 14px; font-weight: 700; color: var(--text-muted); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 20px; margin-top: 40px;" class="reveal">Sertifikasi & Uji Kompetensi</h3>
+          
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <div class="cert-card reveal reveal-delay-1">
+              <div class="cert-icon"><i class="ri-medal-line"></i></div>
+              <div class="cert-info">
+                <h4>RPL Competency Test — E-Commerce</h4>
+                <div class="cert-org">SMK Taruna Bhakti | 2025</div>
+                <p>Uji kompetensi dalam merancang & mengembangkan sistem E-Commerce modular terstandar industri.</p>
+                <span class="cert-score">Score 89</span>
               </div>
             </div>
-            <div class="px-6 pb-6 pt-2 flex items-center justify-between">
-              <div class="flex gap-2">
-                <span class="px-2.5 py-1 rounded bg-white/5 text-xs text-accent">Figma</span>
-                <span class="px-2.5 py-1 rounded bg-white/5 text-xs text-accent">UI/UX Design</span>
+            <div class="cert-card reveal reveal-delay-2">
+              <div class="cert-icon"><i class="ri-medal-line"></i></div>
+              <div class="cert-info">
+                <h4>RPL Competency Test — Multi Platform</h4>
+                <div class="cert-org">SMK Taruna Bhakti | 2025</div>
+                <p>Sertifikasi uji kompetensi pengembangan aplikasi multi-platform "Portal Lapor" berbasis Mobile & API.</p>
+                <span class="cert-score">Score 87</span>
               </div>
-              <span class="text-xs text-accent">Interactive Prototype</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Tech Stack Skills -->
+        <div>
+          <h3 style="font-size: 14px; font-weight: 700; color: var(--text-muted); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 24px;" class="reveal">Tech Stack</h3>
+          
+          <div class="skills-mosaic">
+            <div class="skill-tile reveal reveal-delay-1">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" />
+              <div>
+                <div class="skill-name">React</div>
+                <div class="skill-level">Advanced</div>
+              </div>
+            </div>
+            <div class="skill-tile reveal reveal-delay-2">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React Native" style="filter: hue-rotate(40deg);" />
+              <div>
+                <div class="skill-name">React Native</div>
+                <div class="skill-level">Intermediate</div>
+              </div>
+            </div>
+            <div class="skill-tile reveal reveal-delay-1">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg" alt="Vite" />
+              <div>
+                <div class="skill-name">Vite</div>
+                <div class="skill-level">Advanced</div>
+              </div>
+            </div>
+            <div class="skill-tile reveal reveal-delay-2">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" />
+              <div>
+                <div class="skill-name">Node.js</div>
+                <div class="skill-level">Intermediate</div>
+              </div>
+            </div>
+            <div class="skill-tile skill-tile-wide reveal reveal-delay-3">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" />
+              <div>
+                <div class="skill-name">JavaScript (ES6+)</div>
+                <div class="skill-level">Intermediate</div>
+              </div>
+            </div>
+            <div class="skill-tile skill-tile-wide reveal reveal-delay-4">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Tailwind_CSS_Logo.svg/2560px-Tailwind_CSS_Logo.svg.png" alt="Tailwind" style="width: 28px; height: auto;" />
+              <div>
+                <div class="skill-name">Tailwind CSS</div>
+                <div class="skill-level">Advanced</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Education -->
-    <section id="education" class="py-20 px-6 bg-base">
-      <div class="max-w-4xl mx-auto">
-        <div class="text-center mb-12" data-aos="fade-up">
-          <span class="text-xs font-bold text-primary uppercase tracking-wider">Riwayat</span>
-          <h2 class="text-3xl font-bold text-white mt-1">Pendidikan</h2>
-          <div class="h-1 w-12 bg-primary mx-auto mt-3 rounded-full"></div>
-        </div>
-
-        <div class="relative pl-8 border-l-2 border-white/5 space-y-12">
-          <!-- SMK Taruna Bhakti -->
-          <div class="relative flex items-start" data-aos="fade-right">
-            <!-- Bullet icon -->
-            <div class="absolute -left-[41px] h-6 w-6 rounded-full bg-base border-2 border-primary flex items-center justify-center">
-              <div class="h-2 w-2 rounded-full bg-primary"></div>
-            </div>
-            <div class="bg-surface border border-white/5 p-6 rounded-2xl w-full">
-              <span class="text-xs font-semibold text-primary">2024 - Sekarang</span>
-              <h3 class="text-xl font-bold text-white mt-1">SMK Taruna Bhakti</h3>
-              <p class="text-accent text-sm mt-1">Jurusan Rekayasa Perangkat Lunak (RPL)</p>
-              <p class="text-gray-400 text-sm mt-3">Mempelajari fundamental pemrograman web, basis data, serta pemecahan masalah algoritma.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Skills -->
-    <section id="skills" class="py-20 px-6 bg-surface border-y border-white/5">
-      <div class="max-w-4xl mx-auto">
-        <div class="text-center mb-12" data-aos="fade-up">
-          <span class="text-xs font-bold text-primary uppercase tracking-wider">Kemampuan</span>
-          <h2 class="text-3xl font-bold text-white mt-1">Tech Stack</h2>
-          <div class="h-1 w-12 bg-primary mx-auto mt-3 rounded-full"></div>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          <!-- Skill: React -->
-          <div class="bg-base border border-white/5 p-6 rounded-2xl flex items-center justify-between" data-aos="fade-up">
-            <div class="flex items-center gap-4">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" class="w-10 h-10" alt="React" />
-              <div>
-                <h4 class="font-semibold text-white">React</h4>
-                <p class="text-xs text-accent">Frontend UI Library</p>
-              </div>
-            </div>
-            <span class="text-xs font-semibold text-primary bg-primary/10 border border-primary/20 px-2.5 py-1 rounded">Advanced</span>
-          </div>
-
-          <!-- Skill: React Native -->
-          <div class="bg-base border border-white/5 p-6 rounded-2xl flex items-center justify-between" data-aos="fade-up" data-aos-delay="100">
-            <div class="flex items-center gap-4">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" class="w-10 h-10" alt="React Native" style="filter: hue-rotate(40deg);" />
-              <div>
-                <h4 class="font-semibold text-white">React Native</h4>
-                <p class="text-xs text-accent">Mobile App Development</p>
-              </div>
-            </div>
-            <span class="text-xs font-semibold text-primary bg-primary/10 border border-primary/20 px-2.5 py-1 rounded">Intermediate</span>
-          </div>
-
-          <!-- Skill: Vite -->
-          <div class="bg-base border border-white/5 p-6 rounded-2xl flex items-center justify-between" data-aos="fade-up" data-aos-delay="200">
-            <div class="flex items-center gap-4">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg" class="w-10 h-10" alt="Vite" />
-              <div>
-                <h4 class="font-semibold text-white">Vite</h4>
-                <p class="text-xs text-accent">Modern Build Tool &amp; Dev Server</p>
-              </div>
-            </div>
-            <span class="text-xs font-semibold text-primary bg-primary/10 border border-primary/20 px-2.5 py-1 rounded">Advanced</span>
-          </div>
-
-          <!-- Skill: Node.js -->
-          <div class="bg-base border border-white/5 p-6 rounded-2xl flex items-center justify-between" data-aos="fade-up" data-aos-delay="300">
-            <div class="flex items-center gap-4">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" class="w-10 h-10" alt="Node.js" />
-              <div>
-                <h4 class="font-semibold text-white">Node.js</h4>
-                <p class="text-xs text-accent">Runtime Environment</p>
-              </div>
-            </div>
-            <span class="text-xs font-semibold text-primary bg-primary/10 border border-primary/20 px-2.5 py-1 rounded">Intermediate</span>
-          </div>
-
-          <!-- Skill: JavaScript -->
-          <div class="bg-base border border-white/5 p-6 rounded-2xl flex items-center justify-between" data-aos="fade-up" data-aos-delay="400">
-            <div class="flex items-center gap-4">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" class="w-10 h-10" alt="JavaScript" />
-              <div>
-                <h4 class="font-semibold text-white">JavaScript</h4>
-                <p class="text-xs text-accent">Logika &amp; Interaktivitas</p>
-              </div>
-            </div>
-            <span class="text-xs font-semibold text-primary bg-primary/10 border border-primary/20 px-2.5 py-1 rounded">Intermediate</span>
-          </div>
-
-          <!-- Skill: Tailwind CSS -->
-          <div class="bg-base border border-white/5 p-6 rounded-2xl flex items-center justify-between" data-aos="fade-up" data-aos-delay="500">
-            <div class="flex items-center gap-4">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Tailwind_CSS_Logo.svg/2560px-Tailwind_CSS_Logo.svg.png" class="w-10 h-10 object-contain" alt="Tailwind CSS" />
-              <div>
-                <h4 class="font-semibold text-white">Tailwind CSS</h4>
-                <p class="text-xs text-accent">Modern CSS Framework</p>
-              </div>
-            </div>
-            <span class="text-xs font-semibold text-primary bg-primary/10 border border-primary/20 px-2.5 py-1 rounded">Intermediate</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Sertifikat -->
-    <section id="certificates" class="py-20 px-6 bg-base">
-      <div class="max-w-4xl mx-auto">
-        <div class="text-center mb-12" data-aos="fade-up">
-          <span class="text-xs font-bold text-primary uppercase tracking-wider">Pencapaian</span>
-          <h2 class="text-3xl font-bold text-white mt-1">Sertifikat</h2>
-          <div class="h-1 w-12 bg-primary mx-auto mt-3 rounded-full"></div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <!-- Cert 1 -->
-          <div class="bg-surface border border-white/5 p-6 rounded-2xl flex items-start gap-4" data-aos="zoom-in" data-aos-delay="100">
-            <div class="h-10 w-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0">
-              <i class="ri-award-line text-xl text-primary"></i>
-            </div>
-            <div>
-              <div class="flex justify-between items-start gap-2">
-                <h3 class="font-semibold text-white">RPL Competency Test – E-Commerce</h3>
-                <span class="text-xs font-bold text-primary bg-primary/10 border border-primary/20 px-2 py-0.5 rounded">Score 89</span>
-              </div>
-              <p class="text-xs text-accent mt-1">SMK Taruna Bhakti | 2025</p>
-              <p class="text-gray-400 text-xs mt-2 leading-relaxed">Sertifikasi uji kompetensi dalam pembuatan aplikasi E-Commerce sederhana dengan standardisasi industri.</p>
-            </div>
-          </div>
-
-          <!-- Cert 2 -->
-          <div class="bg-surface border border-white/5 p-6 rounded-2xl flex items-start gap-4" data-aos="zoom-in" data-aos-delay="200">
-            <div class="h-10 w-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0">
-              <i class="ri-award-line text-xl text-primary"></i>
-            </div>
-            <div>
-              <div class="flex justify-between items-start gap-2">
-                <h3 class="font-semibold text-white">RPL Competency Test – Multi Platform</h3>
-                <span class="text-xs font-bold text-primary bg-primary/10 border border-primary/20 px-2 py-0.5 rounded">Score 87</span>
-              </div>
-              <p class="text-xs text-accent mt-1">SMK Taruna Bhakti | 2025</p>
-              <p class="text-gray-400 text-xs mt-2 leading-relaxed">Sertifikasi uji kompetensi pengembangan aplikasi multi platform dengan studi kasus "Portal Lapor".</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="py-24 px-6 text-center bg-base">
-      <div class="max-w-2xl mx-auto" data-aos="fade-up">
-        <span class="text-xs font-bold text-primary uppercase tracking-wider">Komunikasi</span>
-        <h2 class="text-3xl font-bold text-white mt-1 mb-4">Hubungi Saya</h2>
-        <p class="text-gray-400 text-sm leading-relaxed mb-8 max-w-md mx-auto">
-          Ingin memulai sebuah proyek bersama, menanyakan info magang/kolaborasi, atau sekadar bertegur sapa? Pintu komunikasi selalu terbuka.
+    <!-- ===================== CONTACT ===================== -->
+    <section id="contact" class="container section-gap">
+      <div class="contact-box reveal">
+        <span class="badge" style="margin-bottom: 16px;">Hubungi Saya</span>
+        <h2 style="font-size: clamp(24px, 3vw, 36px); font-weight: 800; letter-spacing: -0.02em; margin-top: 12px;">
+          Ada project kolaborasi<br/>atau tawaran menarik?
+        </h2>
+        <p style="font-size: 14px; color: var(--text-muted); line-height: 1.7; max-width: 440px; margin: 16px auto 28px;">
+          Pintu komunikasi selalu terbuka untuk membicarakan teknologi, magang, kolaborasi kode, atau sekadar bertukar sapa.
         </p>
-
-        <a
-          href="mailto:raffi.barzally@gmail.com"
-          class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-primary hover:bg-primaryDark text-white font-semibold shadow-lg shadow-primary/25 transition-all hover:scale-105"
-        >
-          <i class="ri-mail-line"></i>
-          raffi.barzally@gmail.com
+        <a href="mailto:raffi.barzally@gmail.com" class="btn-primary" style="margin-bottom: 24px;">
+          <i class="ri-mail-send-line"></i> raffi.barzally@gmail.com
         </a>
-
-        <div class="flex justify-center gap-4 text-2xl mt-12">
-          <a
-            href="https://github.com/SkyCiell"
-            target="_blank"
-            class="h-12 w-12 rounded-xl bg-surface border border-white/5 hover:border-primary/30 flex items-center justify-center text-accent hover:text-primary transition-all"
-          >
+        <div class="contact-socials">
+          <a href="https://github.com/SkyCiell" target="_blank" class="social-icon" title="GitHub">
             <i class="ri-github-fill"></i>
           </a>
-          <a
-            href="https://www.instagram.com/piraapiiii"
-            target="_blank"
-            class="h-12 w-12 rounded-xl bg-surface border border-white/5 hover:border-primary/30 flex items-center justify-center text-accent hover:text-primary transition-all"
-          >
+          <a href="https://www.instagram.com/piraapiiii" target="_blank" class="social-icon" title="Instagram">
             <i class="ri-instagram-line"></i>
           </a>
-          <a
-            href="https://www.linkedin.com/in/raffi-barzally-a18979382"
-            target="_blank"
-            class="h-12 w-12 rounded-xl bg-surface border border-white/5 hover:border-primary/30 flex items-center justify-center text-accent hover:text-primary transition-all"
-          >
+          <a href="https://www.linkedin.com/in/raffi-barzally-a18979382" target="_blank" class="social-icon" title="LinkedIn">
             <i class="ri-linkedin-box-fill"></i>
           </a>
         </div>
@@ -588,15 +888,58 @@
     </section>
 
     <!-- Footer -->
-    <footer class="py-8 bg-base text-center border-t border-white/5">
-      <p class="text-xs text-accent">
-        &copy; 2026 M. Raffi Barzally. Built with 💙 using Tailwind CSS & Remix Icon.
-      </p>
+    <footer class="footer">
+      <p>&copy; 2026 M. Raffi Barzally. Built with passion.</p>
     </footer>
 
+    <!-- === Scripts === -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-      AOS.init({ duration: 1000, once: true });
+      // Scroll reveal with Intersection Observer
+      const revealEls = document.querySelectorAll('.reveal');
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      revealEls.forEach(el => revealObserver.observe(el));
+
+      // Topbar scroll effect
+      const topbar = document.getElementById('topbar');
+      window.addEventListener('scroll', () => {
+        topbar.classList.toggle('scrolled', window.scrollY > 40);
+      });
+
+      // Active nav link highlighting
+      const sections = document.querySelectorAll('section[id]');
+      const navLinks = document.querySelectorAll('.side-nav a');
+      window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+          const top = section.offsetTop - 200;
+          if (scrollY >= top) current = section.getAttribute('id');
+        });
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          const href = link.getAttribute('href');
+          if (href === '#' && !current) link.classList.add('active');
+          if (href === '#' + current) link.classList.add('active');
+        });
+      });
+
+      // Smooth scroll for nav links
+      navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+          const href = link.getAttribute('href');
+          if (href === '#') {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }
+        });
+      });
     </script>
   </body>
 </html>

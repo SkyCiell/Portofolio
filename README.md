@@ -1,44 +1,48 @@
-# 🌌 Personal Portofolio | M. Raffi Barzally
+# 🎨 Portofolio — M. Raffi Barzally
 
-Portofolio pribadi yang dirancang secara minimalis, responsif, dan modern dengan perpaduan skema warna hitam pekat (*modern dark background*) serta aksen biru premium elektrik (*non-generic electric blue*).
+Website portofolio personal **M. Raffi Barzally**, seorang siswa RPL di SMK Taruna Bhakti yang berfokus pada Frontend Development & Mobile Applications.
 
----
-
-## 🚀 Fitur Utama
-*   **Desain Modern & Simpel**: Menggunakan palet warna gelap gelap-biru premium yang memberikan kesan profesional, premium, dan futuristik.
-*   **Fully Responsive**: Optimal diakses dari berbagai resolusi perangkat layar (Mobile, Tablet, Desktop).
-*   **Interaktivitas Dinamis**: Dilengkapi efek animasi pengetikan (*typing effect* via Typed.js), transisi gulir halaman (*scroll animations* via AOS), serta hover glow effects.
-*   **Integrasi Embed Proyek**: Menampilkan prototipe interaktif langsung dari Figma serta navigasi langsung ke repositori GitHub.
+🔗 **Live Preview**: [https://skyciell.github.io/Portofolio](https://skyciell.github.io/Portofolio)
 
 ---
 
-## 🛠️ Tech Stack & Ekosistem
-*   **Core**: HTML5, JavaScript
-*   **Styling**: [Tailwind CSS CDN](https://tailwindcss.com/)
-*   **Iconography**: [Remix Icon](https://remixicon.com/)
-*   **Animations**: [AOS (Animate On Scroll)](https://michalsnik.github.io/aos/) & [Typed.js](https://mattboldt.github.io/typed.js/)
-*   **Typography**: Google Font (Plus Jakarta Sans)
+## ✨ Design Features
+
+- **Asymmetric Split Hero** — Layout hero dengan foto berbentuk organik dan floating orbit badges
+- **Bento Grid About** — Section about dengan layout bento grid asimetris dan stat cards
+- **Horizontal Scroll Projects** — Project showcase dengan horizontal carousel yang smooth
+- **Side Navigation** — Navigasi vertikal di sisi kanan (desktop) / pill bottom (mobile)
+- **Soft Warm Palette** — Warna cream, soft lavender-violet, dan muted sage
+- **Micro-animations** — Scroll-reveal stagger, hover morphing, floating elements
+- **Grain Texture** — Overlay tekstur halus untuk kesan premium
+
+---
+
+## 🛠️ Tech Stack
+
+| Teknologi | Fungsi |
+|-----------|--------|
+| HTML5 & CSS3 | Struktur & styling utama (vanilla, tanpa framework CSS build) |
+| JavaScript (ES6+) | Interaktivitas, scroll animations, IntersectionObserver |
+| Typed.js | Typing animation pada hero section |
+| Remix Icon | Ikon UI |
+| Google Fonts | Sora & Space Grotesk typography |
 
 ---
 
 ## 📂 Struktur Halaman
-1.  **Hero Section**: Sambutan interaktif dengan typing animation dan tautan aksi cepat.
-2.  **Tentang Saya**: Pengenalan singkat profil M. Raffi Barzally sebagai siswa RPL di SMK Taruna Bhakti.
-3.  **Hobi & Aktivitas**: Aktivitas produktif sehari-hari (Coding, Gaming, Musik).
-4.  **Project Terpilih**: 
-    *   **Music Player**: Aplikasi pemutar musik web interaktif.
-    *   **DDG Project**: Repositori open source modular.
-    *   **Project-ass**: Aplikasi sistem pengaduan masyarakat fullstack (Web & Mobile).
-    *   **Aplikasi Pinlab**: Desain prototipe perpustakaan digital (Figma).
-    *   **Desain CV**: Resume branding interaktif (Figma).
-5.  **Pendidikan**: Riwayat studi di SMK Taruna Bhakti jurusan Rekayasa Perangkat Lunak.
-6.  **Tech Stack (Skill)**: Kemampuan teknis (HTML, CSS, JavaScript, Tailwind CSS).
-7.  **Sertifikat**:
-    *   Dicoding - Belajar Dasar Pemrograman Web
-    *   FreeCodeCamp - Responsive Web Design
+1.  **Hero Section**: Layout asimetris split-screen dengan foto organik, typing animation, dan floating tech badges.
+2.  **Tentang Saya**: Bento grid layout dengan profil M. Raffi Barzally, stat cards, dan teknologi favorit.
+3.  **Project Terpilih** (Horizontal Carousel):
+    *   **BuildForge**: Platform konfigurator PC interaktif premium (React 19 & Express).
+    *   **Project-ass**: Sistem pengaduan masyarakat fullstack (Next.js & React Native Expo).
+    *   **Music Player**: Aplikasi pemutar musik web interaktif (JavaScript & CSS).
+    *   **DDG Project**: Repositori open source modular (GitHub).
+4.  **Resume**: Riwayat pendidikan SMK Taruna Bhakti (RPL) + Tech Stack mosaic grid.
+5.  **Sertifikasi**:
     *   RPL Competency Test – E-Commerce (SMK Taruna Bhakti | Score 89)
     *   RPL Competency Test – Multi Platform / Portal Lapor (SMK Taruna Bhakti | Score 87)
-8.  **Hubungi Saya**: Form kontak email langsung serta sosial media (GitHub, Instagram, LinkedIn).
+6.  **Hubungi Saya**: Email kontak langsung + sosial media (GitHub, Instagram, LinkedIn).
 
 ---
 
@@ -59,4 +63,4 @@ Buka `http://localhost:8000` di web browser Anda.
 
 ---
 
-*Build with 💙 by [M. Raffi Barzally](https://github.com/SkyCiell)*
+*Build with 💜 by [M. Raffi Barzally](https://github.com/SkyCiell)*
