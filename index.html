@@ -706,7 +706,7 @@
       transform: translateX(4px);
     }
 
-    /* Visual side: restrained laptop and phone presentation */
+    /* Visual side: restrained laptop presentation */
     .case-study-visual {
       position: relative;
       width: 100%;
@@ -719,15 +719,12 @@
       position: relative;
       width: 100%;
       max-width: 620px;
-      aspect-ratio: 1.25;
       margin: 0 auto;
     }
 
     .laptop-frame {
-      position: absolute;
-      top: 7%;
-      left: 3%;
-      width: 68%;
+      position: relative;
+      width: 100%;
       border-radius: 8px 8px 0 0;
       background: #0d0d0d;
       box-shadow: 0 22px 46px rgba(0, 0, 0, .48);
@@ -749,28 +746,6 @@
       border-top: 1px solid rgba(243, 239, 232, .12);
       border-radius: 0 0 6px 6px;
       width: 100%;
-    }
-
-    .phone-frame {
-      position: absolute;
-      right: 8%;
-      bottom: 3%;
-      width: 28%;
-      border-radius: 18px;
-      background: #080808;
-      border: 2px solid rgba(243, 239, 232, .18);
-      box-shadow: 0 18px 38px rgba(0, 0, 0, .56);
-      overflow: hidden;
-      z-index: 4;
-    }
-
-    .phone-screen-img {
-      width: 100%;
-      height: auto;
-      aspect-ratio: 9/19;
-      object-fit: cover;
-      object-position: top center;
-      display: block;
     }
 
     /* ─────────────────────────────────────────
@@ -1404,10 +1379,6 @@
               <img src="img/MusicPlayer.png" alt="Web Music Player Desktop UI" class="laptop-screen-img" />
               <div class="laptop-base-lip"></div>
             </div>
-            <!-- Overlapping Phone Frame -->
-            <div class="phone-frame">
-              <img src="img/MusicPlayer.png" alt="Web Music Player Mobile UI" class="phone-screen-img" />
-            </div>
           </div>
         </div>
       </article>
@@ -1437,9 +1408,6 @@
             <div class="laptop-frame">
               <img src="img/BuildForge.png" alt="BuildForge Desktop UI" class="laptop-screen-img" />
               <div class="laptop-base-lip"></div>
-            </div>
-            <div class="phone-frame">
-              <img src="img/BuildForge.png" alt="BuildForge Mobile UI" class="phone-screen-img" />
             </div>
           </div>
         </div>
@@ -1471,9 +1439,6 @@
               <img src="img/Project-ass.png" alt="Portal Lapor Desktop UI" class="laptop-screen-img" />
               <div class="laptop-base-lip"></div>
             </div>
-            <div class="phone-frame">
-              <img src="img/Project-ass.png" alt="Portal Lapor Mobile UI" class="phone-screen-img" />
-            </div>
           </div>
         </div>
       </article>
@@ -1502,9 +1467,6 @@
             <div class="laptop-frame">
               <img src="img/DDG.png" alt="DDG Modular Architecture UI" class="laptop-screen-img" />
               <div class="laptop-base-lip"></div>
-            </div>
-            <div class="phone-frame">
-              <img src="img/DDG.png" alt="DDG Architecture Mobile UI" class="phone-screen-img" />
             </div>
           </div>
         </div>
