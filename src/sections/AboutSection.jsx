@@ -1,182 +1,130 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { User, GraduationCap, Target, Heart, Compass } from 'lucide-react';
-import { IDENTITY, ABOUT_MODULES } from '../data/portfolioData';
+import { IDENTITY, MANIFESTO_MODULES } from '../data/portfolioData';
 
 export default function AboutSection() {
   return (
     <section
       id="about"
-      className="relative min-h-screen py-28 px-4 sm:px-8 lg:px-16 bg-[#081014] border-t border-[#1E343E]"
+      className="relative py-28 px-4 sm:px-8 lg:px-12 bg-[var(--canvas)] text-[var(--text-editorial)] border-b border-[#2E2A24]/60 lg:pl-28"
     >
       <div className="max-w-7xl mx-auto space-y-16">
+        
         {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[#1E343E] pb-8"
-        >
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-[#2E2A24]/60 pb-6">
           <div>
-            <div className="flex items-center gap-2 mb-2">
-              <span className="w-6 h-[1px] bg-[#BFA36A]" />
-              <span className="font-space text-xs tracking-[0.25em] text-[#BFA36A] uppercase font-semibold">
-                02 // MODULAR PROFILE CODEX
-              </span>
-            </div>
-            <h2 className="font-garamond text-4xl sm:text-6xl font-light text-[#EEF8F7]">
-              Identity & <span className="italic text-[#6CA8A7]">Modular Specs.</span>
+            <span className="font-space-num text-xs font-bold text-[#A97843] tracking-[0.2em] uppercase block">
+              ABOUT ME
+            </span>
+            <h2 className="font-editorial-serif text-4xl sm:text-6xl font-normal uppercase text-[var(--text-editorial)]">
+              PERSONAL <span className="font-bold text-[#A97843] italic">PHILOSOPHY</span>
             </h2>
           </div>
+          <span className="font-mono-code text-xs text-[#9E988E]">
+            LOCATION: DEPOK, INDONESIA
+          </span>
+        </div>
 
-          <p className="font-outfit text-sm text-[#8FA3AC] max-w-md">
-            Modular overview of background, software engineering education, technical focus, and architectural philosophy.
-          </p>
+        {/* Pull Quote */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="editorial-card p-8 sm:p-12 border-bronze-glow bg-[#202020] relative overflow-hidden"
+        >
+          <div className="max-w-4xl space-y-6">
+            <span className="font-editorial-serif text-6xl text-[#A97843] leading-none block select-none">
+              “
+            </span>
+            <p className="font-editorial-serif text-2xl sm:text-4xl lg:text-5xl italic font-normal text-[#F3EFE8] leading-[1.15]">
+              {IDENTITY.manifesto}
+            </p>
+            <div className="pt-4 flex items-center justify-between font-space-num text-xs border-t border-[#2E2A24]/60">
+              <span className="text-[#A97843] font-bold uppercase tracking-widest">
+                — M. RAFFI BARZALLY
+              </span>
+              <span className="text-[#9E988E] font-mono-code">RPL 2026</span>
+            </div>
+          </div>
         </motion.div>
 
-        {/* Modular Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
-          {/* Panel 1 (7 Cols): Introduction & Education */}
+        {/* Profile & Cards Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+          
+          {/* Left Column: Portrait */}
           <motion.div
-            initial={{ opacity: 0, x: -15 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, scale: 0.96 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="md:col-span-7 space-y-8"
+            transition={{ duration: 0.7 }}
+            className="lg:col-span-5 space-y-6"
           >
-            {/* Introduction Module */}
-            <div className="panel-surface p-6 sm:p-8 space-y-4">
-              <div className="flex items-center gap-3 border-b border-[#1E343E] pb-4">
-                <User className="w-5 h-5 text-[#BFA36A]" />
-                <h3 className="font-garamond text-2xl font-bold text-[#EEF8F7]">INTRODUCTION</h3>
-              </div>
-              <p className="font-outfit text-sm text-[#8FA3AC] leading-relaxed">
-                {IDENTITY.manifesto}
-              </p>
-            </div>
-
-            {/* Education Module */}
-            <div className="panel-surface p-6 sm:p-8 space-y-4">
-              <div className="flex items-center justify-between border-b border-[#1E343E] pb-4">
-                <div className="flex items-center gap-3">
-                  <GraduationCap className="w-5 h-5 text-[#6CA8A7]" />
-                  <h3 className="font-garamond text-2xl font-bold text-[#EEF8F7]">ACADEMIC EDUCATION</h3>
-                </div>
-                <span className="font-space text-xs text-[#BFA36A] font-semibold">
-                  {ABOUT_MODULES.education.years}
-                </span>
-              </div>
-
-              <div className="space-y-2">
-                <h4 className="font-garamond text-xl font-bold text-[#EEF8F7]">
-                  {ABOUT_MODULES.education.school}
-                </h4>
-                <div className="font-space text-xs text-[#6CA8A7] uppercase font-semibold">
-                  {ABOUT_MODULES.education.major}
-                </div>
-                <p className="font-outfit text-xs text-[#8FA3AC] leading-relaxed">
-                  {ABOUT_MODULES.education.desc}
-                </p>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Panel 2 (5 Cols): Portrait Box & Caption */}
-          <motion.div
-            initial={{ opacity: 0, x: 15 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.15 }}
-            className="md:col-span-5 flex flex-col items-center"
-          >
-            <div className="panel-surface p-5 w-full max-w-sm space-y-4">
-              <div className="w-full aspect-[4/5] rounded-xl overflow-hidden border border-[#1E343E] bg-[#182730] relative group">
+            <div className="editorial-card p-3 bg-[#202020] relative group">
+              <div className="aspect-[4/5] overflow-hidden rounded-lg bg-[#141414] border border-[#2E2A24]">
                 <img
                   src={IDENTITY.portraitImg}
                   alt={IDENTITY.name}
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                  className="w-full h-full object-cover grayscale contrast-125 group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
                 />
               </div>
 
-              <div className="space-y-1 pt-1">
-                <div className="font-space text-sm font-bold text-[#6CA8A7]">
-                  {IDENTITY.captionFilename}
+              <div className="pt-4 px-2 space-y-2">
+                <div className="flex justify-between items-center font-space-num text-xs font-bold text-[#F3EFE8]">
+                  <span>{IDENTITY.name}</span>
+                  <span className="text-[#A97843] font-mono-code">INDONESIA</span>
                 </div>
-                <div className="font-garamond text-sm italic text-[#8FA3AC]">
+                <p className="font-editorial-serif italic text-sm text-[#9E988E] border-t border-[#2E2A24]/60 pt-2">
                   "{IDENTITY.captionQuote}"
-                </div>
+                </p>
+              </div>
+            </div>
+
+            <div className="editorial-card p-6 space-y-3 font-space-num text-xs bg-[#202020]">
+              <div className="flex justify-between border-b border-[#2E2A24] pb-2">
+                <span className="text-[#9E988E]">INSTITUTION:</span>
+                <span className="font-bold text-[#F3EFE8]">SMK Taruna Bhakti</span>
+              </div>
+              <div className="flex justify-between border-b border-[#2E2A24] pb-2">
+                <span className="text-[#9E988E]">MAJOR:</span>
+                <span className="font-bold text-[#F3EFE8]">Software Engineering (RPL)</span>
+              </div>
+              <div className="flex justify-between border-b border-[#2E2A24] pb-2">
+                <span className="text-[#9E988E]">SPECIALIZATION:</span>
+                <span className="font-bold text-[#A97843]">Frontend & Mobile Systems</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-[#9E988E]">PRIMARY STACK:</span>
+                <span className="font-bold text-[#D4A96A]">React 19 & React Native</span>
               </div>
             </div>
           </motion.div>
-        </div>
 
-        {/* Bottom 3-Column Panels */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
-          {/* Current Focus */}
+          {/* Right Column: Cards */}
           <motion.div
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="card-surface p-6 space-y-4"
+            transition={{ duration: 0.7, delay: 0.15 }}
+            className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6"
           >
-            <div className="flex items-center gap-2 text-[#BFA36A]">
-              <Target className="w-4 h-4" />
-              <span className="font-space text-xs tracking-widest uppercase font-bold">CURRENT FOCUS</span>
-            </div>
-            <ul className="space-y-2 font-outfit text-xs text-[#8FA3AC]">
-              {ABOUT_MODULES.focus.map((item, idx) => (
-                <li key={idx} className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#6CA8A7]" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
+            {MANIFESTO_MODULES.map((module) => (
+              <div
+                key={module.title}
+                className="editorial-card p-6 space-y-3 hover:border-[#A97843] transition-colors bg-[#202020]"
+              >
+                <h3 className="font-editorial-serif text-2xl font-semibold text-[#F3EFE8] uppercase border-b border-[#2E2A24] pb-2">
+                  {module.title}
+                </h3>
+                <p className="font-sans text-xs text-[#9E988E] leading-relaxed">
+                  {module.desc}
+                </p>
+              </div>
+            ))}
           </motion.div>
 
-          {/* Interests */}
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="card-surface p-6 space-y-4"
-          >
-            <div className="flex items-center gap-2 text-[#6CA8A7]">
-              <Heart className="w-4 h-4" />
-              <span className="font-space text-xs tracking-widest uppercase font-bold">INTERESTS</span>
-            </div>
-            <ul className="space-y-2 font-outfit text-xs text-[#8FA3AC]">
-              {ABOUT_MODULES.interests.map((item, idx) => (
-                <li key={idx} className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#B8D8D3]" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-
-          {/* Goals & Vision */}
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="card-surface p-6 space-y-4"
-          >
-            <div className="flex items-center gap-2 text-[#B8D8D3]">
-              <Compass className="w-4 h-4" />
-              <span className="font-space text-xs tracking-widest uppercase font-bold">GOALS & VISION</span>
-            </div>
-            <p className="font-outfit text-xs text-[#8FA3AC] leading-relaxed">
-              {ABOUT_MODULES.goals}
-            </p>
-          </motion.div>
         </div>
       </div>
     </section>
   );
 }
-
-

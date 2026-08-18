@@ -1,94 +1,158 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { CheckCircle2 } from 'lucide-react';
-import { EXPERIENCE } from '../data/portfolioData';
+import { Award, CheckCircle2, GraduationCap } from 'lucide-react';
+import { ACADEMIC_TIMELINE, COMPETENCY_SCORES } from '../data/portfolioData';
 
 export default function ExperienceSection() {
   return (
     <section
-      id="experience"
-      className="relative min-h-screen py-28 px-4 sm:px-8 lg:px-16 bg-[#081014] border-t border-[#1E343E]"
+      id="resume"
+      className="relative py-28 px-4 sm:px-8 lg:px-12 bg-[var(--canvas)] text-[var(--text-editorial)] border-b border-[#2E2A24]/60 lg:pl-28"
     >
-      <div className="max-w-5xl mx-auto space-y-16">
-        {/* Header */}
+      <div className="max-w-7xl mx-auto space-y-20">
+        
+        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[#1E343E] pb-8"
+          className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 border-b border-[#2E2A24]/60 pb-6"
         >
           <div>
-            <div className="flex items-center gap-2 mb-2">
-              <span className="w-6 h-[1px] bg-[#BFA36A]" />
-              <span className="font-space text-xs tracking-[0.25em] text-[#BFA36A] uppercase font-semibold">
-                05 // PERJALANAN SEKOLAH & PROYEK
-              </span>
-            </div>
-            <h2 className="font-garamond text-4xl sm:text-6xl font-light text-[#EEF8F7]">
-              Pendidikan & <span className="italic text-[#6CA8A7]">Perjalanan RPL.</span>
+            <span className="font-space-num text-xs font-bold text-[#A97843] tracking-[0.2em] uppercase block">
+              EXPERIENCE & CREDENTIALS
+            </span>
+            <h2 className="font-editorial-serif text-4xl sm:text-6xl font-normal uppercase text-[var(--text-editorial)]">
+              ACADEMIC <span className="font-bold text-[#A97843] italic">EXPERIENCE</span>
             </h2>
           </div>
 
-          <p className="font-outfit text-sm text-[#8FA3AC] max-w-md">
-            Perjalanan belajar dan pembuatan proyek Rekayasa Perangkat Lunak (RPL) di SMK Taruna Bhakti Depok.
+          <p className="font-sans text-sm text-[#9E988E] max-w-md font-normal leading-relaxed">
+            Software Engineering (RPL) education at SMK Taruna Bhakti Depok and verified competency certifications.
           </p>
         </motion.div>
 
-        {/* Vertical Journey Blocks */}
-        <div className="relative border-l-2 border-[#1E343E] space-y-12 pl-6 sm:pl-10 ml-2 sm:ml-4">
-          {EXPERIENCE.map((exp, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, x: -15 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: idx * 0.1 }}
-              className="relative space-y-4"
-            >
-              {/* Connector Node Marker */}
-              <div className="absolute -left-[31px] sm:-left-[47px] top-1.5 w-4 h-4 rounded-full bg-[#111C22] border-2 border-[#6CA8A7] flex items-center justify-center">
-                <div className="w-1.5 h-1.5 rounded-full bg-[#BFA36A]" />
-              </div>
+        {/* 1. VERIFIED UKK COMPETENCY TEST SCORES CARDS */}
+        <div className="space-y-6">
+          <div className="flex items-center gap-3 font-space-num text-xs font-bold text-[#A97843] uppercase tracking-widest border-b border-[#2E2A24] pb-3">
+            <Award className="w-4 h-4 text-[#D4A96A]" />
+            <span>VERIFIED COMPETENCY CERTIFICATIONS</span>
+          </div>
 
-              {/* Card Container */}
-              <div className="panel-surface p-6 sm:p-8 space-y-4 hover:border-[#6CA8A7]/40 transition-colors">
-                <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#1E343E] pb-3">
-                  <span className="font-garamond text-3xl font-bold text-[#BFA36A]">
-                    {exp.year}
-                  </span>
-                  <div className="text-right">
-                    <span className="font-space text-xs font-bold text-[#EEF8F7] block">
-                      {exp.organization}
-                    </span>
-                    <span className="font-space text-[10px] text-[#6CA8A7] uppercase font-semibold">
-                      {exp.department}
-                    </span>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {COMPETENCY_SCORES.map((cert, idx) => (
+              <motion.div
+                key={cert.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: idx * 0.1 }}
+                className="editorial-card p-6 sm:p-8 space-y-6 bg-[#202020] rounded-xl border border-[#2E2A24] hover:border-[#A97843] transition-all flex flex-col justify-between"
+              >
+                {/* Score Header Strip */}
+                <div className="flex items-center justify-between border-b border-[#2E2A24] pb-4 font-space-num text-xs">
+                  <span className="text-[#9E988E] uppercase font-mono-code">UKK CERTIFICATION</span>
+                  <div className="px-3.5 py-1 bg-[#181818] border border-[#A97843]/50 text-[#D4A96A] font-mono-code font-bold rounded-md">
+                    SCORE: {cert.score} / {cert.maxScore}
                   </div>
                 </div>
 
-                <h3 className="font-garamond text-2xl font-bold text-[#EEF8F7]">
-                  {exp.title}
-                </h3>
-
-                <p className="font-outfit text-xs sm:text-sm text-[#8FA3AC] leading-relaxed">
-                  {exp.description}
-                </p>
-
-                <div className="pt-2 flex flex-wrap gap-3">
-                  {exp.highlights.map((h, hIdx) => (
-                    <span key={hIdx} className="font-outfit text-xs text-[#B8D8D3] bg-[#182730] border border-[#1E343E] px-3 py-1 rounded-md flex items-center gap-1.5">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-[#6CA8A7]" />
-                      <span>{h}</span>
-                    </span>
-                  ))}
+                {/* Title & Description */}
+                <div className="space-y-3">
+                  <h3 className="font-editorial-serif text-2xl sm:text-3xl font-semibold text-[#F3EFE8] uppercase">
+                    {cert.title}
+                  </h3>
+                  <p className="font-sans text-xs text-[#9E988E] leading-relaxed">
+                    {cert.description}
+                  </p>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+
+                {/* Evaluated Criteria */}
+                <div className="p-4 bg-[#181818] border border-[#2E2A24] rounded-lg space-y-2.5">
+                  <span className="font-space-num text-[11px] font-bold text-[#A97843] uppercase tracking-widest block">
+                    EVALUATED COMPETENCIES:
+                  </span>
+                  <div className="space-y-2">
+                    {cert.criteria.map((crit, cIdx) => (
+                      <div key={cIdx} className="flex items-start gap-2.5 font-sans text-xs text-[#F3EFE8]">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-[#A97843] shrink-0 mt-0.5" />
+                        <span>{crit}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="pt-2 flex justify-between font-mono-code text-[11px] text-[#9E988E] border-t border-[#2E2A24]">
+                  <span>ISSUER: {cert.issuer}</span>
+                  <span>YEAR: {cert.year}</span>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
+
+        {/* 2. ACADEMIC JOURNEY TIMELINE */}
+        <div className="space-y-8 pt-6">
+          <div className="flex items-center gap-3 font-space-num text-xs font-bold text-[#A97843] uppercase tracking-widest border-b border-[#2E2A24] pb-3">
+            <GraduationCap className="w-4 h-4 text-[#D4A96A]" />
+            <span>ACADEMIC TIMELINE</span>
+          </div>
+
+          <div className="space-y-8 relative before:absolute before:inset-0 before:left-4 sm:before:left-8 before:w-[1px] before:bg-[#2E2A24]">
+            {ACADEMIC_TIMELINE.map((exp, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, x: -15 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: idx * 0.1 }}
+                className="relative pl-10 sm:pl-16 space-y-4"
+              >
+                {/* Marker Dot */}
+                <div className="absolute left-[12px] sm:left-[28px] top-4 w-3 h-3 bg-[#A97843] rounded-full border-2 border-[#181818]" />
+
+                <div className="editorial-card p-6 sm:p-8 space-y-4 bg-[#202020] rounded-xl border border-[#2E2A24] hover:border-[#A97843] transition-all">
+                  <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#2E2A24] pb-3 font-space-num text-xs">
+                    <span className="bg-[#181818] border border-[#2E2A24] text-[#D4A96A] px-3.5 py-1 rounded font-mono-code font-bold">
+                      {exp.year}
+                    </span>
+                    <span className="text-[#A97843] uppercase tracking-widest font-semibold">
+                      {exp.department}
+                    </span>
+                  </div>
+
+                  <div className="space-y-1">
+                    <h3 className="font-editorial-serif text-2xl sm:text-3xl font-semibold text-[#F3EFE8] uppercase">
+                      {exp.title}
+                    </h3>
+                    <p className="font-sans text-xs font-semibold text-[#D4A96A]">
+                      {exp.organization}
+                    </p>
+                  </div>
+
+                  <p className="font-sans text-xs sm:text-sm text-[#9E988E] leading-relaxed">
+                    {exp.description}
+                  </p>
+
+                  {/* Highlights */}
+                  <div className="pt-3 border-t border-[#2E2A24] flex flex-wrap gap-2">
+                    {exp.highlights.map((h, hIdx) => (
+                      <span
+                        key={hIdx}
+                        className="px-3.5 py-1 bg-[#181818] border border-[#2E2A24] font-space-num text-xs text-[#F3EFE8] rounded-md"
+                      >
+                        • {h}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
       </div>
     </section>
   );
 }
-

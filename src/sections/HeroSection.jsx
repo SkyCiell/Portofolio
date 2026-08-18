@@ -1,120 +1,152 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Shield, Radio } from 'lucide-react';
-import { IDENTITY, TELEMETRY_STRIP } from '../data/portfolioData';
+import { ArrowDownRight, ArrowRight, Compass, ShieldCheck } from 'lucide-react';
+import { IDENTITY, HERO_METADATA } from '../data/portfolioData';
 
 export default function HeroSection({ onExplore, onContact }) {
   return (
     <section
       id="hero"
-      className="relative min-h-screen pt-32 pb-16 px-4 sm:px-8 lg:px-16 bg-[#081014] flex flex-col justify-between"
+      className="relative min-h-screen pt-28 sm:pt-36 pb-20 px-4 sm:px-8 lg:px-12 bg-[var(--canvas)] text-[var(--text-editorial)] flex flex-col justify-between border-b border-[#2E2A24]/60 overflow-hidden lg:pl-28"
     >
-      {/* Main Hero Container */}
-      <div className="max-w-7xl mx-auto w-full my-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-        {/* Left Column (7 Cols): Title, Subtitle, CTAs */}
+      <div className="max-w-7xl mx-auto w-full flex-1 flex flex-col justify-between gap-12 relative z-10">
+        
+        {/* Top Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="lg:col-span-7 space-y-8 z-10"
+          className="flex flex-wrap items-center justify-between gap-4 border-b border-[#2E2A24]/60 pb-6 font-space-num text-xs"
         >
-          {/* Eyebrow badge */}
-          <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-[#111C22] border border-[#1E343E]">
-            <span className="w-2 h-2 rounded-full bg-[#6CA8A7]" />
-            <span className="font-space text-xs tracking-widest text-[#B8D8D3] uppercase font-medium">
-              PORTFOLIO & PROFILE
+          <div className="flex items-center gap-3">
+            <span className="w-2 h-2 rounded-full bg-[#A97843] animate-pulse" />
+            <span className="font-bold tracking-widest text-[#D4A96A] uppercase">
+              PORTFOLIO
             </span>
           </div>
 
-          {/* Title */}
-          <div className="space-y-3">
-            <h1 className="font-garamond text-5xl sm:text-7xl lg:text-8xl font-light tracking-tight leading-[0.95] text-[#EEF8F7]">
-              M. Raffi <br />
-              <span className="font-normal italic text-[#BFA36A]">Barzally.</span>
-            </h1>
-            <p className="font-space text-xs tracking-[0.25em] text-[#6CA8A7] uppercase pt-2">
-              SOFTWARE ENGINEER & UI SYSTEMS ARCHITECT
-            </p>
-          </div>
-
-          {/* Subtitle */}
-          <p className="font-outfit text-base sm:text-lg text-[#8FA3AC] leading-relaxed max-w-xl">
-            RPL student at SMK Taruna Bhakti focused on Frontend Engineering & Mobile Systems Development. Crafting modular web ecosystems with refined editorial layout composition.
-          </p>
-
-          {/* Action CTAs */}
-          <div className="flex flex-wrap items-center gap-4 pt-2">
-            <button
-              onClick={onExplore}
-              className="btn-primary cursor-pointer"
-            >
-              <Shield className="w-4 h-4 text-[#BFA36A]" />
-              <span>EXPLORE PROFILE CODEX</span>
-            </button>
-            <button
-              onClick={onContact}
-              className="btn-secondary cursor-pointer"
-            >
-              <Radio className="w-4 h-4 text-[#6CA8A7]" />
-              <span>SEND TRANSMISSION</span>
-            </button>
+          <div className="flex items-center gap-4 text-[#9E988E] font-mono-code text-[11px]">
+            <span className="flex items-center gap-1.5 px-3 py-1 bg-[#202020] border border-[#2E2A24] rounded-full text-[#F3EFE8]">
+              <Compass className="w-3.5 h-3.5 text-[#A97843]" />
+              {IDENTITY.coordinates}
+            </span>
           </div>
         </motion.div>
 
-        {/* Right Column (5 Cols): Preview Mockup */}
+        {/* Hero Content */}
+        <div className="my-auto py-6 space-y-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            
+            {/* Left Column: Headline & Subtitle */}
+            <motion.div
+              initial={{ opacity: 0, y: 25 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+              className="lg:col-span-8 space-y-6"
+            >
+              <div className="space-y-2">
+                <span className="font-space-num text-xs font-bold text-[#A97843] tracking-[0.2em] uppercase block">
+                  SOFTWARE ENGINEER & UI ARCHITECT
+                </span>
+                <h1 className="font-editorial-serif text-5xl sm:text-7xl lg:text-8xl font-normal leading-[0.88] tracking-tight uppercase text-[var(--text-editorial)]">
+                  M. RAFFI <br />
+                  <span className="font-bold text-[#A97843] italic">BARZALLY</span>
+                </h1>
+              </div>
+
+              <p className="font-sans text-base sm:text-xl text-[#D4A96A] font-medium tracking-wide uppercase pt-2 border-t border-[#2E2A24]/60 max-w-2xl">
+                {IDENTITY.role}
+              </p>
+
+              <p className="font-sans text-sm sm:text-base text-[#9E988E] leading-relaxed max-w-2xl font-normal">
+                {IDENTITY.intro} Focused on modular architecture, editorial design precision, and refined interaction quality across web and cross-platform mobile ecosystems.
+              </p>
+
+              <div className="flex flex-wrap items-center gap-4 pt-4">
+                <button
+                  onClick={onExplore}
+                  className="btn-editorial-bronze group"
+                >
+                  <span>EXPLORE WORK</span>
+                  <ArrowDownRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:translate-y-0.5 transition-transform" />
+                </button>
+
+                <button
+                  onClick={onContact}
+                  className="btn-editorial-outline group"
+                >
+                  <span>CONTACT ME</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform text-[#A97843]" />
+                </button>
+              </div>
+            </motion.div>
+
+            {/* Right Column: Profile Frame */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.96 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="lg:col-span-4 space-y-4"
+            >
+              <div className="editorial-card p-3 relative group overflow-hidden border-bronze-glow">
+                <div className="aspect-[4/5] overflow-hidden rounded-lg bg-[#141414] border border-[#2E2A24]">
+                  <img
+                    src={IDENTITY.portraitImg}
+                    alt={IDENTITY.name}
+                    className="w-full h-full object-cover grayscale contrast-125 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+                  />
+                </div>
+                <div className="pt-3 px-1 flex justify-between items-center font-space-num text-xs">
+                  <span className="font-bold text-[#F3EFE8]">{IDENTITY.alias}</span>
+                  <span className="text-[#A97843] font-mono-code font-semibold">RPL 2026</span>
+                </div>
+              </div>
+
+              <div className="editorial-card p-5 space-y-3 font-space-num text-xs bg-[#202020]">
+                <div className="flex items-center justify-between border-b border-[#2E2A24] pb-2 font-bold tracking-widest">
+                  <span className="text-[#A97843] uppercase flex items-center gap-1.5">
+                    <ShieldCheck className="w-3.5 h-3.5 text-[#D4A96A]" />
+                    STATUS REPORT
+                  </span>
+                  <span className="text-[#D4A96A] font-mono-code">VERIFIED</span>
+                </div>
+                <p className="font-sans text-xs text-[#9E988E] leading-relaxed">
+                  Student at <strong className="text-[#F3EFE8]">SMK Taruna Bhakti</strong> (RPL). Verified UKK competency scores: <strong className="text-[#D4A96A]">89 & 87</strong>.
+                </p>
+                <div className="flex flex-wrap gap-1.5 pt-1 text-[10px] font-mono-code">
+                  <span className="px-2.5 py-1 bg-[#181818] border border-[#2E2A24] text-[#F3EFE8] rounded">REACT 19</span>
+                  <span className="px-2.5 py-1 bg-[#181818] border border-[#2E2A24] text-[#F3EFE8] rounded">REACT NATIVE</span>
+                  <span className="px-2.5 py-1 bg-[#181818] border border-[#2E2A24] text-[#F3EFE8] rounded">EXPO</span>
+                </div>
+              </div>
+            </motion.div>
+
+          </div>
+        </div>
+
+        {/* Feature Cards Grid */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7, delay: 0.15 }}
-          className="lg:col-span-5 relative flex items-center justify-center"
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 border-t border-[#2E2A24]/60 pt-6"
         >
-          {/* Browser Window Mockup */}
-          <div className="relative z-10 w-full max-w-md rounded-xl bg-[#111C22] border border-[#1E343E] shadow-2xl overflow-hidden hover:border-[#6CA8A7]/50 transition-colors">
-            {/* Browser Top Bar */}
-            <div className="px-4 py-2.5 bg-[#182730] border-b border-[#1E343E] flex items-center justify-between">
-              <div className="flex items-center gap-1.5">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#E57373]" />
-                <span className="w-2.5 h-2.5 rounded-full bg-[#FFB74D]" />
-                <span className="w-2.5 h-2.5 rounded-full bg-[#81C784]" />
+          {HERO_METADATA.map((meta, idx) => (
+            <div
+              key={idx}
+              className="editorial-card p-4 space-y-2 hover:border-[#A97843] transition-colors"
+            >
+              <div className="font-space-num text-xs font-bold tracking-widest text-[#F3EFE8] uppercase">
+                {meta.title}
               </div>
-              <div className="font-space text-[10px] text-[#8FA3AC] tracking-widest uppercase">
-                FEATURED WORK // BUILDFORGE.PNG
-              </div>
-              <div className="w-4" />
+              <p className="font-sans text-xs text-[#9E988E] font-normal">
+                {meta.desc}
+              </p>
             </div>
-
-            {/* Content Image */}
-            <div className="aspect-[16/10] overflow-hidden bg-[#081014] relative group">
-              <img
-                src="/img/BuildForge-removebg-preview.png"
-                alt="BuildForge PC Configurator Preview"
-                className="w-full h-full object-contain p-2 transition-transform duration-500 group-hover:scale-105"
-              />
-            </div>
-          </div>
+          ))}
         </motion.div>
-      </div>
 
-      {/* Telemetry Strip */}
-      <motion.div
-        initial={{ opacity: 0, y: 15 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.3 }}
-        className="max-w-7xl mx-auto w-full pt-12 border-t border-[#1E343E] grid grid-cols-2 md:grid-cols-4 gap-4"
-      >
-        {TELEMETRY_STRIP.map((item, idx) => (
-          <div key={idx} className="panel-surface p-4 space-y-1">
-            <span className="font-space text-[9px] tracking-widest text-[#BFA36A] uppercase block font-semibold">
-              {item.label}
-            </span>
-            <span className="font-outfit text-sm font-medium text-[#EEF8F7] block">
-              {item.value}
-            </span>
-          </div>
-        ))}
-      </motion.div>
+      </div>
     </section>
   );
 }
-
-

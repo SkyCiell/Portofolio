@@ -1,95 +1,70 @@
 export const IDENTITY = {
   name: 'M. Raffi Barzally',
   alias: 'SkyCiell',
-  role: 'Software Engineer & UI Systems Architect',
+  role: 'Frontend Engineering & Mobile Systems Development',
   school: 'SMK Taruna Bhakti',
   department: 'Rekayasa Perangkat Lunak (RPL)',
   location: 'Depok, West Java, Indonesia',
-  coordinates: '6.3900° S, 106.8300° E',
-  manifesto: 'Saya adalah seorang pelajar yang sangat tertarik dalam dunia pengembangan perangkat lunak dan desain antarmuka. Selalu berusaha menciptakan solusi yang fungsional, estetis, dan berdampak.',
+  coordinates: 'DEPOK [6.3900° S, 106.8300° E]',
+  timezone: 'WIB (GMT+7)',
+  manifesto: 'Software architecture is not merely functional logic; it is the deliberate curation of structural aesthetics, component modularity, and human-centered interaction.',
   captionFilename: 'Rapiganteng.jpeg',
   captionQuote: 'Moments of clarity in the middle of chaos.',
   portraitImg: '/img/Rapiganteng1.jpeg',
   email: 'raffi.barzally@gmail.com',
+  intro: 'RPL Student at SMK Taruna Bhakti specializing in modular web architecture and cross-platform mobile systems development.',
   github: 'https://github.com/SkyCiell',
   instagram: 'https://www.instagram.com/piraapiiii',
   linkedin: 'https://www.linkedin.com/in/raffi-barzally-a18979382',
 };
 
-export const TELEMETRY_STRIP = [
-  { label: 'EXPERIENCE', value: 'RPL 2024 – Present' },
-  { label: 'SYSTEMS BUILT', value: '4+ Production Repos' },
-  { label: 'PRIMARY STACK', value: 'React 19 & React Native' },
-  { label: 'LOCATION', value: 'Depok [6.39°S 106.83°E]' },
+export const NAVIGATION_CHAPTERS = [
+  { id: 'hero', title: 'Home' },
+  { id: 'about', title: 'About' },
+  { id: 'projects', title: 'Work' },
+  { id: 'skills', title: 'Skills' },
+  { id: 'resume', title: 'Experience' },
+  { id: 'contact', title: 'Contact' },
 ];
 
-export const ABOUT_MODULES = {
-  intro: 'Building digital experiences with modular code architecture, editorial precision, and refined interaction quality.',
-  education: {
-    school: 'SMK Taruna Bhakti',
-    major: 'Rekayasa Perangkat Lunak (RPL)',
-    years: '2024 – Present',
-    desc: 'Fokus mempelajari struktur data, algoritma pemrograman, arsitektur database relasional, serta pengembangan Web & Mobile App modern.',
-  },
-  focus: [
-    'Frontend Architecture (React 19, Vite, Tailwind CSS)',
-    'Mobile Systems (React Native & Expo Ecosystems)',
-    'Modular System Design & RESTful APIs',
-  ],
-  interests: [
-    'Audio Engineering & Music Player APIs',
-    'Custom PC Building & Hardware TDP Architecture',
-    'Japanese Minimalist & Editorial UI Design',
-  ],
-  goals: 'Deliver scalable software solutions that merge high performance with timeless, editorial design aesthetics.',
-};
+export const TELEMETRY_STRIP = [
+  { label: 'INSTITUTION', value: 'SMK Taruna Bhakti Depok' },
+  { label: 'VERIFIED UKK SCORES', value: '89 & 87 / 100' },
+  { label: 'PRIMARY STACK', value: 'React 19 & React Native' },
+  { label: 'COORDINATES', value: '6.3900° S, 106.8300° E' },
+];
 
-export const SKILL_CATEGORIES = [
+export const HERO_METADATA = [
+  { title: 'EDITORIAL AESTHETIC', desc: 'Strict editorial contrast of metallic bronze and charcoal space.' },
+  { title: 'MODULAR ARCHITECTURE', desc: 'Decoupled, reusable component structures with custom state logic.' },
+  { title: 'MOBILE & AUDIO APIs', desc: 'React Native & Expo views paired with native HTML5 audio engines.' },
+  { title: 'PERFORMANCE FIRST', desc: 'Optimized rendering lifecycles with zero layout thrashing.' },
+];
+
+export const MANIFESTO_MODULES = [
   {
-    category: 'Frontend Architecture',
-    skills: [
-      { name: 'React 19', level: 'Apex', desc: 'Component state, custom hooks, context, dynamic rendering.' },
-      { name: 'JavaScript (ES6+)', level: 'Advanced', desc: 'Async/await, DOM APIs, ES modules, state patterns.' },
-      { name: 'Vite', level: 'Proficient', desc: 'Fast dev environment, bundling, path alias setup.' },
-      { name: 'HTML5 & CSS3', level: 'Mastery', desc: 'Semantic layouts, CSS custom properties, grid & flex systems.' },
-    ],
+    title: 'Component Decoupling',
+    desc: 'Building scalable web systems with isolated component scopes, clean prop interfaces, and declarative React 19 state containers.',
   },
   {
-    category: 'Mobile Systems',
-    skills: [
-      { name: 'React Native', level: 'Advanced', desc: 'Cross-platform iOS/Android views, native gestures, styling.' },
-      { name: 'Expo', level: 'Proficient', desc: 'Managed workflow, device APIs, mobile application builds.' },
-    ],
+    title: 'Fullstack & Mobile Integration',
+    desc: 'Spanning cross-platform mobile apps with React Native & Expo to robust RESTful Express.js backend services and MySQL schemas.',
   },
   {
-    category: 'Backend & Services',
-    skills: [
-      { name: 'Node.js', level: 'Proficient', desc: 'Server runtime, async event handling, module resolution.' },
-      { name: 'Express.js', level: 'Proficient', desc: 'RESTful API routing, middleware controllers, JSON payloads.' },
-    ],
+    title: 'RPL Academic Mastery',
+    desc: 'Enrolled in Software Engineering (RPL) at SMK Taruna Bhakti, achieving verified UKK competency test scores of 89 and 87.',
   },
   {
-    category: 'Database & Data',
-    skills: [
-      { name: 'MySQL', level: 'Proficient', desc: 'Relational database schema modeling, queries, foreign keys.' },
-      { name: 'REST APIs', level: 'Advanced', desc: 'Async fetch requests, HTTP payload contracts, error states.' },
-    ],
-  },
-  {
-    category: 'Engineering Tools',
-    skills: [
-      { name: 'Git & GitHub', level: 'Advanced', desc: 'Version control, branch management, pull requests.' },
-      { name: 'VS Code & Figma', level: 'Proficient', desc: 'IDE workflows, layout specs, visual asset exports.' },
-    ],
+    title: 'Editorial Tactile Craft',
+    desc: 'Blending Japanese minimalist magazine aesthetics with rigorous technical standards and high-speed user experience.',
   },
 ];
 
 export const PROJECTS = [
   {
     id: 'buildforge',
-    code: 'PROJECT // 01',
     title: 'BuildForge Configurator',
-    subtitle: 'Platform Konfigurator PC Interaktif Premium',
+    subtitle: 'Premium PC Builder Configurator',
     image: '/img/BuildForge-removebg-preview.png',
     overview: 'Platform konfigurator PC interaktif premium untuk gamer dan profesional. Mengintegrasikan kalkulasi daya (TDP) otomatis dan rekomendasi PSU cerdas.',
     techStack: ['React 19', 'Express.js', 'MySQL', 'Vite', 'Tailwind CSS', 'REST API'],
@@ -105,29 +80,9 @@ export const PROJECTS = [
     demo: 'https://github.com/SkyCiell/BuildForge',
   },
   {
-    id: 'music-player',
-    code: 'PROJECT // 02',
-    title: 'Web Music Player',
-    subtitle: 'Pemutar Musik Web Real-time Audio State',
-    image: '/img/MusicPlayer-removebg-preview.png',
-    overview: 'Pemutar musik berbasis web dengan state audio real-time, animasi UI yang mulus, dan visual yang interaktif.',
-    techStack: ['JavaScript ES6+', 'HTML5 Audio API', 'CSS Animations', 'DOM State'],
-    challenges: 'Synchronizing track playback progress with HTML5 Audio events seamlessly without UI frame drops.',
-    solution: 'Engineered an event-driven audio listener architecture paired with lightweight CSS keyframes.',
-    features: [
-      'Real-time track seek bar seeking & time formatting',
-      'Playlist queue manager & track switching state',
-      'Audio volume control & playback controls',
-      'Minimalist dark aesthetic interface',
-    ],
-    github: 'https://github.com/SkyCiell/MusicPlayer',
-    demo: 'https://skyciell.github.io/Portofolio',
-  },
-  {
     id: 'project-ass',
-    code: 'PROJECT // 03',
     title: 'Project-ass (Portal Lapor)',
-    subtitle: 'Sistem Pengaduan Masyarakat Multi-Platform',
+    subtitle: 'Multi-Platform Civic Complaint System',
     image: '/img/Project-ass-removebg-preview.png',
     overview: 'Sistem pengaduan masyarakat berbasis fullstack multi-platform. Menghubungkan admin panel web dengan aplikasi mobile masyarakat secara real-time.',
     techStack: ['Next.js', 'React Native', 'Expo', 'REST API', 'MySQL', 'Node.js'],
@@ -137,19 +92,36 @@ export const PROJECTS = [
       'Citizen ticket submission with photo attachments & geolocation',
       'Web admin ticket assignment & priority status management',
       'Real-time status notifications & push alerts',
-      'Verified RPL competency score 87 certification system',
+      'Verified RPL competency test score 87 system',
     ],
     github: 'https://github.com/SkyCiell/Project-ass',
     demo: 'https://github.com/SkyCiell/Project-ass',
   },
   {
-    id: 'revera',
-    code: 'PROJECT // 04',
-    title: 'Revera Web Architecture',
-    subtitle: 'Repositori Open-Source System Architecture',
+    id: 'music-player',
+    title: 'Web Music Player',
+    subtitle: 'Real-time HTML5 Audio State Player',
+    image: '/img/MusicPlayer-removebg-preview.png',
+    overview: 'Pemutar musik berbasis web dengan state audio real-time, animasi UI yang mulus, dan visual audio DOM state handling.',
+    techStack: ['JavaScript ES6+', 'HTML5 Audio API', 'CSS Keyframes', 'DOM State'],
+    challenges: 'Synchronizing track playback progress with HTML5 Audio events seamlessly without UI frame drops.',
+    solution: 'Engineered an event-driven audio listener architecture paired with lightweight CSS keyframes.',
+    features: [
+      'Real-time track seek bar seeking & time formatting',
+      'Playlist queue manager & track switching state',
+      'Audio volume control & playback state listeners',
+      'Minimalist editorial dark interface',
+    ],
+    github: 'https://github.com/SkyCiell/MusicPlayer',
+    demo: 'https://skyciell.github.io/Portofolio',
+  },
+  {
+    id: 'ddg-revera',
+    title: 'DDG Project / Revera Architecture',
+    subtitle: 'Modular Open-Source Architecture Repository',
     image: '/img/jawajawa.png',
     overview: 'Repositori open-source arsitektur modular Revera yang didesain secara rapi untuk skalabilitas komponen dan kemudahan integrasi sistem.',
-    techStack: ['React', 'Modular Code', 'GitHub Workflow', 'Clean Code'],
+    techStack: ['React', 'Modular Architecture', 'Clean Code', 'GitHub Workflow'],
     challenges: 'Enforcing strict component decoupling boundaries while preserving developer ergonomics.',
     solution: 'Developed clean atomic file structures and thorough architectural documentation.',
     features: [
@@ -163,76 +135,114 @@ export const PROJECTS = [
   },
 ];
 
-export const EXPERIENCE = [
+export const SKILL_CATEGORIES = [
   {
-    year: '2024',
-    title: 'Masuk Jurusan RPL SMK Taruna Bhakti',
-    organization: 'SMK Taruna Bhakti Depok',
-    department: 'Rekayasa Perangkat Lunak (RPL)',
-    description: 'Memulai pendidikan di SMK Taruna Bhakti jurusan RPL. Mempelajari logika pemrograman, struktur data, HTML5, CSS3, dan konsep dasar database relasional.',
-    highlights: [
-      'Logika & algoritma dasar pemrograman',
-      'Pemodelan basis data relasional (MySQL)',
-      'Pengembangan web dasar (HTML5, CSS3, Vanilla JS)',
+    category: 'Frontend Architecture',
+    skills: [
+      { name: 'React 19', level: 'Apex', desc: 'Component state, custom hooks, context providers, dynamic rendering.' },
+      { name: 'JavaScript (ES6+)', level: 'Advanced', desc: 'Async/await, DOM event listeners, ES modules, state mutation handling.' },
+      { name: 'Vite & Build Tools', level: 'Proficient', desc: 'HMR dev environment, asset bundling, path alias setup.' },
+      { name: 'HTML5 & Modern CSS', level: 'Mastery', desc: 'Semantic layouts, CSS custom properties, grid & flex systems.' },
     ],
   },
   {
-    year: '2025',
-    title: 'Pengembangan Aplikasi Web & Mobile',
-    organization: 'SMK Taruna Bhakti (Lab RPL)',
-    department: 'Web & Mobile Application',
-    description: 'Mendalami framework modern seperti React dan React Native. Mengembangkan proyek pengaduan masyarakat (Project-ass / Portal Lapor) serta mengikuti Uji Kompetensi Keahlian (UKK).',
-    highlights: [
-      'Pengembangan aplikasi mobile dengan React Native & Expo',
-      'Pembuatan REST API sederhana dengan Express.js',
-      'Sertifikasi Uji Kompetensi RPL (Nilai 89 & 87)',
+    category: 'Mobile Systems',
+    skills: [
+      { name: 'React Native', level: 'Advanced', desc: 'Cross-platform iOS/Android views, native touch gestures, flex styling.' },
+      { name: 'Expo Framework', level: 'Proficient', desc: 'Managed workflow, device APIs, mobile application build pipelines.' },
     ],
   },
   {
-    year: '2026',
-    title: 'Pengembangan Proyek Portofolio & Frontend',
-    organization: 'SMK Taruna Bhakti Depok',
-    department: 'Frontend Engineering & Web Development',
-    description: 'Fokus memperdalam Frontend Engineering, membangun aplikasi web interaktif seperti BuildForge PC Configurator, Web Music Player, dan mempercantik sistem UI.',
-    highlights: [
-      'Pengembangan BuildForge PC Configurator',
-      'Pengembangan Web Music Player & UI Interaktif',
-      'Penerapan clean code dan desain antarmuka modern',
+    category: 'Backend & Services',
+    skills: [
+      { name: 'Node.js Runtime', level: 'Proficient', desc: 'Server environment, asynchronous event execution, module resolution.' },
+      { name: 'Express.js', level: 'Proficient', desc: 'RESTful API routing controllers, JSON request handlers, middleware.' },
+    ],
+  },
+  {
+    category: 'Database & Infrastructure',
+    skills: [
+      { name: 'MySQL Database', level: 'Proficient', desc: 'Relational database schema modeling, queries, foreign key constraints.' },
+      { name: 'REST API Design', level: 'Advanced', desc: 'Async fetch requests, HTTP payload contracts, status codes.' },
+    ],
+  },
+  {
+    category: 'Engineering Standards',
+    skills: [
+      { name: 'Git & GitHub', level: 'Advanced', desc: 'Version control, branch workflows, commit standards.' },
+      { name: 'Figma & UI Systems', level: 'Proficient', desc: 'Typography grids, component spec files, visual asset handoffs.' },
     ],
   },
 ];
 
-export const CERTIFICATES = [
+export const ACADEMIC_TIMELINE = [
   {
-    id: 'ecommerce',
-    code: 'CERTIFICATE // 01',
+    year: '2024',
+    title: 'Admitted to RPL SMK Taruna Bhakti',
+    organization: 'SMK Taruna Bhakti Depok',
+    department: 'Rekayasa Perangkat Lunak (RPL)',
+    description: 'Began software engineering education focusing on programming logic, data structures, HTML5/CSS3, and relational database fundamentals.',
+    highlights: [
+      'Programming logic & algorithmic problem solving',
+      'Relational database schema design with MySQL',
+      'Fundamental web layouts with HTML5 & modern CSS',
+    ],
+  },
+  {
+    year: '2025',
+    title: 'Web & Mobile Systems Engineering',
+    organization: 'SMK Taruna Bhakti (RPL Laboratory)',
+    department: 'Web & Mobile Application Development',
+    description: 'Engineered fullstack systems including the Portal Lapor complaint platform (Project-ass) and achieved verified UKK competency test scores of 89 and 87.',
+    highlights: [
+      'Mobile development with React Native & Expo',
+      'REST API controllers with Express.js & Node.js',
+      'Verified RPL UKK Competency Certifications (Scores 89 & 87)',
+    ],
+  },
+  {
+    year: '2026',
+    title: 'Editorial Systems & Portfolio Monograph',
+    organization: 'SMK Taruna Bhakti Depok',
+    department: 'Frontend Engineering & Systems Architecture',
+    description: 'Focusing on high-end frontend architecture, building BuildForge PC Configurator, Web Music Player, and publishing editorial systems monographs.',
+    highlights: [
+      'BuildForge PC Configurator TDP calculation engine',
+      'Web Music Player Audio API state synchronization',
+      'Editorial design design system & clean architecture',
+    ],
+  },
+];
+
+export const COMPETENCY_SCORES = [
+  {
+    id: 'ecommerce-score',
     title: 'RPL Competency Test — E-Commerce Systems',
     score: 89,
     maxScore: 100,
     issuer: 'SMK Taruna Bhakti (Industry Verification)',
     year: '2025',
-    description: 'Verified industry-standard certification for designing, architecting, and building structured E-Commerce platforms.',
+    description: 'Verified industry-standard certification for architecting and developing structured E-Commerce web platforms.',
     criteria: [
-      'Relational database schema design for e-commerce',
-      'Cart management & product catalog state',
-      'Checkout flow & response handling',
+      'Relational database schema modeling for e-commerce',
+      'Cart state management & catalog data structures',
+      'Checkout API response handling & status checks',
       'Clean responsive layout standards',
     ],
   },
   {
-    id: 'multiplatform',
-    code: 'CERTIFICATE // 02',
-    title: 'RPL Competency Test — Multi Platform Systems',
+    id: 'multiplatform-score',
+    title: 'RPL Competency Test — Multi-Platform Systems',
     score: 87,
     maxScore: 100,
     issuer: 'SMK Taruna Bhakti (Industry Verification)',
     year: '2025',
-    description: 'Verified competency certification for engineering the Portal Lapor civic complaint system spanning Mobile Applications and REST API integration.',
+    description: 'Verified competency certification for engineering the Portal Lapor civic complaint system spanning Mobile Applications and REST API backend integration.',
     criteria: [
       'React Native & Mobile App architecture',
       'RESTful API microservice endpoint design',
-      'Geo-location tagging & media upload pipelines',
-      'Role-based JWT authentication flows',
+      'Photo attachment handling & payload specs',
+      'Role-based authentication & ticket management',
     ],
   },
 ];

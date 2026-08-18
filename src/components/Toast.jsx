@@ -11,14 +11,12 @@ export default function Toast({ message, visible }) {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 20, scale: 0.95 }}
           transition={{ duration: 0.3 }}
-          className="fixed bottom-8 left-1/2 -translate-x-1/2 z-[20000] px-5 py-3 rounded-xl bg-[#111C22] border-2 border-[#6CA8A7] text-[#EEF8F7] font-space text-xs tracking-wider shadow-2xl flex items-center gap-3 select-none"
+          className="fixed bottom-8 left-1/2 -translate-x-1/2 z-[20000] px-6 py-3.5 bg-[#202020] border border-[#A97843] text-[#F3EFE8] font-space-num text-xs font-semibold tracking-widest uppercase flex items-center gap-3 select-none shadow-2xl rounded-full"
         >
-          <CheckCircle2 className="w-4 h-4 text-[#B8D8D3]" />
+          <CheckCircle2 className="w-4 h-4 text-[#D4A96A]" />
           <span>{message}</span>
         </motion.div>
       )}
     </AnimatePresence>
   );
 }
-
-
