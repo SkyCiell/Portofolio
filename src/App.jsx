@@ -1,21 +1,24 @@
 import React, { useState, useEffect } from 'react';
 
 import MainLayout from './layouts/MainLayout';
-import GrainOverlay from './components/GrainOverlay';
-import NavigationRail from './components/NavigationRail';
-import HeroSection from './sections/HeroSection';
-import AboutSection from './sections/AboutSection';
-import SkillsSection from './sections/SkillsSection';
+import Navbar from './components/Navbar';
+import ProfileSidebar from './components/ProfileSidebar';
+import ReadmeSection from './components/ReadmeSection';
+import ActivityGraph from './components/ActivityGraph';
 import ProjectsSection from './sections/ProjectsSection';
+import SkillsSection from './sections/SkillsSection';
 import ExperienceSection from './sections/ExperienceSection';
+import CertificatesSection from './sections/CertificatesSection';
 import ContactSection from './sections/ContactSection';
-import FooterSection from './sections/FooterSection';
+import Footer from './components/Footer';
+import ProjectDetailModal from './components/ProjectDetailModal';
 import Toast from './components/Toast';
-import { IDENTITY } from './data/portfolioData';
+import { PROFILE } from './data/portfolioData';
 
 export default function App() {
-  const [activeSection, setActiveSection] = useState('hero');
-  const [theme, setTheme] = useState('dark');
+  const [activeTab, setActiveTab] = useState('overview');
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedProject, setSelectedProject] = useState(null);
   const [toastMessage, setToastMessage] = useState('');
   const [toastVisible, setToastVisible] = useState(false);
 
@@ -24,67 +27,20 @@ export default function App() {
     setToastVisible(true);
     setTimeout(() => {
       setToastVisible(false);
-    }, 3200);
-  };
-
-  const toggleTheme = () => {
-    const nextTheme = theme === 'dark' ? 'light' : 'dark';
-    setTheme(nextTheme);
-    if (nextTheme === 'light') {
-      document.documentElement.classList.add('light-theme');
-      showToast('Light Editorial Paper Mode Activated [T]');
-    } else {
-      document.documentElement.classList.remove('light-theme');
-      showToast('Matte Dark Charcoal Mode Activated [T]');
-    }
+    }, 3000);
   };
 
   const copyEmail = () => {
-    navigator.clipboard.writeText(IDENTITY.email);
-    showToast('Copied raffi.barzally@gmail.com to clipboard');
+    navigator.clipboard.writeText(PROFILE.email);
+    showToast('Copied email: raffi.barzally@gmail.com');
   };
 
-  const scrollTo = (id) => {
-    setActiveSection(id);
-    const element = document.getElementById(id);
-    if (element) {
-      if (window.lenis) {
-        window.lenis.scrollTo(element, {
-          offset: -20,
-          duration: 1.4,
-          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        });
-      } else {
-        const y = element.getBoundingClientRect().top + window.pageYOffset - 20;
-        window.scrollTo({ top: y, behavior: 'smooth' });
-      }
-    }
-  };
-
-  // Keyboard Shortcuts Listener ([T] Theme, [C] Contact)
+  // Intersection Observer for Tab Active State on Scroll
   useEffect(() => {
-    const handleKeyDown = (e) => {
-      // Don't trigger if user is typing in an input/textarea
-      if (['INPUT', 'TEXTAREA'].includes(document.activeElement?.tagName)) return;
-
-      if (e.key === 't' || e.key === 'T') {
-        toggleTheme();
-      } else if (e.key === 'c' || e.key === 'C') {
-        scrollTo('contact');
-        showToast('Jumped to Inquiries Monograph [C]');
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [theme]);
-
-  // Intersection Scroll Observer for Active Section
-  useEffect(() => {
-    const sections = ['hero', 'about', 'projects', 'skills', 'resume', 'contact'];
+    const sections = ['overview', 'projects', 'skills', 'experience', 'certificates', 'contact'];
 
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + window.innerHeight * 0.35;
+      const scrollPosition = window.scrollY + window.innerHeight * 0.3;
 
       for (const sectionId of sections) {
         const el = document.getElementById(sectionId);
@@ -92,7 +48,11 @@ export default function App() {
           const top = el.offsetTop;
           const height = el.offsetHeight;
           if (scrollPosition >= top && scrollPosition < top + height) {
-            setActiveSection(sectionId);
+            if (sectionId === 'contact') {
+              setActiveTab('certificates');
+            } else {
+              setActiveTab(sectionId);
+            }
             break;
           }
         }
@@ -105,37 +65,62 @@ export default function App() {
 
   return (
     <MainLayout>
-      {/* Tactile Grain Overlay */}
-      <GrainOverlay />
-
-      {/* Architectural Navigation Rail */}
-      <NavigationRail
-        activeSection={activeSection}
-        setActiveSection={setActiveSection}
-        theme={theme}
-        toggleTheme={toggleTheme}
+      {/* GitHub Top Navigation Bar */}
+      <Navbar
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
         onCopyEmail={copyEmail}
       />
 
-      {/* Main Page Sections */}
-      <HeroSection
-        onExplore={() => scrollTo('projects')}
-        onContact={() => scrollTo('contact')}
+      {/* Main Two-Column Container */}
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="flex flex-col lg:flex-row gap-8 items-start">
+          
+          {/* Left Column: Profile Sidebar */}
+          <ProfileSidebar onCopyEmail={copyEmail} />
+
+          {/* Right Column: Main Content Stream */}
+          <div className="flex-1 w-full space-y-8 min-w-0">
+            {/* README Section */}
+            <ReadmeSection />
+
+            {/* Developer Activity Graph Visualization */}
+            <ActivityGraph />
+
+            {/* Repositories / Projects Section */}
+            <ProjectsSection
+              searchQuery={searchQuery}
+              onSelectProject={setSelectedProject}
+            />
+
+            {/* Languages & Tools / Skills Section */}
+            <SkillsSection />
+
+            {/* Developer Experience Timeline */}
+            <ExperienceSection />
+
+            {/* Verified Certificates */}
+            <CertificatesSection />
+
+            {/* Simple Contact Box */}
+            <ContactSection onShowToast={showToast} />
+          </div>
+
+        </div>
+      </main>
+
+      {/* Footer */}
+      <Footer />
+
+      {/* Repository Detail Modal Overlay */}
+      <ProjectDetailModal
+        project={selectedProject}
+        onClose={() => setSelectedProject(null)}
       />
 
-      <AboutSection />
-
-      <ProjectsSection />
-
-      <SkillsSection />
-
-      <ExperienceSection />
-
-      <ContactSection onShowToast={showToast} />
-
-      <FooterSection />
-
-      {/* Toast Notification Alert */}
+      {/* Toast Alert */}
       <Toast message={toastMessage} visible={toastVisible} />
     </MainLayout>
   );
