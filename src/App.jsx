@@ -13,7 +13,7 @@ import ContactSection from './sections/ContactSection';
 import Footer from './components/Footer';
 import ProjectDetailModal from './components/ProjectDetailModal';
 import Toast from './components/Toast';
-import { PROFILE } from './data/portfolioData';
+import { PROFILE, PROJECTS, CERTIFICATES } from './data/portfolioData';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('overview');
@@ -35,9 +35,31 @@ export default function App() {
     showToast('Copied email: raffi.barzally@gmail.com');
   };
 
+  // Dynamic counts based on search query
+  const query = searchQuery.toLowerCase().trim();
+  const filteredProjectsCount = PROJECTS.filter((p) => {
+    if (!query) return true;
+    return (
+      p.name.toLowerCase().includes(query) ||
+      p.description.toLowerCase().includes(query) ||
+      p.techStack.some((t) => t.toLowerCase().includes(query)) ||
+      (p.category && p.category.toLowerCase().includes(query))
+    );
+  }).length;
+
+  const filteredCertsCount = CERTIFICATES.filter((c) => {
+    if (!query) return true;
+    return (
+      c.name.toLowerCase().includes(query) ||
+      c.issuer.toLowerCase().includes(query) ||
+      c.description.toLowerCase().includes(query) ||
+      c.skills.some((s) => s.toLowerCase().includes(query))
+    );
+  }).length;
+
   // Intersection Observer for Tab Active State on Scroll
   useEffect(() => {
-    const sections = ['overview', 'projects', 'skills', 'experience', 'certificates', 'contact'];
+    const sections = ['overview', 'projects', 'skills', 'experience', 'certificates'];
 
     const handleScroll = () => {
       const scrollPosition = window.scrollY + window.innerHeight * 0.3;
@@ -48,11 +70,7 @@ export default function App() {
           const top = el.offsetTop;
           const height = el.offsetHeight;
           if (scrollPosition >= top && scrollPosition < top + height) {
-            if (sectionId === 'contact') {
-              setActiveTab('certificates');
-            } else {
-              setActiveTab(sectionId);
-            }
+            setActiveTab(sectionId);
             break;
           }
         }
@@ -72,6 +90,8 @@ export default function App() {
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
         onCopyEmail={copyEmail}
+        projectCount={filteredProjectsCount}
+        certCount={filteredCertsCount}
       />
 
       {/* Main Two-Column Container */}
@@ -93,16 +113,17 @@ export default function App() {
             <ProjectsSection
               searchQuery={searchQuery}
               onSelectProject={setSelectedProject}
+              onClearSearch={() => setSearchQuery('')}
             />
 
             {/* Languages & Tools / Skills Section */}
-            <SkillsSection />
+            <SkillsSection searchQuery={searchQuery} />
 
             {/* Developer Experience Timeline */}
-            <ExperienceSection />
+            <ExperienceSection searchQuery={searchQuery} />
 
             {/* Verified Certificates */}
-            <CertificatesSection />
+            <CertificatesSection searchQuery={searchQuery} />
 
             {/* Simple Contact Box */}
             <ContactSection onShowToast={showToast} />
