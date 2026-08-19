@@ -33,7 +33,7 @@ export default function Navbar({
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-[#161b22]/95 backdrop-blur border-b border-[#30363d]">
+    <header className="sticky top-0 z-50 bg-[#161b22]/95 backdrop-blur-md border-b border-[#30363d] shadow-lg shadow-black/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Top Action Bar */}
         <div className="flex items-center justify-between h-16 gap-3 border-b border-[#30363d]/60">
